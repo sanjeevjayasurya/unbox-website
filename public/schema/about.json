@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Unbox Robotics",
+  "url": "https://unboxrobotics.com/about-us",
+  "description": "Learn about Unbox Robotics — the team, mission, and technology behind the world's first vertical mobile robotic sortation system.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  }
+}

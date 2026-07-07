@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Fulfillment Center Order Consolidation — UnboxSort",
+  "url": "https://unboxrobotics.com/use-cases/fulfillment-center-order-consolidation",
+  "description": "Automate multi-SKU order consolidation with UnboxSort. Dynamic sortation into live order destinations within a compact vertical layout.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  }
+}

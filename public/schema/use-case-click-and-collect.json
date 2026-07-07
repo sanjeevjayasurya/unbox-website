@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Fulfillment Center Click & Collect — UnboxSort",
+  "url": "https://unboxrobotics.com/use-cases/fulfillment-center-click-and-collect",
+  "description": "Enable fast, store-wise BOPIS consolidation with UnboxSort robotic sortation — without disrupting core fulfilment operations.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  }
+}

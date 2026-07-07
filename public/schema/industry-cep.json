@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "CEP Sortation Automation — Unbox Robotics",
+  "url": "https://unboxrobotics.com/industry/cep",
+  "description": "Courier, Express & Parcel sortation automation for high-volume hubs. RCS-orchestrated swarm robotics with self-healing in under 2 seconds.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "CEP Sortation Automation"
+  }
+}

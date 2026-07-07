@@ -1,0 +1,96 @@
+/* No imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Be Vietnam Pro", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* Lenis handles smooth scrolling in JS. Native CSS smooth scroll must stay off,
+   otherwise the browser re-animates every Lenis scrollTo and scrolling feels laggy. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --res-font-100: clamp(46px, 4vw, 100px);
+  --res-font-48: clamp(24px, 4vw, 48px);
+  --res-font-40: clamp(24px, 4vw, 40px);
+  --res-font-16: clamp(16px, 1.2vw, 24px);
+  --res-font-18: clamp(12px, 1.2vw, 26px);
+  --res-font-14: clamp(10px, 1vw, 16px);
+  --font-60: clamp(36px, 5vw, 60px);
+  --font-58: clamp(34px, 4vw, 58px);
+  --font-48: clamp(28px, 4vw, 48px);
+  --font-40: clamp(26px, 3vw, 40px);
+  --font-36: clamp(26px, 3.5vw, 36px);
+  --font-32: clamp(20px, 3vw, 32px);
+  --font-26: clamp(22px, 2vw, 26px);
+  --font-24: clamp(20px, 2vw, 24px);
+  --font-20: clamp(16px, 2vw, 20px);
+  --font-18: clamp(15px, 1.8vw, 18px);
+  --font-16: clamp(12px, 1.5vw, 16px);
+  --font-14: clamp(12px, 1.2vw, 14px);
+  --font-12: clamp(10px, 1vw, 12px);
+  --font-10: clamp(8px, 1vw, 10px);
+  --black: #000000;
+  --white: #ffffff;
+  --black-1: #141313;
+  --grey-1: #818382;
+  --grey-2: #efefef;
+  --grey-3: #f3f3f4;
+  --grey-4: #f3f3f3;
+  --green-1: #079d92;
+  --green-2: #00a99d;
+  --bg-light: #fdfdfd;
+
+  /* Spacing & Borders */
+  --radius-lg: 32px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+  --section-padding: 60px;
+  --hero-padding: 28px 60px 20px 60px;
+}
+
+.accordion-content ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.accordion-content li {
+  margin-bottom: 0.25rem;
+}
+
+
+.cookie-banner-visible #root,
+.cookie-banner-visible #__next,
+.cookie-banner-visible #app {
+  padding-bottom: calc(50px + env(safe-area-inset-bottom));
+}

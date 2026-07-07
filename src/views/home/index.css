@@ -1,0 +1,186 @@
+/* .home-page-ware-house-container moved to App.css (global) */
+
+.impact-container,
+.introduction-container,
+.unbox-solution-container {
+  padding: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.testimonial-container {
+  padding: 80px 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.unbox-intro-container {
+  flex: 1;
+  width: 100%;
+  border-radius: 20px;
+  height: auto;
+  overflow: hidden;
+}
+
+.unbox-intro-section {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.unbox-intro-section-1 {
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--grey-4);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.intro-card {
+  width: 100%;
+  height: 220px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+/* .client-info-container moved to App.css (global) */
+
+.unbox-location-info-main {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 80px 60px;
+  display: flex;
+  gap: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.unbox-location-info-section-1 {
+  width: 100%;
+  background-color: var(--black-1);
+  padding: 24px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 160px;
+}
+
+.location-info-btn {
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--grey-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .unbox-location-info-main {
+    padding: 40px;
+    flex-direction: column;
+  }
+  .location-info-btn {
+    padding: 40px;
+  }
+
+  .testimonial-container {
+    padding: 40px;
+  }
+
+  .unbox-solution-container,
+  .impact-container,
+  .introduction-container {
+    padding: 40px;
+    gap: 60px;
+  }
+
+  .unbox-intro-container {
+    flex: auto;
+    height: 500px;
+  }
+
+  .unbox-intro-section {
+    max-width: none;
+  }
+
+  /* .client-info-container responsive moved to App.css (global) */
+}
+
+@media screen and (max-width: 768px) {
+  .home-page-ware-house-container {
+    padding: 20px;
+    min-height: calc(100vh - 90px);
+    display: flex;
+  }
+
+  /* .client-info-container responsive moved to App.css (global) */
+
+  .introduction-container,
+  .unbox-solution-container,
+  .impact-container,
+  .testimonial-container {
+    padding: 20px;
+    gap: 40px;
+  }
+
+  .unbox-intro-container {
+    height: 350px;
+    border-radius: 14px;
+  }
+
+  .unbox-intro-section-1 {
+    padding: 14px;
+    border-radius: 14px;
+    /* gap: 155px; */
+  }
+
+  .unbox-intro-section {
+    gap: 10px;
+  }
+
+  .intro-card {
+    min-height: 160px;
+  }
+
+  .unbox-location-info-main {
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .unbox-location-info-section-1 {
+    padding: 14px;
+    gap: 80px;
+  }
+
+  .location-info-btn {
+    padding: 27px;
+    border-radius: 14px;
+  }
+}

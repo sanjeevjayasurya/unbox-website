@@ -1,0 +1,8 @@
+.questions-container{
+    border: 1px solid #EFEFEF;
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

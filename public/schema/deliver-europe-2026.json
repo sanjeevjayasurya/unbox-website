@@ -1,0 +1,71 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Unbox Robotics at DELIVER Europe 2026",
+  "startDate": "2026-06-03",
+  "endDate": "2026-06-04",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "TAETS Event Park",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Hemweg 8",
+      "addressLocality": "Amsterdam",
+      "postalCode": "1013 ED",
+      "addressCountry": "NL"
+    }
+  },
+  "image": "https://unboxrobotics.com/og-deliver-europe-2026.jpg",
+  "description": "Meet UnboxSort at DELIVER Europe 2026 — World's First Vertical Mobile Sortation. Join us at Booth C66, TAETS Event Park, Amsterdam, June 3–4, 2026.",
+  "organizer": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com"
+  },
+  "performer": {
+    "@type": "Person",
+    "name": "Lukasz Banachowicz",
+    "jobTitle": "Sales Director – EMEA",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Unbox Robotics"
+    }
+  },
+  "subEvent": {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "World's First Vertical Mobile Sortation: Redefining Warehouse Physics in Three Dimensions",
+    "startDate": "2026-06-04T14:00:00+02:00",
+    "endDate": "2026-06-04T14:25:00+02:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "TAETS Event Park",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hemweg 8",
+        "addressLocality": "Amsterdam",
+        "postalCode": "1013 ED",
+        "addressCountry": "NL"
+      }
+    },
+    "description": "Lukasz Banachowicz, Sales Director – EMEA at Unbox Robotics, presents how vertical mobile sortation is redefining warehouse physics in three dimensions.",
+    "performer": {
+      "@type": "Person",
+      "name": "Lukasz Banachowicz",
+      "jobTitle": "Sales Director – EMEA",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Unbox Robotics"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Unbox Robotics",
+      "url": "https://unboxrobotics.com"
+    }
+  }
+}

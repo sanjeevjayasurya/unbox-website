@@ -1,0 +1,339 @@
+/* ══════════════════════════════════════════════════════════════════
+   CeMAT Australia 2026 — page-specific additions.
+   Reuses the DELIVER Europe `de-*` system (deliver.css); only the
+   sections unique to this layout are defined here.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── HERO: CeMAT text logo (placeholder for official brand mark) ── */
+.cemat-hero-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 4px;
+}
+
+.cemat-logo-main {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  color: #00a99d;
+  letter-spacing: 1px;
+}
+
+.cemat-logo-sub {
+  font-size: 11px;
+  letter-spacing: 6px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* ── SHOWCASE: inline stat pills ── */
+.cemat-showcase-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px 48px;
+}
+
+.cemat-showcase-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cemat-showcase-stat svg {
+  flex-shrink: 0;
+}
+
+/* ── KEY OUTCOMES: grid of grey cards ── */
+.cemat-outcomes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+
+}
+
+.cemat-outcome-item {
+  flex: 0 0 calc((100% - 72px) / 4);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f3f3f3;
+  border-radius: 20px;
+  padding: 20px 24px;
+  /* height: max-content; */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Per-item outcome backgrounds:
+   green, grey, black, green, black, green, grey */
+.cemat-outcome-item--0,
+.cemat-outcome-item--3,
+.cemat-outcome-item--5 {
+  background: var(--green-1);
+}
+.cemat-outcome-item--2,
+.cemat-outcome-item--4 {
+  background: var(--black-1);
+}
+.cemat-outcome-item--1,
+.cemat-outcome-item--6 {
+  background: #f3f3f3;
+}
+
+/* Text colors to match each background */
+.cemat-outcome-item--0 .cemat-outcome-lead,
+.cemat-outcome-item--0 .cemat-outcome-lead i,
+.cemat-outcome-item--2 .cemat-outcome-lead,
+.cemat-outcome-item--2 .cemat-outcome-lead i,
+.cemat-outcome-item--3 .cemat-outcome-lead,
+.cemat-outcome-item--3 .cemat-outcome-lead i,
+.cemat-outcome-item--4 .cemat-outcome-lead,
+.cemat-outcome-item--4 .cemat-outcome-lead i,
+.cemat-outcome-item--5 .cemat-outcome-lead,
+.cemat-outcome-item--5 .cemat-outcome-lead i {
+  color: var(--white);
+}
+.cemat-outcome-item--1 .cemat-outcome-lead,
+.cemat-outcome-item--1 .cemat-outcome-lead i,
+.cemat-outcome-item--6 .cemat-outcome-lead,
+.cemat-outcome-item--6 .cemat-outcome-lead i {
+  color: var(--black-1);
+}
+
+.cemat-outcome-lead {
+  display: block;
+}
+
+.cemat-outcome-lead i {
+  font-style: italic;
+}
+
+/* ── WHY UNBOXSORT: feature cards around a central robot ── */
+.cemat-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.cemat-why-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.cemat-why-card {
+  background: #f3f3f3;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.cemat-why-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cemat-why-robot-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0px;
+}
+
+.cemat-why-robot {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+}
+
+/* ── BRANDS: use-case cards with bullet lists ── */
+.cemat-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.cemat-brand-card {
+  background: #EFEFEF;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* gap: 60px; */
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.cemat-brand-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cemat-brand-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cemat-brand-list-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+/* ── BRANDS: results grid (3 cards, no swiper) ── */
+.cemat-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ── BRANDS: swiper carousel ── */
+.cemat-brands-swiper {
+  width: 100%;
+}
+
+.cemat-brands-swiper .swiper-slide {
+  height: auto;
+}
+
+.cemat-brand-slide {
+  width: 360px;
+  max-width: 80%;
+}
+
+.cemat-brand-slide .cemat-brand-card {
+  height: 100%;
+}
+
+/* ── WHY VISIT: permanently highlighted (dark) item ── */
+.de-why-item--active {
+  background: #141313;
+  color: var(--white);
+}
+
+/* ── BOOK A MEETING: split info / form ── */
+.cemat-booking {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.cemat-booking-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.cemat-booking-right {
+  flex: 1;
+  width: 100%;
+
+}
+
+/* ── MEET THE TEAM: "to be announced" blurred placeholder ── */
+.cemat-team-tbd img {
+  filter: grayscale(1) blur(7px);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .cemat-why-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cemat-why-robot-wrap {
+    order: -1;
+  }
+
+  .cemat-why-robot {
+    max-width: 300px;
+  }
+
+  .cemat-why-col {
+    flex-direction: row;
+  }
+
+  .cemat-why-col>.cemat-why-card {
+    flex: 1;
+  }
+
+  .cemat-brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cemat-results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cemat-outcome-item {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+
+  .cemat-booking {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cemat-outcome-item {
+    flex: 0 0 100%;
+  }
+
+  .cemat-logo-main {
+    font-size: 24px;
+  }
+
+  .cemat-logo-sub {
+    font-size: 9px;
+    letter-spacing: 4px;
+  }
+
+  .cemat-showcase-stats {
+    gap: 16px 24px;
+  }
+
+  .cemat-why-col {
+    flex-direction: column;
+  }
+
+  .cemat-why-card {
+    padding: 20px;
+  }
+
+  .cemat-brands-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cemat-outcome-item {
+    border-radius: 14px;
+    padding: 14px;
+  }
+}

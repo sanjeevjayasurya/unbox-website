@@ -1,0 +1,61 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "UnboxSort",
+  "url": "https://unboxrobotics.com/solutions-unbox-sort",
+  "description": "UnboxSort is a modular, vertical robotic parcel sortation system that uses autonomous swarm robots to sort parcels into 2000+ destinations with 99.9%+ accuracy.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  },
+  "category": "Warehouse Automation",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "url": "https://unboxrobotics.com/get-in-touch"
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Sort Destinations",
+      "value": "2000+"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Accuracy",
+      "value": "99.9%+"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Space Saving",
+      "value": "50-70%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Deployment Time",
+      "value": "6-9 weeks"
+    }
+  ]
+}

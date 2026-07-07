@@ -1,0 +1,74 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "description": "Unleash blazing fast sortation & order consolidation through swarm robotics. Reach your customers faster via scalable automation that adapts to your business needs.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Unbox Robotics",
+      "url": "https://unboxrobotics.com",
+      "logo": "https://unboxrobotics.com/nav-logo.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/unboxrobotics/",
+        "https://x.com/RoboticsUnbox",
+        "https://www.facebook.com/unboxrobotics/",
+        "https://www.instagram.com/lifeatunbox/",
+        "https://www.youtube.com/@unboxrobotics"
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "legalName": "UnboxRobotics Labs Pvt Ltd",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "foundingDate": "2019",
+    "founders": [
+      {
+        "@type": "Person",
+        "name": "Pramod Ghadge",
+        "jobTitle": "CEO"
+      },
+      {
+        "@type": "Person",
+        "name": "Shahid Memon",
+        "jobTitle": "Co-Founder & CTO"
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Plot No. C9-10 (11), MIDC Road, T Block, MIDC, Bhosari",
+      "addressLocality": "Pimpri-Chinchwad",
+      "addressRegion": "Maharashtra",
+      "postalCode": "411026",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-89563-65282",
+      "contactType": "sales",
+      "email": "hello@unboxrobotics.com",
+      "areaServed": "Worldwide",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ],
+    "description": "Unbox Robotics is a warehouse automation company that designs and deploys intelligent robotic systems for parcel sortation and order consolidation.",
+    "areaServed": "Worldwide",
+    "knowsAbout": [
+      "Warehouse Automation",
+      "Robotic Sortation",
+      "Swarm Robotics",
+      "Parcel Logistics"
+    ]
+  }
+]

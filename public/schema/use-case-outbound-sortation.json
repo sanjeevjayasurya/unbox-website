@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Fulfillment Center Outbound Sortation — UnboxSort",
+  "url": "https://unboxrobotics.com/use-cases/fulfillment-center-outbound-sortation",
+  "description": "Sort parcels by carrier, route, or dispatch wave at high throughput with UnboxSort's flexible outbound sortation system.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  }
+}

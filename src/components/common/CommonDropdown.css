@@ -1,0 +1,141 @@
+.common-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 200px;
+  font-family: "Be Vietnam Pro";
+}
+
+/* Trigger */
+.common-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 18px;
+  background-color: var(--white);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+}
+.common-dropdown-trigger:hover {
+  border-color: var(--grey-2);
+}
+.common-dropdown.is-open .common-dropdown-trigger {
+  border-color: var(--green-1);
+  box-shadow: 0 0 0 3px rgba(7, 157, 146, 0.12);
+}
+.common-dropdown-trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.common-dropdown-label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  color: var(--grey-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.common-dropdown-label.is-selected {
+  color: var(--black-1);
+  font-weight: 500;
+}
+
+.common-dropdown-chevron {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+.common-dropdown.is-open .common-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+/* Menu */
+.common-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background-color: var(--white);
+  border: 1px solid var(--grey-2);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(20, 19, 19, 0.12);
+  max-height: 260px;
+  overflow-y: auto;
+  /* Keep scrolling inside the menu — don't chain to the page (and Lenis). */
+  overscroll-behavior: contain;
+  animation: common-dropdown-in 0.16s ease;
+}
+@keyframes common-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.common-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--black-1);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.common-dropdown-item:hover {
+  background-color: var(--grey-3);
+}
+.common-dropdown-item.is-active {
+  background-color: rgba(7, 157, 146, 0.1);
+  color: var(--green-1);
+  font-weight: 500;
+}
+.common-dropdown-item-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.common-dropdown-check {
+  flex-shrink: 0;
+  color: var(--green-1);
+}
+.common-dropdown-empty {
+  padding: 12px;
+  font-size: 14px;
+  color: var(--grey-1);
+  text-align: center;
+}
+
+/* Scrollbar */
+.common-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+.common-dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: var(--grey-2);
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .common-dropdown {
+    max-width: 100%;
+  }
+}

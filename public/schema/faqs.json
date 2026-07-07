@@ -1,0 +1,72 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Frequently Asked Questions — Unbox Robotics",
+  "url": "https://unboxrobotics.com/faqs",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Unbox Robotics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unbox Robotics is a warehouse automation company that designs and deploys intelligent robotic systems for parcel sortation and order consolidation. Its flagship solution, UnboxSort, is a vertical robotic sortation system built to deliver high throughput, space efficiency, and operational flexibility for modern logistics and fulfillment operations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is UnboxSort?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UnboxSort is a modular, vertical robotic parcel sortation system that uses autonomous robots and intelligent software to sort parcels into destinations such as orders, routes, stores, or carriers. It is designed to operate in compact spaces while maintaining high accuracy and throughput."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does UnboxSort differ from traditional conveyor or cross-belt sorters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unlike traditional conveyor-based systems, UnboxSort uses vertical space reducing footprint by 50-70%, is modular and scalable, deploys in weeks instead of months, and adapts dynamically to changing destination counts and volumes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of warehouses can use UnboxSort?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UnboxSort can be deployed across e-commerce fulfillment centres, sort centres, mid-mile hubs, distribution centres, urban delivery hubs, and B2B and store replenishment facilities. It works in both greenfield and brownfield warehouses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to deploy UnboxSort?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typical UnboxSort deployments can go live in 6-9 weeks, depending on system size and site readiness. This is significantly faster than traditional sortation systems, which often take several months to deploy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What level of sorting accuracy does UnboxSort provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UnboxSort delivers up to 99.99% sorting accuracy, supported by intelligent routing logic, automated scanning, and real-time system coordination."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How scalable is UnboxSort?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UnboxSort is designed to scale incrementally. Operators can add or remove robots based on throughput needs, increase destinations without redesigning layouts, and adapt to seasonal peaks without permanent infrastructure expansion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does UnboxSort integrate with existing WMS or IT systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. UnboxSort is designed to integrate with existing Warehouse Management Systems (WMS) and enterprise IT infrastructure, supporting real-time data exchange for parcel information, destination logic, and operational reporting."
+      }
+    }
+  ]
+}

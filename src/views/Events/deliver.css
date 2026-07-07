@@ -1,0 +1,992 @@
+/* ── 1. HERO ── */
+.de-hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 205px);
+  border-radius: 32px;
+  max-height: 850px;
+  min-height: 700px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.de-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.de-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.7) 33.62%,
+      rgba(0, 0, 0, 0.2) 71.81%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.de-hero-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  padding: 47px 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 60px;
+}
+
+/* ── title with left accent bar ── */
+.de-hero-title-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.de-hero-title-bar {
+  flex-shrink: 0;
+  width: 4px;
+  height: 100%;
+  min-height: 60px;
+  background: #00a99d;
+  border-radius: 2px;
+  align-self: stretch;
+}
+
+/* ── date / location plain rows ── */
+.de-hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.de-hero-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.de-hero-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── bottom logos bar ── */
+.de-hero-logos-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.de-logos-divider {
+  width: 3px;
+  height: 74px;
+  background: var(--white);
+}
+
+/* ── SHARED SECTION WRAPPER ── */
+.de-section {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  overflow: hidden;
+}
+
+.de-section-2 {
+  padding: 60px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* scroller inside section-2 is already full-width — cancel the breakout margins */
+.de-section-2 .de-scroller-breakout {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* brand cards inner wrapper */
+.de-brands-cards-wrap {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+.de-section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+
+
+/* LEFT — speaker photo card */
+.de-speaker-card {
+  width: 320px;
+  flex-shrink: 0;
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.de-speaker-img-box {
+  flex: 1;
+  max-height: 283px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.de-speaker-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  /* filter: grayscale(1); */
+}
+
+.de-speaker-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Vertical divider */
+.de-speaking-divider {
+  width: 1px;
+  background: #ebebeb;
+  flex-shrink: 0;
+}
+
+/* RIGHT — session info panel */
+.de-session-info-panel {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 50px 0px #0000001A;
+  justify-content: space-between;
+}
+
+.de-session-label {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: clamp(11px, 1.1vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* shared form row */
+.de-form-row {
+  display: flex;
+  gap: 24px;
+}
+
+.de-form-row>* {
+  flex: 1;
+}
+
+/* RSVP button row */
+.de-rsvp-row {
+  display: flex;
+  justify-content: center;
+}
+
+.de-register-btn {
+  padding: 16px 40px;
+  border-radius: 100px;
+  background: #00a99d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 400;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.de-register-btn:hover {
+  opacity: 0.88;
+}
+
+.de-register-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Hero RSVP button (white outline style) */
+.de-hero-rsvp-btn {
+  padding: 14px 28px;
+  border-radius: 100px;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid #fff;
+  cursor: pointer;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 400;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.de-hero-rsvp-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ── RSVP MODAL ── */
+.de-rsvp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.de-rsvp-modal {
+  background: #fff;
+  border-radius: 24px;
+  padding: 32px;
+  width: 100%;
+  max-width: 868px;
+  max-height: 92vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.de-rsvp-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.de-rsvp-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black-1);
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+
+.de-rsvp-close-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Session banner inside modal */
+.de-rsvp-session-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #00A99D1A;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.de-rsvp-speaker-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  flex-shrink: 0;
+}
+
+.de-rsvp-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Form inside modal */
+.de-rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Date / location meta row */
+.de-rsvp-session-meta {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.de-rsvp-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.de-rsvp-meta-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e6f7f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── 3. SHOWCASE ── */
+.de-showcase-full {
+  width: 100%;
+  height: 660px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.de-showcase-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.de-showcase-split {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap-reverse;
+}
+
+.de-showcase-half-img-wrap {
+  flex: 1.5;
+  min-width: 300px;
+  height: auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.de-showcase-half-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.de-swarm-card {
+  flex: 1;
+  background: #f3f3f3;
+  border-radius: 32px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* stats 3×2 grid */
+.de-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.de-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #fff;
+  border: 1px solid #f3f3f3;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.de-stat-card-icon {
+  flex-shrink: 0;
+}
+
+.de-stat-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.de-stat-card-value {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: clamp(16px, 1.6vw, 18px);
+  font-weight: 600;
+  color: #00a99d;
+  line-height: 120%;
+}
+
+/* logo scroller full-bleed breakout */
+.de-scroller-breakout {
+  margin-left: -60px;
+  margin-right: -60px;
+}
+
+/* ── 4. BRANDS ── */
+.de-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.de-brand-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  background: #f3f3f3;
+  height: 216px;
+  border-radius: 16px;
+}
+
+.de-brand-category {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: clamp(10px, 1vw, 12px);
+  font-weight: 600;
+  color: #00a99d;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.de-brand-img-placeholder {
+  flex: 1;
+  min-height: 160px;
+  background: #e8e8e8;
+  border-radius: 12px;
+}
+
+.de-brand-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.de-brand-detail {
+  line-height: 165%;
+}
+
+/* ── 6. WHY VISIT US ── */
+.de-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.de-why-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 32px;
+  border-radius: 20px;
+  background: #f5f5f5;
+  backdrop-filter: blur(50px);
+  color: var(--black-1);
+  transition: 0.3s ease-in-out;
+}
+
+.de-why-item:hover {
+  background: #141313;
+  color: var(--white);
+}
+
+.de-why-check {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 169, 157, 0.12);
+}
+
+.de-why-check--dark {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ── 7. BOOK A MEETING ── */
+.de-booking-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.de-booking-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  background: #f3f3f3;
+  border-radius: 20px;
+  padding: 20px;
+  width: 340px;
+  max-width: 100%;
+}
+
+.de-booking-img-wrap {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 320px;
+}
+
+.de-booking-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.de-booking-card a {
+  margin-top: 8px;
+}
+
+/* ── 8. DARK BOOTH CTA ── */
+.de-booth-cta {
+  width: 100%;
+  background: #141313;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 80px 60px;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+
+/* ── TABLET  (≤ 1024px) ── */
+@media (max-width: 1024px) {
+
+  /* hero */
+  .de-hero {
+    height: calc(100vh - 80px);
+    max-height: 640px;
+    border-radius: 24px;
+  }
+
+  .de-hero-content {
+    padding: 40px 60px;
+    gap: 40px;
+  }
+
+  .de-hero-gradient {
+    background: linear-gradient(90deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.78) 40%,
+        rgba(0, 0, 0, 0.25) 80%);
+  }
+
+  .de-hero-icon-circle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .de-logos-divider {
+    height: 60px;
+  }
+
+  /* sections */
+  .de-section {
+    padding: 48px 40px;
+    gap: 40px;
+  }
+
+
+  .de-speaker-card {
+    width: 240px;
+  }
+
+  .de-session-info-panel {
+    padding: 32px;
+    gap: 18px;
+  }
+
+  /* keep Title + Email side-by-side on tablet */
+  .de-form-row {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  /* showcase */
+  .de-showcase-full {
+    height: 400px;
+  }
+
+  /* override desktop's oversized min-width so split row stays side-by-side */
+  .de-showcase-half-img-wrap {
+    min-width: 0;
+    flex: 1.4;
+
+  }
+
+  .de-swarm-card {
+    flex: 1;
+    min-width: 260px;
+    padding: 24px 20px;
+  }
+
+  /* stats — 2 columns on tablet */
+  .de-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* brands */
+  .de-scroller-breakout {
+    margin-left: -40px;
+    margin-right: -40px;
+  }
+
+  .de-section-2 {
+    gap: 40px;
+    padding: 48px 0;
+  }
+
+  .de-brands-cards-wrap {
+    padding: 0 40px;
+  }
+
+  .de-brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .de-brand-card {
+    height: auto;
+    min-height: 220px;
+  }
+
+  .de-brand-img-placeholder {
+    min-height: 100px;
+  }
+
+  .de-showcase-split {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+}
+
+/* ── MOBILE  (≤ 768px) ── */
+@media (max-width: 768px) {
+
+  /* hero — fill viewport, content bottom-aligned */
+  .de-hero {
+    height: 100svh;
+    max-height: 680px;
+    min-height: 520px;
+    align-items: flex-end;
+  }
+
+  /* stronger gradient so text stays readable on narrow crop */
+  .de-hero-gradient {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.55) 40%,
+        rgba(0, 0, 0, 0.9) 100%);
+  }
+
+  .de-hero-content {
+    padding: 0 20px 36px 20px;
+    gap: 24px;
+    justify-content: flex-end;
+  }
+
+  .de-hero-title-wrap {
+    gap: 14px;
+  }
+
+  .de-hero-title-bar {
+    min-height: 44px;
+    width: 3px;
+  }
+
+  .de-hero-meta {
+    gap: 12px;
+  }
+
+  .de-hero-meta-row {
+    gap: 12px;
+  }
+
+  .de-hero-icon-circle {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
+  /* scale down logos bar */
+  .de-hero-logos-bar {
+    gap: 12px;
+  }
+
+  .de-logos-divider {
+    height: 48px;
+    width: 2px;
+  }
+
+  /* sections */
+  .de-section {
+    padding: 36px 20px;
+    gap: 28px;
+  }
+
+
+  /* speaker card: horizontal — photo left, details right */
+  .de-speaker-card {
+    flex-direction: row;
+    width: 100%;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .de-speaker-img-box {
+    width: 110px;
+    min-width: 110px;
+    flex-shrink: 0;
+    border-radius: 10px;
+  }
+
+  .de-speaker-details {
+    padding: 4px 0;
+    justify-content: center;
+  }
+
+  .de-speaking-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .de-session-info-panel {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  /* Title + Email stack to single column */
+  .de-form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* RSVP button full-width */
+  .de-register-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Modal responsive */
+  .de-rsvp-modal {
+    padding: 24px 20px;
+    gap: 20px;
+    border-radius: 20px;
+  }
+
+  .de-rsvp-session-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .de-rsvp-session-meta {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* showcase */
+  .de-showcase-full {
+    height: 260px;
+    border-radius: 16px;
+  }
+
+  .de-showcase-half-img-wrap {
+    min-width: unset;
+    flex: unset;
+    width: 100%;
+    max-height: 340px;
+    border-radius: 16px;
+  }
+
+  .de-swarm-card {
+    padding: 24px 20px;
+    gap: 16px;
+    border-radius: 16px;
+  }
+
+  /* stats grid — 2 columns on mobile */
+  .de-stats-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+
+  .de-stat-card {
+    padding: 14px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+
+  .de-stat-card-icon {
+    flex-shrink: 0;
+  }
+
+  .de-stat-card-value {
+    font-size: 14px;
+  }
+
+  /* brands */
+  .de-scroller-breakout {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  .de-section-2 {
+    gap: 28px;
+    padding: 36px 0;
+  }
+
+  .de-brands-cards-wrap {
+    padding: 0 20px;
+  }
+
+  .de-brands-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .de-brand-card {
+    height: auto;
+    min-height: 180px;
+  }
+
+  .de-brand-img-placeholder {
+    min-height: 80px;
+  }
+
+  /* why visit */
+  .de-why-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .de-why-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .de-why-item {
+    gap: 16px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  /* booking */
+  .de-booking-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .de-booking-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* booth cta */
+  .de-booth-cta {
+    padding: 48px 20px;
+    gap: 20px;
+  }
+}
+
+/* ── SMALL MOBILE  (≤ 480px) ── */
+@media (max-width: 480px) {
+  .de-hero {
+    max-height: 620px;
+    min-height: 500px;
+  }
+
+  .de-hero-content {
+    padding: 0 16px 28px 16px;
+    gap: 20px;
+  }
+
+
+  .de-stat-card {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .de-swarm-card {
+    padding: 20px 16px;
+  }
+
+  .de-section {
+    padding: 28px 16px;
+    gap: 24px;
+  }
+
+  .de-scroller-breakout {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  .de-section-2 {
+    gap: 20px;
+    padding: 28px 0;
+  }
+
+  .de-brands-cards-wrap {
+    padding: 0 16px;
+  }
+
+  .de-brand-card {
+    height: auto;
+    min-height: unset;
+  }
+
+  .de-brand-img-placeholder {
+    min-height: 60px;
+  }
+}

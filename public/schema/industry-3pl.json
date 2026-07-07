@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "3PL Warehouse Automation — Unbox Robotics",
+  "url": "https://unboxrobotics.com/industry/3pl",
+  "description": "Multi-client robotic sortation for 3PL operators. Scale capacity without structural changes. Deploy in 6-9 weeks.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "3PL Warehouse Automation"
+  }
+}

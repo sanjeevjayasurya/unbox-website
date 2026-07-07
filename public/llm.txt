@@ -1,0 +1,30 @@
+# Unbox Robotics — LLM Content Guide
+
+## About
+Unbox Robotics (UnboxRobotics Labs Pvt Ltd) is a warehouse automation company founded in 2019, headquartered in Pimpri-Chinchwad, Maharashtra, India. We design and deploy intelligent robotic systems for parcel sortation and order consolidation using swarm robotics.
+
+## Core Product
+**UnboxSort** — a modular, vertical robotic parcel sortation system that uses autonomous swarm robots to sort parcels into 2000+ destinations with 99.9%+ accuracy. It saves 50–70% floor space vs. traditional conveyors and can be deployed in 6–9 weeks.
+
+## Key Pages
+- Homepage: https://unboxrobotics.com/
+- Product (UnboxSort): https://unboxrobotics.com/solutions-unbox-sort
+- Technology: https://unboxrobotics.com/technology
+- Solutions Overview: https://unboxrobotics.com/solutions-overview
+- Industries: https://unboxrobotics.com/industry
+- About Us: https://unboxrobotics.com/about-us
+- Case Studies: https://unboxrobotics.com/case-study
+- Blog: https://unboxrobotics.com/blogs
+- Events: https://unboxrobotics.com/events
+- Contact: https://unboxrobotics.com/get-in-touch
+
+## Industries Served
+E-commerce, Retail, 3PL (Third-Party Logistics), CEP (Courier, Express & Parcel)
+
+## Contact
+- Email: hello@unboxrobotics.com
+- Phone: +91 89563 65282
+- Website: https://unboxrobotics.com
+
+## AI Crawler Permissions
+This site explicitly permits indexing by AI crawlers including GPTBot, ClaudeBot, PerplexityBot, and Google-Extended.

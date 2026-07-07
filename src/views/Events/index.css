@@ -1,0 +1,968 @@
+.event-section-1 {
+  padding: 30px 40px 0px 40px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.event-section-1-left {
+  flex: 1;
+  max-width: 609px;
+  padding: 40px;
+  background-color: var(--grey-4);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.event-section-1-right {
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.event-section-2 {
+  padding: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  overflow: hidden;
+}
+
+.grid-template-320 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.event-section-2-inner {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.event-section-2-inner-image {
+  flex: 1;
+  min-width: 700px;
+  height: auto;
+  max-height: 736px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.event-section-3 {
+  padding: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  overflow: hidden;
+}
+
+.event-section-4 {
+  padding: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.event-form {
+  width: 100%;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 50px 0px #0000001a;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media screen and (max-width: 1024px) {
+  .event-section-4 {
+    flex-direction: column;
+  }
+
+  .event-section-2 {
+    padding: 40px;
+    gap: 60px;
+  }
+
+  .event-section-2-inner-image {
+    min-width: 300px;
+    max-height: 500px;
+  }
+
+  .event-section-1 {
+    flex-direction: column;
+  }
+
+  .event-section-1-left {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .event-section-1 {
+    padding: 20px;
+  }
+
+  .event-section-1-left {
+    padding: 20px;
+    border-radius: 20px;
+    gap: 24px;
+  }
+
+  .event-section-1-right,
+  .event-section-2-inner-image {
+    border-radius: 20px;
+  }
+
+  .event-section-2,
+  .event-section-3,
+  .event-section-4 {
+    padding: 20px;
+    gap: 26px;
+  }
+
+  .grid-template-320 {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+.date-selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.date-selector-label {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: 20px;
+  color: var(--black-1);
+}
+
+.required-star {
+  color: #ff0000;
+  margin-left: 2px;
+}
+
+.date-cards {
+  display: flex;
+  background-color: var(--grey-4);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 6px;
+  gap: 6px;
+}
+
+.date-card {
+  flex: 1;
+  padding: 12px 24px;
+  background-color: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.date-card.active {
+  background-color: var(--white);
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); */
+}
+
+.card-date {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--black-1);
+}
+
+.card-day {
+  font-size: 12px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.date-card.active .card-date {
+  color: var(--green-2);
+}
+
+.date-card.active .card-day {
+  color: var(--green-2);
+}
+
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.overlay-event-news {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 26.92%
+  );
+  z-index: 99;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.overlay-event-text-div {
+  width: 100%;
+}
+
+@media screen and (max-width: 1100px) {
+  /* .overlay-event-text-div {
+    width: 38%;
+  } */
+}
+
+@media screen and (max-width: 920px) {
+  .overlay-event-news {
+    justify-content: center;
+  }
+  /* .overlay-event-text-div {
+    width: 100%;
+    text-align: center;
+  } */
+}
+
+@media screen and (max-width: 768px) {
+  .overlay-event-news {
+    justify-content: flex-end;
+  }
+  /* .overlay-event-text-div {
+    width: 100%;
+    text-align: start;
+  } */
+
+  .overlay-event-news {
+    border-radius: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .date-cards {
+    flex-direction: column;
+  }
+}
+
+/* ============================================================
+   News & Events — new design sections
+   ============================================================ */
+
+/* ---------- Featured Event ---------- */
+.featured-event-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.next-up-pill {
+  background-color: rgba(7, 157, 146, 0.12);
+  border-radius: 100px;
+  padding: 8px 18px;
+  white-space: nowrap;
+}
+.featured-event-card {
+  background-color: #EFEFEF;
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  gap: 40px;
+  box-sizing: border-box;
+}
+.featured-event-img {
+  flex: 0 0 44%;
+  max-width: 44%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.featured-event-img .common-img,
+.featured-event-img .common-img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.featured-event-img .common-img {
+  object-fit: cover;
+  object-position: center;
+}
+.featured-event-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  padding: 20px 20px 20px 0;
+}
+.featured-event-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.featured-event-desc {
+  line-height: 160%;
+  max-width: 620px;
+}
+.featured-event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 4px;
+}
+.featured-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.featured-meta-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.featured-event-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* ---------- Where else to find us ---------- */
+.where-find-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+/* Fixed-ish card width so 1, 2 or 3 cards all sit centered and consistent. */
+.where-find-grid > * {
+  flex: 1 1 300px;
+  max-width: 360px;
+}
+.where-find-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 20px;
+  background-color: transparent;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+.where-find-card:hover {
+  background-color: var(--grey-4);
+  box-shadow: 0 12px 30px rgba(20, 19, 19, 0.06);
+}
+.where-find-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.35 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.where-find-img .common-img,
+.where-find-img .common-img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.where-find-img .common-img {
+  object-fit: cover;
+  object-position: center;
+}
+.where-find-tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: var(--white);
+  border-radius: 100px;
+  padding: 8px 18px;
+}
+.where-find-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 4px;
+}
+.where-find-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.where-find-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.where-find-highlights {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.where-find-card:hover .where-find-highlights {
+  opacity: 1;
+  transform: translateY(0);
+}
+.where-find-arrow {
+  width: 16px;
+  height: 16px;
+}
+.where-find-arrow path {
+  stroke: var(--green-1);
+}
+
+/* ---------- Relive [Event] recap ---------- */
+.relive-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.relive-arrows {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.relive-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.relive-top {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+.relive-main-img {
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 340px;
+}
+.relive-main-img .common-img,
+.relive-main-img .common-img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.relive-main-img .common-img {
+  object-fit: cover;
+  object-position: center;
+}
+.relive-highlights-card {
+  background-color: var(--grey-4);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+}
+.relive-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.relive-highlights-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.relive-highlights-body p {
+  line-height: 160%;
+}
+.relive-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.relive-gallery-card {
+  position: relative;
+  aspect-ratio: 1.55 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.relive-gallery-card .common-img,
+.relive-gallery-card .common-img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.relive-gallery-card .common-img {
+  object-fit: cover;
+  object-position: center;
+}
+.relive-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.72) 100%
+  );
+}
+.relive-gallery-caption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  line-height: 130%;
+}
+.relive-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* ---------- Impact stats band ---------- */
+.event-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.event-stat-card {
+  background-color: var(--grey-4);
+  border-radius: 20px;
+  padding: 28px 24px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1024px) {
+  .featured-event-card {
+    flex-direction: column;
+  }
+  .featured-event-img {
+    flex-basis: auto;
+    max-width: 100%;
+    height: 300px;
+  }
+  .featured-event-content {
+    padding: 8px;
+  }
+  .relive-top {
+    grid-template-columns: 1fr;
+  }
+  .relive-main-img {
+    height: 320px;
+    min-height: 0;
+  }
+  .event-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .where-find-grid > * {
+    flex: 1 1 260px;
+    max-width: 420px;
+  }
+  .where-find-card {
+    background-color: var(--grey-4);
+  }
+  .where-find-highlights {
+    opacity: 1;
+    transform: none;
+  }
+  .relive-gallery {
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: 82%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+  }
+  .relive-gallery::-webkit-scrollbar {
+    display: none;
+  }
+  .relive-gallery-card {
+    scroll-snap-align: start;
+  }
+  .event-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .relive-head {
+    flex-wrap: wrap;
+  }
+}
+
+/* ---------- Upcoming/Past toggle (above "Where else to find us") ---------- */
+.find-us-toggle {
+  align-self: flex-start;
+  width: 100%;
+  max-width: 280px;
+  background-color: var(--white);
+  box-sizing: border-box;
+}
+.find-us-toggle button {
+  cursor: pointer;
+  background: transparent;
+}
+
+/* ---------- Past Events spotlight carousel ---------- */
+/* All cards share the grey card look; the hovered / default-centre card
+   enlarges (wider + taller) and reveals its date, location and CTA. */
+.past-events-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  /* Reserve the enlarged card's height so hovering another card never changes
+     the section height (and never pushes the section below up/down). */
+  min-height: 664px;
+}
+.past-card {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 340px;
+  background-color: var(--grey-4);
+  border-radius: 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+  /* Only width + shadow animate. Height stays constant (fixed image height +
+     fixed title height + instant details), so hovering never jerks the row. */
+  transition: flex-grow 0.35s ease, max-width 0.35s ease, box-shadow 0.3s ease;
+}
+.past-card.is-active {
+  flex-grow: 1.7;
+  max-width: 448px;
+  box-shadow: 0 18px 44px rgba(20, 19, 19, 0.09);
+  cursor: default;
+}
+.past-card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 0.82 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.past-card-img .common-img,
+.past-card-img .common-img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.past-card-img .common-img {
+  object-fit: cover;
+  object-position: center;
+}
+.past-card-title {
+  margin: 0 4px;
+}
+.past-card-details {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 4px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  flex-wrap: wrap;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+}
+.past-card.is-active .past-card-details {
+  max-height: 160px;
+  opacity: 1;
+  padding: 0 4px 4px;
+}
+.past-center-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.past-events-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media screen and (max-width: 1024px) {
+  /* On smaller screens only show the active card (a simple spotlight). */
+  .past-events-track {
+    min-height: 0;
+  }
+  .past-card {
+    display: none;
+    max-width: 460px;
+  }
+  .past-card.is-active {
+    display: flex;
+    flex-grow: 1;
+    margin: 0 auto;
+  }
+}
+
+/* ============================================================
+   Event detail page — post-event recap sections
+   ============================================================ */
+.recap-section {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.recap-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.recap-subtitle {
+  max-width: 680px;
+}
+
+/* ---------- Moments from the floor (bento gallery) ---------- */
+.moments-gallery {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  height: 500px;
+}
+.moment-tile {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.moment-tile .common-img,
+.moment-tile .common-img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.moment-tile .common-img {
+  object-fit: cover;
+  object-position: center;
+}
+.moment-tile-1 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+.moment-tile-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+.moment-tile-3 {
+  grid-column: 3;
+  grid-row: 1;
+}
+.moment-tile-4 {
+  grid-column: 2;
+  grid-row: 2;
+}
+.moment-tile-5 {
+  grid-column: 3;
+  grid-row: 2;
+}
+.moment-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.72) 100%
+  );
+}
+.moment-caption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 18px;
+  z-index: 2;
+  line-height: 130%;
+}
+.moment-tile:not(.moment-tile-1) .moment-caption {
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  font-size: 13px;
+}
+
+/* ---------- Recap impact stats ---------- */
+.recap-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.recap-stat-card {
+  background-color: var(--grey-4);
+  border-radius: 20px;
+  padding: 28px 24px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+/* ---------- Recap & Resources ---------- */
+.recap-resources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.recap-takeaways {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.recap-takeaways-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.takeaway-card {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background-color: var(--grey-4);
+  border-radius: 20px;
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.takeaway-card.is-active {
+  background-color: var(--black-1);
+}
+.takeaway-title {
+  line-height: 135%;
+}
+.takeaway-text {
+  line-height: 150%;
+}
+.recap-recording {
+  background-color: var(--grey-4);
+  border-radius: 24px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.recap-recording-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.recap-recording-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.85 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.recap-recording-img .common-img,
+.recap-recording-img .common-img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.recap-recording-img .common-img {
+  object-fit: cover;
+  object-position: center;
+}
+.recap-recording-tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: var(--white);
+  border-radius: 100px;
+  padding: 8px 16px;
+}
+.recap-recording-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 4px 8px;
+}
+.recap-recording-body h3 {
+  line-height: 130%;
+}
+.recap-recording-body .common-button {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+/* ---------- Recap responsive ---------- */
+@media screen and (max-width: 1024px) {
+  .recap-section {
+    padding: 48px 40px;
+  }
+  .recap-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+  .recap-section {
+    padding: 32px 20px;
+    gap: 28px;
+  }
+  .moments-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 160px);
+    height: auto;
+  }
+  .moment-tile-1 {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  .moment-tile-2 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .moment-tile-3 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .moment-tile-4 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .moment-tile-5 {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  .recap-resources {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Swarm Robotics Technology — Unbox Robotics",
+  "url": "https://unboxrobotics.com/technology",
+  "description": "Explore the swarm robotics technology powering UnboxSort — decentralised, AI-driven robots that sort parcels with 99.9%+ accuracy in 3D vertical space.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Swarm Robotics",
+    "description": "Autonomous robot fleets coordinated by the RCS layer for fleet-level swarm intelligence in warehouse sortation."
+  }
+}

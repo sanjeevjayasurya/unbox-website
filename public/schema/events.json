@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "News & Events — Unbox Robotics",
+  "url": "https://unboxrobotics.com/events",
+  "description": "Stay up to date with Unbox Robotics at global logistics events, trade shows, and industry conferences.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  }
+}

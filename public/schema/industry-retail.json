@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Retail Warehouse Automation — Unbox Robotics",
+  "url": "https://unboxrobotics.com/industry/retail",
+  "description": "UnboxSort for retail: automate store replenishment, omnichannel fulfilment, and returns sortation with 50-70% less floor space and 99.9%+ accuracy.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Retail Warehouse Automation"
+  }
+}

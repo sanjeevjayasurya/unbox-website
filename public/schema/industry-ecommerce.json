@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "E-Commerce Sortation Automation — Unbox Robotics",
+  "url": "https://unboxrobotics.com/industry/e-commerce",
+  "description": "Purpose-built robotic sortation for e-commerce fulfilment centres. Handle 500–20,000 parcels/hour with zero single point of failure.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "E-Commerce Warehouse Automation"
+  }
+}

@@ -1,0 +1,340 @@
+.get-in-touch-header-main {
+  background-color: #041e2f;
+}
+.get-in-touch-header-main-1 {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 40px 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.get-in-touch-header-title {
+  font-family: "Be Vietnam Pro";
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0;
+  color: var(--white);
+}
+.get-in-touch-header-sub-title {
+  font-family: "Be Vietnam Pro";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0;
+  color: var(--white);
+}
+.get-in-touch-form-main {
+  background-color: var(--white);
+}
+.get-in-touch-form-main-1 {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 40px 340px;
+}
+.get-in-touch-form-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.get-in-touch-form-name-div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.get-in-touch-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* align-items: center; */
+  justify-content: center;
+  gap: 8px;
+}
+.get-in-touch-input-div {
+  border: 1px solid var(--grey-2);
+  min-height: 52px;
+  max-height: 52px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.get-in-touch-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  height: 100%;
+}
+.get-in-touch-input-2 {
+  width: 100%;
+  height: 80%;
+  min-height: 120px;
+  max-height: 120px;
+  border: none;
+  outline: none;
+  resize: none;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  margin: 0;
+  color: #041e2f;
+  /* height: 80%; */
+}
+.get-in-touch-form-title,
+.star-color,
+.inquiringFor-txt {
+  color: var(--black-1);
+}
+.inquiringFor-txt {
+  color: var(--grey-1);
+}
+.inquiry-txt {
+  font-family: "Be Vietnam Pro";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0;
+}
+.arrow-wrapper {
+  transition: transform 0.3s ease;
+}
+
+.arrow-wrapper.rotate {
+  transform: rotate(180deg);
+}
+
+.input-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+/* "Where did you find about us?" chip select */
+.hear-about-us-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.chip-select-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.chip-select {
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: 1px solid var(--grey-2);
+  background-color: var(--white);
+  color: var(--grey-1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.chip-select:hover {
+  border-color: var(--black-1);
+  color: var(--black-1);
+}
+.chip-select.is-active {
+  background-color: var(--black-1);
+  border-color: var(--black-1);
+  color: var(--white);
+}
+
+.input-main-div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  width: 100%;
+  max-width: 1040px;
+  align-self: center;
+}
+
+.title-main-div {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--black-1);
+  align-items: center;
+  row-gap: 20px;
+  /* Pull up behind the transparent navbar; padding-top compensates so the
+     title stays put while the black fills behind the nav (like /careers). */
+  margin-top: -102px;
+  padding: 200px 20px 60px;
+  transition: all 0.5s ease;
+}
+
+.header-txt {
+  font-size: 40px;
+  color: var(--white);
+  font-family: "Be Vietnam Pro";
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.header-subTxt {
+  font-size: 16px;
+  color: var(--white);
+  font-family: "Be Vietnam Pro";
+  font-weight: 300;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.main-div-2 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+}
+
+.currency-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.common-btn-disabled,
+.common-btn {
+  border: none;
+  outline: none;
+  min-width: 140px;
+  max-height: 44px;
+  background-color: #a0a0a0;
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  color: var(--white);
+  font-family: "Be Vietnam Pro";
+  font-weight: 500;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.common-btn:hover {
+  border: none;
+}
+
+.common-btn {
+  background-color: var(--black-1);
+}
+
+.common-btn-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.error-border {
+  border: 1px solid red;
+}
+
+.error-text {
+  font-size: 12px;
+  font-family: "Be Vietnam Pro";
+  font-weight: 300;
+  color: red;
+}
+
+.captcha-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 12px 0px;
+  width: 100%;
+}
+
+.checkbox-div {
+  max-width: 20px;
+  min-width: 20px;
+  max-height: 20px;
+  min-height: 20px;
+  border-width: 1.5px;
+  border-radius: 5px;
+  border-color: var(--black-1);
+  border-style: solid;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+}
+
+.checkbox-div:checked {
+  background-color: var(--green-1, #000);
+  border-color: var(--green-1, #000);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3 4.3 6.7 11 3.3 7.7' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px;
+}
+
+.checkbox-error-div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media screen and (max-width: 1024px) {
+  .title-main-div {
+    padding: 164px 20px 40px;
+  }
+  .input-main-div {
+    padding-inline: 40px;
+  }
+  .main-div-2 {
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title-main-div {
+    padding: 132px 0 20px;
+  }
+  .header-txt {
+    font-size: 26px;
+  }
+  .header-subTxt {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .input-main-div {
+    padding-inline: 20px;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .main-div-2 {
+    gap: 20px;
+  }
+}

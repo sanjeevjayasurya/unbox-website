@@ -1,0 +1,952 @@
+.resources-main-div-2 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+}
+
+.resources-title-main-div {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--black-1);
+  align-items: center;
+  row-gap: 20px;
+  /* Pull up behind the transparent navbar; padding-top compensates so the
+     title stays put while the black fills behind the nav (like /careers). */
+  margin-top: -102px;
+  padding: 200px 20px 60px;
+  transition: all 0.5s ease;
+}
+
+.resources-header-txt {
+  font-size: 40px;
+  color: var(--white);
+  font-family: "Be Vietnam Pro";
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.resources-header-subTxt {
+  font-size: 16px;
+  color: var(--white);
+  font-family: "Be Vietnam Pro";
+  font-weight: 300;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.class-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 60px 200px;
+}
+
+.blogs-details-main-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 20px 200px;
+  gap: 60px;
+  overflow: hidden;
+}
+
+.blogs-details-div-1 {
+  display: flex;
+  gap: 40px;
+}
+
+.white-paper-details-div-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+}
+
+.blogs-details-image-div {
+  width: 100%;
+  /* max-width: 500px; */
+  height: 400px;
+  background-color: #f5f5f5;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.blogs-details-img {
+  width: 100%;
+  height: 100%;
+}
+
+.blogs-details-data-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  gap: 40px;
+}
+
+.blogs-details-inner-div-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.blogs-details-type-txt {
+  font-family: "Be Vietnam Pro";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0px;
+  color: var(--green-1);
+}
+
+.blogs-details-title-txt {
+  font-family: "Be Vietnam Pro";
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0px;
+  color: var(--black-1);
+}
+
+.blogs-details-date-txt {
+  font-family: "Be Vietnam Pro";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0px;
+  color: var(--black-1);
+}
+
+.blogs-details-share-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.blogs-details-share-txt {
+  font-family: "Be Vietnam Pro";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0px;
+  color: var(--black-1);
+}
+
+.blogs-details-social-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.blogs-details-div-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.case-study-testimonial {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  border-radius: 24px;
+  background-color: var(--white);
+  border-top: 5px solid var(--green-1);
+  box-shadow: 0 15px 45px rgba(20, 19, 19, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.case-study-testimonial:hover {
+  transform: translateY(-4px);
+}
+
+.case-study-testimonial__media {
+  flex-shrink: 0;
+  width: 220px;
+  height: auto;
+  min-height: 320px;
+  max-height: 320px;
+  border-radius: 18px;
+  border: 1px solid var(--grey-4);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background-color: var(--grey-4);
+}
+
+.case-study-testimonial__media .common-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-study-testimonial__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.case-study-testimonial__quote-mark {
+  width: 42px;
+  height: auto;
+  opacity: 0.8;
+}
+
+.case-study-testimonial__message {
+  margin: 0;
+  quotes: none;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.6;
+  color: var(--black-1);
+}
+
+.case-study-testimonial__line {
+  height: 2px;
+  background: var(--green-1);
+}
+
+.case-study-testimonial__footer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.case-study-testimonial__author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.case-study-testimonial__author .author-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black-1);
+}
+
+.case-study-testimonial__author .author-role {
+  font-size: 14px;
+  color: var(--grey-1);
+}
+
+.blogs-details-txt {
+  font-family: "Be Vietnam Pro";
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  margin: 0px;
+  color: var(--black-1);
+}
+
+.blogs-details-titles-txt {
+  font-family: "Be Vietnam Pro";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0px;
+  color: var(--black-1);
+}
+
+.blogs-details-steps {
+  width: 100%;
+  height: 379px;
+  object-fit: cover;
+}
+
+.blogs-step-img {
+  width: 100%;
+  height: 100%;
+}
+
+.blogs-details-btn {
+  display: flex;
+  align-self: center;
+}
+
+.case-study-video-trigger {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.case-study-video-trigger__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 19, 19, 0.08) 0%,
+    rgba(20, 19, 19, 0.54) 100%
+  );
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.case-study-video-trigger:hover .case-study-video-trigger__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(20, 19, 19, 0.16) 0%,
+    rgba(20, 19, 19, 0.65) 100%
+  );
+}
+
+.case-study-video-trigger__play {
+  transition: transform 0.3s ease;
+}
+
+.case-study-video-trigger:hover .case-study-video-trigger__play {
+  transform: scale(1.06);
+}
+
+.case-study-video-trigger__text {
+  font-family: "Be Vietnam Pro";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+.case-study-video-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(8, 11, 17, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.case-study-video-popup__dialog {
+  position: relative;
+  width: min(1100px, 100%);
+  margin: auto;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--black);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.35);
+}
+
+.case-study-video-popup__player {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  max-height: calc(100vh - 80px);
+  background: var(--black);
+}
+
+/* Custom Video Controls */
+.custom-video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.custom-video-controls.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.custom-video-controls.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.progress-container {
+  width: 100%;
+  height: 4px;
+  position: relative;
+}
+
+.progress-bar-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background-image: linear-gradient(var(--brand-color), var(--brand-color));
+  background-size: var(--progress) 100%;
+  background-repeat: no-repeat;
+  transition: height 0.2s ease;
+}
+
+.progress-bar-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--green-1);
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.progress-bar-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+.controls-main-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-controls,
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.volume-control-group {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+.volume-slider-container {
+  width: 0;
+  overflow: hidden;
+  transition:
+    width 0.3s ease,
+    margin-left 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.volume-control-group:hover .volume-slider-container {
+  width: 80px;
+  margin-left: 8px;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  background-image: linear-gradient(var(--brand-color), var(--brand-color));
+  background-size: var(--progress) 100%;
+  background-repeat: no-repeat;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+  border-radius: 8px;
+}
+
+.control-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.time-display {
+  color: white;
+  font-family: "Be Vietnam Pro";
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.custom-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.center-play-button {
+  width: 70px;
+  height: 70px;
+  background: rgba(7, 157, 146, 0.85);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.center-play-button:hover {
+  transform: scale(1.15);
+  background: rgba(7, 157, 146, 0.95);
+}
+
+.case-study-video-popup__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(20, 19, 19, 0.72);
+  color: var(--white);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.case-study-video-popup__close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.case-study-video-popup__close:hover {
+  background: rgba(20, 19, 19, 0.88);
+}
+
+.case-study-video-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  border-radius: 28px;
+}
+
+.video-loading-pulse {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background-color: #333;
+  animation: video-pulse-bg 1.5s infinite;
+}
+
+@keyframes video-pulse-bg {
+  0% {
+    background-color: #333;
+  }
+  50% {
+    background-color: #555;
+  }
+  100% {
+    background-color: #333;
+  }
+}
+
+.margin-class {
+  padding: 0px 38px;
+}
+
+.white-paper-inner-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+.white-paper-info-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.white-paper-details-main-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 20px 200px;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.white-paper-highligts-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background-color: var(--grey-4);
+  border-radius: 32px;
+}
+
+.no-scroll {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
+body.modal-open {
+  overflow: hidden !important;
+}
+
+.casestudy-content {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.casestudy-content {
+  @apply flex flex-col gap-5;
+  font-family: "Be Vietnam Pro";
+}
+
+.casestudy-content h1,
+.casestudy-content h2 {
+  @apply text-[28px] font-medium text-[var(--black-1)];
+}
+
+.casestudy-content p {
+  @apply text-[18px] font-normal text-[var(--black-1)];
+}
+
+.casestudy-content ul li {
+  @apply leading-[140%] font-normal text-wrap list-disc ml-7;
+}
+
+.casestudy-content img {
+  @apply w-full h-auto rounded-[32px];
+}
+
+.casestudy-content a {
+  @apply text-blue-600 underline;
+}
+
+@media screen and (max-width: 768px) {
+  .case-study-testimonial__quote-mark {
+    margin-bottom: -4px;
+    width:28px;
+  }
+
+  .case-study-testimonial__line {
+    width: 100%;
+  }
+
+  .casestudy-content h1,
+  .casestudy-content h2 {
+    @apply text-[20px];
+  }
+
+  .casestudy-content p {
+    @apply text-[16px];
+  }
+
+  .casestudy-content img {
+    @apply rounded-[16px];
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .resources-title-main-div {
+    padding: 142px 40px 40px;
+  }
+
+  .class-gap {
+    padding: 40px 100px;
+    gap: 20px;
+  }
+
+  /* .white-paper-details-div-1 {
+    flex-direction: column;
+  } */
+}
+
+@media screen and (max-width: 1275px) {
+  .white-paper-details-div-1 {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .blogs-details-main-div {
+    padding: 40px;
+  }
+
+  .blogs-details-image-div {
+    /* max-width: 664px; */
+    border-radius: 24px;
+  }
+
+  .blogs-details-div-1 {
+    flex-direction: column;
+  }
+
+  .blogs-details-steps {
+    height: 241px;
+  }
+
+  .margin-class {
+    padding: 0px;
+  }
+
+  .white-paper-details-main-div {
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .case-study-video-popup {
+    padding: 16px;
+  }
+
+  .case-study-video-popup__dialog {
+    border-radius: 20px;
+  }
+
+  .case-study-video-popup__player {
+    max-height: calc(100vh - 32px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .blogs-details-div-1 {
+    gap: 24px;
+  }
+
+  .blogs-details-inner-div-1 {
+    gap: 12px;
+  }
+
+  .blogs-details-data-div {
+    gap: 26px;
+  }
+
+  .blogs-details-main-div {
+    padding: 20px;
+  }
+
+  .resources-title-main-div {
+    padding: 122px 20px 20px;
+  }
+
+  .blogs-details-image-div {
+    /* max-width: 350px; */
+    height: 240px;
+    border-radius: 16px;
+  }
+
+  .class-gap {
+    padding: 20px;
+    gap: 26px;
+  }
+
+  .white-paper-details-main-div {
+    padding: 20px;
+    gap: 26px;
+  }
+
+  .casestudy-content {
+    @apply gap-3;
+  }
+
+  .case-study-testimonial {
+    flex-direction: column;
+    padding: 24px;
+    gap: 24px;
+    border-radius: 16px;
+  }
+
+  .case-study-testimonial__media {
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+
+  .case-study-testimonial__message {
+    font-size: 18px;
+  }
+
+  .case-study-testimonial__footer {
+    gap: 16px;
+  }
+
+  .case-study-video-popup__close {
+    top: 6px;
+    right: 6px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .case-study-video-popup__close svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .case-study-video-popup__dialog {
+    border-radius: 14px;
+  }
+
+  .custom-video-controls {
+    padding: 12px 12px 8px 12px;
+  }
+
+  .center-play-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .center-play-button svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .volume-control-group:hover .volume-slider-container {
+    width: 65px;
+  }
+
+  .control-btn {
+    padding: 6px;
+  }
+
+  .control-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .netflix-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(7, 157, 146, 0.3);
+  }
+}
+
+/* HLS Video Player Styles */
+.hls-player-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hls-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.video-blur {
+  filter: blur(4px);
+}
+
+/* Netflix-style Loader */
+.netflix-loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeIn 0.3s ease;
+}
+
+.netflix-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(7, 157, 146, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--green-1);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.case-study-video-popup__player {
+  width: 100%;
+  height: 100%;
+  background-color: var(--black);
+}

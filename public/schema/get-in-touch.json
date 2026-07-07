@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Unbox Robotics",
+  "url": "https://unboxrobotics.com/get-in-touch",
+  "description": "Get in touch with Unbox Robotics to discuss your warehouse automation needs. Book a demo or request a consultation with our team.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Sales",
+    "email": "sales@unboxrobotics.com",
+    "areaServed": "Worldwide",
+    "availableLanguage": "English"
+  }
+}

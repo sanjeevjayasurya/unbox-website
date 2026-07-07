@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Unbox Robotics Blog",
+  "url": "https://unboxrobotics.com/blogs",
+  "description": "Insights, industry news, and thought leadership on warehouse automation, robotic sortation, and logistics from the Unbox Robotics team.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  }
+}

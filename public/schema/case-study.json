@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Case Studies — Unbox Robotics",
+  "url": "https://unboxrobotics.com/case-study",
+  "description": "Real-world case studies showing how UnboxSort has transformed fulfilment centres across e-commerce, retail, 3PL, and CEP industries worldwide.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Unbox Robotics",
+    "url": "https://unboxrobotics.com",
+    "logo": "https://unboxrobotics.com/nav-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/unboxrobotics/",
+      "https://x.com/RoboticsUnbox",
+      "https://www.facebook.com/unboxrobotics/",
+      "https://www.instagram.com/lifeatunbox/",
+      "https://www.youtube.com/@unboxrobotics"
+    ]
+  }
+}
