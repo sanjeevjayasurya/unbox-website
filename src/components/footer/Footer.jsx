@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import "./index.css";
 import {
   footerMenuList,
@@ -23,44 +22,23 @@ import FacebookIcon from "../../assets/icons/facebook.svg";
 import EmailIcon from "../../assets/icons/email.svg";
 import PhoneIcon from "../../assets/icons/phone-call.svg";
 import LocationIcon from "../../assets/icons/location-pin.svg";
-import { animation } from "../../helpers/utils";
 
 const Footer = () => {
   const router = useRouter();
   const currentYear = new Date().getFullYear();
+
   return (
-    <motion.footer
-      className="footer-container"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <footer className="footer-container">
       <div className="footer-main-div">
         <div className="footer-section-1">
-          {footerMenuList?.map((item, index) => {
-            return (
-              <motion.div
-                key={item?.id}
-                custom={index}
-                variants={animation.linkVariant}
-                className="footer-menu-item"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                <Link href={item?.navigate}>{item?.name}</Link>
-              </motion.div>
-            );
-          })}
+          {footerMenuList?.map((item) => (
+            <div key={item?.id} className="footer-menu-item">
+              <Link href={item?.navigate}>{item?.name}</Link>
+            </div>
+          ))}
         </div>
         <div className="footer-section-2">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="flex-1 footer-inner-section-2"
-            variants={animation.fromLeftVariant}
-          >
+          <div className="flex-1 footer-inner-section-2">
             <div className="flex flex-col items-center gap-[14px]">
               <h2 className="font-40-regular text-center color-white">
                 Ready to Revolutionize Your Warehouse?
@@ -75,14 +53,8 @@ const Footer = () => {
               title={"Get In Touch"}
               onClick={() => router.push("/get-in-touch")}
             />
-          </motion.div>
-          <motion.div
-            className="footer-contact-info-div"
-            variants={animation.fromRightVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          </div>
+          <div className="footer-contact-info-div">
             <div className="flex flex-col gap-[12px] md:gap-[16px]">
               <div className="flex gap-[12px] items-center">
                 <PhoneIcon />
@@ -112,16 +84,10 @@ const Footer = () => {
                 {contactEmail}
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          className="address-info-div"
-          variants={animation.fromLeftVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div className="address-info-div">
           <div className="flex items-center gap-3">
             <LocationIcon width={26} height={26} />{" "}
             <span className="font-24-medium text-black-1">Locations</span>
@@ -160,16 +126,10 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         <div className="footer-section-3">
-          <motion.div
-            className="footer-social-info-div flex-1"
-            variants={animation.fromRightVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div className="footer-social-info-div flex-1">
             <a
               href={instagramUrl}
               target="__blank"
@@ -220,15 +180,9 @@ const Footer = () => {
                 Youtube
               </span>
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="flex-2 footer-inner-section-3"
-            variants={animation.fromRightVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div className="flex-2 footer-inner-section-3">
             <div className="py-[9px] text-center font-14-regular color-black-1">
               © {currentYear} Unbox Robotics. All rights reserved.
             </div>
@@ -246,10 +200,10 @@ const Footer = () => {
                 Terms of Services
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 

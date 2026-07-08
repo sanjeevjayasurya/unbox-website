@@ -437,111 +437,120 @@
   height: auto;
 }
 
-/* --- Infinite logo marquee --- */
-.logo-marquee {
-  --logo-marquee-duration: 45s;
-  --logo-marquee-gap: 64px;
-  --logo-marquee-height: 48px;
+.scroller {
   width: 100%;
-  overflow: hidden;
-  /* Soft fade on both edges */
-  -webkit-mask: linear-gradient(
-    90deg,
-    transparent 0,
-    #000 8%,
-    #000 92%,
-    transparent 100%
-  );
-  mask: linear-gradient(
-    90deg,
-    transparent 0,
-    #000 8%,
-    #000 92%,
-    transparent 100%
-  );
 }
 
-.logo-marquee__track {
+.scroller__inner {
+  padding-block: 1rem;
   display: flex;
-  width: max-content;
-  align-items: center;
-  margin: 0;
-  padding: 1rem 0;
+  flex-wrap: nowrap;
+  gap: 20px;
   list-style: none;
-  /* translate3d keeps the animation on the compositor -> no main-thread jitter */
-  animation: logo-marquee-scroll var(--logo-marquee-duration) linear infinite;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+  width: max-content;
+  flex-wrap: nowrap;
   will-change: transform;
 }
 
-.logo-marquee__item {
+.scroller__inner:hover {
+  animation-play-state: paused;
+}
+
+.scroller[data-speed="fast"] {
+  --_animation-duration: 40s;
+}
+
+.scroller[data-speed="slow"] {
+  --_animation-duration: 60s;
+}
+
+.scroller.scroller--forward .scroller__inner {
+  animation: scroll var(--_animation-duration, 40s) linear infinite;
+}
+
+.scroller.scroller--reverse .scroller__inner {
+  animation: scroll-reverse var(--_animation-duration, 120s) linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate3d(calc(-50% - 0.5rem), 0, 0);
+  }
+}
+
+@keyframes scroll-reverse {
+  from {
+    transform: translate3d(calc(-50% - 0.5rem), 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.mobile-logo {
   flex: 0 0 auto;
-  /* Trailing gap on every item (incl. the last) so the -50% loop is seamless */
-  margin-right: var(--logo-marquee-gap);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.logo-marquee__item svg,
-.logo-marquee__item img {
+.mobile-logo svg,
+.mobile-logo img {
   display: block;
   width: auto;
-  height: var(--logo-marquee-height);
+  height: var(--logo-scroller-height, 48px);
   object-fit: contain;
 }
 
-.logo-marquee:hover .logo-marquee__track {
-  animation-play-state: paused;
-}
-
-.logo-marquee[data-speed="fast"] {
-  --logo-marquee-duration: 30s;
-}
-
-.logo-marquee[data-speed="slow"] {
-  --logo-marquee-duration: 55s;
-}
-
-@keyframes logo-marquee-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-/* Responsive logo sizing */
 @media screen and (max-width: 1024px) {
-  .logo-marquee {
-    --logo-marquee-gap: 52px;
-    --logo-marquee-height: 42px;
+  .scroller__inner {
+    gap: 16px;
+  }
+
+  .mobile-logo svg,
+  .mobile-logo img {
+    height: 42px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .logo-marquee {
-    --logo-marquee-gap: 40px;
-    --logo-marquee-height: 34px;
+  .scroller__inner {
+    gap: 12px;
+  }
+
+  .mobile-logo svg,
+  .mobile-logo img {
+    height: 34px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .logo-marquee {
-    --logo-marquee-gap: 28px;
-    --logo-marquee-height: 28px;
+  .scroller__inner {
+    gap: 10px;
+  }
+
+  .mobile-logo svg,
+  .mobile-logo img {
+    height: 28px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo-marquee__track {
+  .scroller.scroller--forward .scroller__inner,
+  .scroller.scroller--reverse .scroller__inner {
     animation: none;
-    /* Allow manual horizontal scroll when motion is reduced */
     overflow-x: auto;
-  }
-  .logo-marquee {
-    -webkit-mask: none;
-    mask: none;
   }
 }
 
@@ -579,7 +588,11 @@
 
 .animated-line {
   color: transparent;
-  background-image: linear-gradient(to right, var(--black-1) 50%, var(--grey-1) 50%);
+  background-image: linear-gradient(
+    to right,
+    var(--black-1) 50%,
+    var(--grey-1) 50%
+  );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -761,7 +774,6 @@
 .technology-binding-swiper {
   height: 400px;
 }
-
 
 .slide-content-active {
   width: 100%;
@@ -1017,7 +1029,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
   .showcase-container,
   .solution-showcase-container {
     display: none;
@@ -1141,7 +1152,8 @@
     height: 160px;
   }
 
-  .product-swiper,.technology-binding-swiper {
+  .product-swiper,
+  .technology-binding-swiper {
     height: 240px;
   }
 

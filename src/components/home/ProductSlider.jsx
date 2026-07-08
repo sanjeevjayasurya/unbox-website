@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, FreeMode } from "swiper/modules";
-import { motion, useInView } from "framer-motion";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -16,7 +15,6 @@ import {
   unboxProductImage,
 } from "../../helpers/assets";
 import AnimatedArrowButton from "../common/AnimatedArrowButton";
-import { animation } from "../../helpers/utils";
 import Link from "next/link";
 import ImageComponent from "../common/ImageComponent";
 
@@ -36,16 +34,9 @@ const productData = [
 const ProductSlider = () => {
   const [imageSwiper, setImageSwiper] = useState(null);
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 }); // Trigger once when 50% is visible
-
   return (
-    <div ref={ref} className="slider-container">
-      <motion.div
-        variants={animation.fadeInUpVariant}
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ delay: 0.3, duration: 0.6 }}
-      >
+    <div className="slider-container">
+      <div>
         <Swiper
           modules={[Navigation, FreeMode]}
           loop={true}
@@ -97,14 +88,9 @@ const ProductSlider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="flex gap-[12px]"
-        variants={animation.fadeInUpVariant}
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ delay: 0.3, duration: 0.8 }}
-      >
+      <div className="flex gap-[12px]">
         <AnimatedArrowButton
           direction="up-right"
           onClick={() => imageSwiper?.slidePrev()}
@@ -113,7 +99,7 @@ const ProductSlider = () => {
           direction="down-left"
           onClick={() => imageSwiper?.slideNext()}
         />
-      </motion.div>
+      </div>
     </div>
   );
 };
