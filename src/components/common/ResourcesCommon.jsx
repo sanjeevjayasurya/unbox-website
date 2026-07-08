@@ -2,7 +2,6 @@
 
 import React from "react";
 import "./index.css";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import BlogCard from "./BlogCard";
 

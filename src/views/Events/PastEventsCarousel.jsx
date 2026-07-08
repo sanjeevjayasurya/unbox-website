@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import ImageComponent from "../../components/common/ImageComponent";
 import CommonButton from "../../components/common/CommonButton";
@@ -23,20 +22,14 @@ const PastEventsCarousel = () => {
 
   return (
     <div className="bg-[#FDFDFD] class-gap">
-      <motion.p
-        className="font-40-regular text-[#141313] text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-        variants={animation.fadeInUpVariant}
-      >
+      <p
+        className="font-40-regular text-[#141313] text-center">
         Past Events
-      </motion.p>
+      </p>
 
       <div
         className="past-events-track"
-        onMouseLeave={() => setHovered(null)}
-      >
+        onMouseLeave={() => setHovered(null)}>
         {pastEventsData.map((item, index) => {
           const isActive = index === active;
           return (
@@ -44,8 +37,7 @@ const PastEventsCarousel = () => {
               key={item.id}
               className={`past-card ${isActive ? "is-active" : ""}`}
               onMouseEnter={() => setHovered(index)}
-              onClick={() => isActive && router.push(item.link)}
-            >
+              onClick={() => isActive && router.push(item.link)}>
               <div className="past-card-img">
                 <ImageComponent
                   src={item.image}
@@ -60,8 +52,7 @@ const PastEventsCarousel = () => {
               <h3
                 className={`${
                   isActive ? "font-32-medium" : "font-20-regular"
-                } color-black-1 past-card-title`}
-              >
+                } color-black-1 past-card-title`}>
                 {item.title}
               </h3>
 

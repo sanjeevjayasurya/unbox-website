@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { companyLogo, founderImage } from "../../helpers/assets";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import MissionIcon from "../../assets/icons/mission.svg";
 import VisionIcon from "../../assets/icons/vision.svg";
@@ -46,15 +45,8 @@ const AboutCompanyPage = () => {
       />
       <SchemaMarkup schema={aboutSchema} />
       <div className="about-company-section-1">
-        <motion.div
-          initial={{ scale: 1.05 }}
-          animate={{ scale: 1 }}
-          transition={{
-            duration: 1,
-            ease: [0, 0.71, 0.2, 1.01],
-          }}
-          className="about-company-hero-section"
-        >
+        <div
+          className="about-company-hero-section">
           <img
             src={aboutCompanyImage}
             className="common-img"
@@ -64,35 +56,17 @@ const AboutCompanyPage = () => {
           />
           <div className="unbox-company-section-1-overlay">
             <div className="flex flex-col gap-[40px]">
-              <motion.h2
-                className="font-100-bold text-center uppercase color-white"
-                custom={1}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+              <h2
+                className="font-100-bold text-center uppercase color-white">
                 Unbox Robotics
-              </motion.h2>
-              <motion.p
-                className="font-32-light color-white text-center max-w-[800px]"
-                custom={2}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+              </h2>
+              <p
+                className="font-32-light color-white text-center max-w-[800px]">
                 Elevating Fulfillment for digital commerce with intelligent
                 vertical robotic sortation.
-              </motion.p>
-              <motion.div
-                className="flex justify-center flex-wrap gap-3"
-                custom={3}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+              </p>
+              <div
+                className="flex justify-center flex-wrap gap-3">
                 <CommonButton
                   title={"Join the Team"}
                   onClick={() => router.push("/careers")}
@@ -102,47 +76,27 @@ const AboutCompanyPage = () => {
                   title={"Book a Demo"}
                   onClick={() => router.push("/get-in-touch")}
                 />
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="about-company-section-2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.div
-            className="about-company-section-2-left"
-            variants={animation.fromLeftVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+        <div
+          className="about-company-section-2">
+          <div
+            className="about-company-section-2-left">
             <ImageComponent
               src={companyLogo}
               alt="logo-image"
               className="object-contain w-full h-full object-center"
             />
-          </motion.div>
-          <motion.div
-            className="about-company-section-2-right"
-            variants={animation.fromRightVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.div
-              className="about-company-mission-div"
-              custom={1}
-              variants={animation.itemFromRightVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+          </div>
+          <div
+            className="about-company-section-2-right">
+            <div
+              className="about-company-mission-div">
               <div className="flex gap-[20px] items-center">
                 <MissionIcon />
                 <span className="font-20-semibold color-white">Mission</span>
@@ -157,15 +111,9 @@ const AboutCompanyPage = () => {
                   the warehouses of tomorrow.
                 </p>
               </div>
-            </motion.div>
-            <motion.div
-              className="about-company-vision-div"
-              custom={2}
-              variants={animation.itemFromRightVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            </div>
+            <div
+              className="about-company-vision-div">
               <div className="flex gap-[20px] items-center">
                 <VisionIcon />
                 <span className="font-20-semibold color-white">Vision</span>
@@ -181,18 +129,14 @@ const AboutCompanyPage = () => {
                   efficiency.
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="bg-[#141313]">
-        <motion.div
-          className="about-company-section-3"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="about-company-section-3">
           <div>
             <span className="font-20-medium text-[#818382]">What we do?</span>
           </div>
@@ -216,26 +160,16 @@ const AboutCompanyPage = () => {
               modular, next-generation solutions.
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="about-company-section-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h1
-            className="font-40-regular color-black-1 text-center"
-            custom={0}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+        <div
+          className="about-company-section-4">
+          <h1
+            className="font-40-regular color-black-1 text-center">
             Meet the Founders
-          </motion.h1>
+          </h1>
           <div className="about-company-section-inner">
             {isMobile ? (
               <Swiper
@@ -244,18 +178,11 @@ const AboutCompanyPage = () => {
                 slidesPerView="auto"
                 onSwiper={setImageSwiper}
                 spaceBetween={20}
-                className="faces-swiper"
-              >
+                className="faces-swiper">
                 {founderData?.map((item, index) => {
                   return (
                     <SwiperSlide className="faces-slide" key={item?.id}>
-                      <motion.div
-                        custom={index}
-                        variants={animation.linkVariant}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.2 }}
-                      >
+                      <div>
                         <ImageComponent
                           src={item?.image}
                           className="common-img"
@@ -275,15 +202,14 @@ const AboutCompanyPage = () => {
                                   href={item?.linkedIn}
                                   target="_blank"
                                   rel="noreferrer"
-                                  aria-label={`${item?.name} on LinkedIn`}
-                                >
+                                  aria-label={`${item?.name} on LinkedIn`}>
                                   <LinkedInIcon aria-hidden="true" />
                                 </a>
                               )}
                             </div>
                           </div>
                         </div>
-                      </motion.div>
+                      </div>
                     </SwiperSlide>
                   );
                 })}
@@ -291,15 +217,9 @@ const AboutCompanyPage = () => {
             ) : (
               founderData?.map((item, index) => {
                 return (
-                  <motion.div
+                  <div
                     className="founder-team-card"
-                    key={item?.id}
-                    custom={index}
-                    variants={animation.linkVariant}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                  >
+                    key={item?.id}>
                     <ImageComponent
                       src={item?.image}
                       className="common-img"
@@ -318,15 +238,14 @@ const AboutCompanyPage = () => {
                             <a
                               href={item?.linkedIn}
                               target="_blank"
-                              rel="noreferrer"
-                            >
+                              rel="noreferrer">
                               <LinkedInIcon />
                             </a>
                           )}
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })
             )}
@@ -343,75 +262,43 @@ const AboutCompanyPage = () => {
               />
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
 
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="about-company-section-5"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h1
-            className="font-40-regular color-black-1 text-center"
-            custom={0}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+        <div
+          className="about-company-section-5">
+          <h1
+            className="font-40-regular color-black-1 text-center">
             Our Origin Story
-          </motion.h1>
+          </h1>
           <div className="w-full">
             <AboutCompanySlider />
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="about-company-section-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="about-company-section-6">
           <div className="flex flex-col gap-[20px] items-center max-w-[800px]">
-            <motion.h1
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <h1
+              className="font-40-regular color-black-1 text-center">
               Why join Unbox Robotics?
-            </motion.h1>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            </h1>
+            <p
+              className="font-16-light color-grey-1 text-center">
               Be part of a bold mission to revolutionize warehouse automation.
               <br />
               Here’s why Unbox stands out:
-            </motion.p>
+            </p>
           </div>
           <div className="why-join-about-map-div">
             {whyJoinAboutList?.map((item, index) => {
               return (
-                <motion.div
+                <div
                   className="founder-team-card-2"
-                  key={item?.id}
-                  custom={index}
-                  variants={animation.linkVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                >
+                  key={item?.id}>
                   <ImageComponent
                     src={item?.image}
                     className="common-img"
@@ -426,11 +313,11 @@ const AboutCompanyPage = () => {
                     </span>
                   </div>
                   <div className="why-us-progressive-blur common-overlay" />
-                </motion.div>
+                </div>
               );
             })}
           </div>
-        </motion.div>
+        </div>
       </div>
     </>
   );

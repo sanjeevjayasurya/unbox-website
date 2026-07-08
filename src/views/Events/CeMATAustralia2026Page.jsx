@@ -31,7 +31,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Swal from "sweetalert2";
 import TextField from "../../components/common/form/TextField";
 import { animation } from "../../helpers/utils";
-import { motion } from "framer-motion";
 import { base_url, eventFormApiEndPoint } from "../../helpers/config";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
 import SchemaMarkup from "../../components/common/SchemaMarkup";
@@ -295,12 +294,8 @@ const CeMATAustralia2026Page = () => {
             draggable={false}
           />
           <div className="de-hero-gradient" />
-          <motion.div
-            className="de-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={animation.fromLeftVariant}
-          >
+          <div
+            className="de-hero-content">
             <div className="space-y-5">
               <div className="de-hero-title-wrap">
                 <span className="de-hero-title-bar" />
@@ -362,7 +357,7 @@ const CeMATAustralia2026Page = () => {
                 draggable={false}
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -372,39 +367,21 @@ const CeMATAustralia2026Page = () => {
       {/* ── 2. WHAT WE ARE SHOWCASING ── */}
       <section className="de-section ">
         <div className="flex flex-col gap-5">
-          <motion.h2
-            className="font-40-regular color-black-1 text-center"
-            variants={animation.fadeInUpVariant}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <h2
+            className="font-40-regular color-black-1 text-center">
             What We Are Showcasing UnboxSort
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="font-16-light color-grey-1 text-center"
-            style={{ maxWidth: 800, margin: "0 auto" }}
-            variants={animation.fadeInUpVariant}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+            style={{ maxWidth: 800, margin: "0 auto" }}>
             The world&apos;s first vertical robotic sortation system, delivering
             50–70% space optimization. A fleet of compact mobile robots sorts
             parcels into high-density racks, built for e-commerce, 3PL, and
             omnichannel fulfillment centers.
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
-            variants={animation.fadeInUpVariant}
-            custom={2}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div
+            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             {showcaseWorkflows.map((workflow, i) => (
               <div key={i} className="flex items-center gap-x-4">
                 <p className="font-20-semibold color-black-1">{workflow}</p>
@@ -413,17 +390,11 @@ const CeMATAustralia2026Page = () => {
                 )}
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          className="industry-case-study-image-wrap"
-          custom={0}
-          variants={animation.itemFromRightVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="industry-case-study-image-wrap">
           <video
             src={caseStudyVideo}
             autoPlay
@@ -434,35 +405,22 @@ const CeMATAustralia2026Page = () => {
             draggable={false}
             className="industry-case-study-image"
           />
-        </motion.div>
+        </div>
       </section>
 
       {/* ── 3. KEY OUTCOMES ── */}
       <section className="de-section">
-        <motion.h2
-          className="font-40-regular color-black-1 text-center"
-          variants={animation.fadeInUpVariant}
-          custom={0}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <h2
+          className="font-40-regular color-black-1 text-center">
           Key Outcomes
-        </motion.h2>
+        </h2>
 
-        <motion.div
-          className="cemat-outcomes-grid"
-          variants={animation.fadeInUpVariant}
-          custom={1}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div
+          className="cemat-outcomes-grid">
           {keyOutcomes.map((item, i) => (
             <div
               key={i}
-              className={`cemat-outcome-item cemat-outcome-item--${i}`}
-            >
+              className={`cemat-outcome-item cemat-outcome-item--${i}`}>
               <span className="font-24-medium color-green-1 cemat-outcome-lead text-center">
                 {item.lead.startsWith("2x") ? (
                   <>
@@ -476,19 +434,14 @@ const CeMATAustralia2026Page = () => {
               {/* <p className="font-24-light color-black-1">{item.rest}</p> */}
             </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* ── 4. SWARM INTELLIGENCE ── */}
       <section className="de-section">
         <div className="de-showcase-split">
-          <motion.div
-            className="de-showcase-half-img-wrap"
-            variants={animation.fromLeftVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div
+            className="de-showcase-half-img-wrap">
             <video
               src={SolutionOverviewVideo}
               autoPlay
@@ -499,15 +452,10 @@ const CeMATAustralia2026Page = () => {
               draggable={false}
               className="de-showcase-half-img"
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="de-swarm-card"
-            variants={animation.fromRightVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div
+            className="de-swarm-card">
             <div className="flex  justify-between ">
               <p className="font-16-light color-black-1 uppercase">
                 Powered By
@@ -532,49 +480,31 @@ const CeMATAustralia2026Page = () => {
                 no changes to the building or the host systems.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ── 5. LIVE WITH LEADING BRANDS ── */}
       <section className="de-section-2">
         <div className="flex flex-col gap-5">
-          <motion.h2
-            className="font-40-regular color-black-1 text-center"
-            variants={animation.fadeInUpVariant}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <h2
+            className="font-40-regular color-black-1 text-center">
             Proven in Operations
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="font-16-light color-grey-1 text-center"
-            style={{ maxWidth: 700, margin: "0 auto" }}
-            variants={animation.fadeInUpVariant}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+            style={{ maxWidth: 700, margin: "0 auto" }}>
             Operating across Europe, USA and Asia for retailers, marketplaces,
             and 3PLs. Now at CeMAT Australia.
-          </motion.p>
+          </p>
         </div>
 
         <div className="de-scroller-breakout">
           <LogoScroller clients={clientInfo} speed="fast" />
         </div>
 
-        {/* <motion.div
-          className="de-brands-cards-wrap"
-          variants={animation.fadeInUpVariant}
-          custom={3}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        {/* <div
+          className="de-brands-cards-wrap">
           <Swiper
             modules={[Navigation, FreeMode]}
             loop={true}
@@ -582,8 +512,7 @@ const CeMATAustralia2026Page = () => {
             slidesPerView={"auto"}
             spaceBetween={16}
             onSwiper={setBrandsSwiper}
-            className="cemat-brands-swiper"
-          >
+            className="cemat-brands-swiper">
             {brandsData.map((brand, i) => (
               <SwiperSlide key={i} className="cemat-brand-slide">
                 <div className="cemat-brand-card">
@@ -617,16 +546,10 @@ const CeMATAustralia2026Page = () => {
               onClick={() => brandsSwiper?.slideNext()}
             />
           </div>
-        </motion.div> */}
+        </div> */}
 
-        <motion.div
-          className="de-brands-cards-wrap cemat-results-grid"
-          variants={animation.fadeInUpVariant}
-          custom={3}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div
+          className="de-brands-cards-wrap cemat-results-grid">
           {brandResults.map((brand, i) => (
             <div key={i} className="cemat-brand-card">
               <div className="flex flex-col gap-6">
@@ -646,29 +569,18 @@ const CeMATAustralia2026Page = () => {
               <p className="font-16-light color-black-1">{brand.note}</p>
             </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* ── 6. MEET THE TEAM ── */}
       <section className="de-section">
-        <motion.h2
-          className="font-40-regular color-black-1 text-center"
-          variants={animation.fadeInUpVariant}
-          custom={0}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <h2
+          className="font-40-regular color-black-1 text-center">
           Meet the Team
-        </motion.h2>
+        </h2>
 
-        <motion.div
-          className="flex flex-col lg:flex-row lg:min-h-[700px] items-center justify-center gap-8 lg:gap-4"
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div
+          className="flex flex-col lg:flex-row lg:min-h-[700px] items-center justify-center gap-8 lg:gap-4">
           {teamMembers.map((member) => {
             const isHovered = teamHoveredId === member.id;
 
@@ -678,13 +590,11 @@ const CeMATAustralia2026Page = () => {
                 onMouseEnter={() => setTeamHoveredId(member.id)}
                 onMouseLeave={() => setTeamHoveredId(null)}
                 className={`relative transition-all max-w-[480px] bg-[#F3F3F3] duration-500 ease-in-out cursor-pointer rounded-[20px] p-4 flex flex-col items-center w-full
-                   max-lg:scale-100 max-lg:bg-[#F3F3F3]`}
-              >
+                   max-lg:scale-100 max-lg:bg-[#F3F3F3]`}>
                 <div
                   className={`w-full overflow-hidden rounded-[10px] mb-6 max-h-[500px] max-[768px]:max-h-[350px] ${
                     member.tbd ? "cemat-team-tbd" : ""
-                  }`}
-                >
+                  }`}>
                   <img
                     src={member.image}
                     alt={member.tbd ? "To be announced" : member.name}
@@ -701,8 +611,7 @@ const CeMATAustralia2026Page = () => {
                   <div
                     className={`w-full overflow-hidden transition-all duration-500
                     ${isHovered ? "mt-6 max-h-20 opacity-100" : "lg:max-h-0 lg:opacity-0"}
-                    max-lg:max-h-20 max-lg:opacity-100 max-lg:mt-6`}
-                  >
+                    max-lg:max-h-20 max-lg:opacity-100 max-lg:mt-6`}>
                     <a href={member.link} target="__blank">
                       <CommonButton theme={"green"} title={"Book a Meeting"} />
                     </a>
@@ -711,20 +620,15 @@ const CeMATAustralia2026Page = () => {
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </section>
 
       {/* ── 7. BOOK A MEETING (upcoming events only) ── */}
       {!isPast && (
       <section className="de-section" id="book-meeting">
         <div className="cemat-booking">
-          <motion.div
-            className="cemat-booking-left"
-            variants={animation.fromLeftVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div
+            className="cemat-booking-left">
             <div className="space-y-3">
               <h2 className="font-40-semibold uppercase text-[#141313]">
                 Book a Meeting at{" "}
@@ -755,15 +659,10 @@ const CeMATAustralia2026Page = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="cemat-booking-right"
-            variants={animation.fromRightVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div
+            className="cemat-booking-right">
             <form onSubmit={handleSubmit(onSubmit)} className="event-form">
               <div className="input-row">
                 <TextField
@@ -812,8 +711,7 @@ const CeMATAustralia2026Page = () => {
                         <div
                           key={item.date}
                           className={`date-card ${field.value === item.date ? "active" : ""}`}
-                          onClick={() => field.onChange(item.date)}
-                        >
+                          onClick={() => field.onChange(item.date)}>
                           <p className="card-date">{item.date}</p>
                           <p className="card-day">{item.day}</p>
                         </div>
@@ -836,32 +734,25 @@ const CeMATAustralia2026Page = () => {
                 />
               </div>
             </form>
-          </motion.div>
+          </div>
         </div>
       </section>
       )}
 
       {/* ── 8. DARK BOOTH CTA (upcoming events only) ── */}
       {!isPast && (
-        <motion.div
-          className="de-booth-cta"
-          variants={animation.fadeInUpVariant}
-          custom={0}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <div
+          className="de-booth-cta">
           <p
             className="font-40-regular"
-            style={{ color: "#fff", textAlign: "center" }}
-          >
+            style={{ color: "#fff", textAlign: "center" }}>
             Booth IT24 &nbsp;|&nbsp; CeMAT Australia &nbsp;|&nbsp; 23 – 25 June
             &nbsp;|&nbsp; MCEC Melbourne
           </p>
           <a href="#book-meeting" onClick={scrollToForm}>
             <CommonButton theme="white" title="Book A Meeting" />
           </a>
-        </motion.div>
+        </div>
       )}
     </>
   );

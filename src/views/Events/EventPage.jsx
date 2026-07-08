@@ -18,7 +18,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Swal from "sweetalert2";
 import TextField from "../../components/common/form/TextField";
 import { animation } from "../../helpers/utils";
-import { motion } from "framer-motion";
 import { experts, isEventPast } from "./config";
 import { base_url, eventFormApiEndPoint } from "../../helpers/config";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
@@ -100,19 +99,10 @@ const EventPage = () => {
         image={eventRobot}
       />
             <SchemaMarkup schema={logimat2026Schema} />
-<motion.div
-        className="event-section-1"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <motion.div
-          className="event-section-1-left"
-          variants={animation.fromLeftVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+<div
+        className="event-section-1">
+        <div
+          className="event-section-1-left">
           <div className="flex flex-col gap-4">
             <LogimatIcon />
             <h1 className="font-48-extra-light text-[#141313]">
@@ -150,13 +140,9 @@ const EventPage = () => {
               </div>
             </div>
           </div>
-        </motion.div>
-        <motion.div
-          className="event-section-1-right flex-1"
-          initial={{ x: 100 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.9, ease: "easeInOut", delay: 0.2 }}
-        >
+        </div>
+        <div
+          className="event-section-1-right flex-1">
           <img
             src={logimatHeroImage}
             alt="UnboxSort robot at LogiMAT 2026"
@@ -164,51 +150,31 @@ const EventPage = () => {
             fetchPriority="high"
             draggable={false}
           />
-        </motion.div>
-      </motion.div>
-      <motion.div
-        className="event-section-2"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
+        </div>
+      </div>
+      <div
+        className="event-section-2">
         <div className="flex flex-col gap-10 items-center  mx-auto w-full max-w-[1000px] py-6">
           <div className="max-w-[800px] space-y-5">
-            <motion.h2
-              className="font-40-regular text-[#141313] text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <h2
+              className="font-40-regular text-[#141313] text-center">
               From Induction to Dispatch,
               <br /> See Intelligent Parcel Flow in Action!{" "}
-            </motion.h2>
+            </h2>
           </div>
         </div>
         <div className="event-section-2-inner">
-          <motion.div
-            className="event-section-2-inner-image"
-            variants={animation.fromLeftVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div
+            className="event-section-2-inner-image">
             <img
               src={robot}
               alt="UnboxSort robotic sortation demo at LogiMAT 2026"
               className="w-full h-full object-cover object-left-bottom"
               draggable={false}
             />
-          </motion.div>
-          <motion.div
-            className="p-12 max-lg:p-8 max-md:p-5 min-w-[600px] max-lg:min-w-[290px] flex-1 bg-[#F3F3F3] rounded-[32px] max-md:rounded-[20px] flex flex-col gap-10 justify-between"
-            variants={animation.fromRightVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          </div>
+          <div
+            className="p-12 max-lg:p-8 max-md:p-5 min-w-[600px] max-lg:min-w-[290px] flex-1 bg-[#F3F3F3] rounded-[32px] max-md:rounded-[20px] flex flex-col gap-10 justify-between">
             <div className="space-y-10">
               <p className="font-40-light text-[#141313]">
                 If you're navigating the complexities of modern fulfillment,
@@ -216,14 +182,8 @@ const EventPage = () => {
                 full workflow, live and running.
               </p>
 
-              <motion.div
-                className="flex justify-between gap-3 flex-wrap w-full"
-                custom={2}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+              <div
+                className="flex justify-between gap-3 flex-wrap w-full">
                 <div className="bg-[#F3F3F3]  flex items-center gap-4">
                   <ScalableIcon />
                   <span className="font-20-medium text-[#141313]">
@@ -242,51 +202,30 @@ const EventPage = () => {
                     Accurate{" "}
                   </span>
                 </div>
-              </motion.div>
+              </div>
             </div>
             <Link href={"/solutions-unbox-sort"} className="self-end">
               <CommonButton theme={"green"} title={"Learn more"} />
             </Link>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="event-section-3"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
+      <div
+        className="event-section-3">
         <div className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px] mx-auto">
-          <motion.h1
-            className="font-40-regular color-black-1 text-center"
-            custom={0}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <h1
+            className="font-40-regular color-black-1 text-center">
             Meet Our Experts at Hall 8 | Stand 8A37
-          </motion.h1>
-          <motion.p
-            className="font-16-light color-grey-1 text-center"
-            custom={1}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          </h1>
+          <p
+            className="font-16-light color-grey-1 text-center">
             Connect with our experts to see how UnboxSort scales your
             operations intelligently.
-          </motion.p>
+          </p>
         </div>
-        <motion.div
-          className="flex flex-col lg:flex-row lg:min-h-[700px] items-center justify-center gap-8 lg:gap-4"
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div
+          className="flex flex-col lg:flex-row lg:min-h-[700px] items-center justify-center gap-8 lg:gap-4">
           {experts.map((expert) => {
             const isHovered = hoveredId === expert.id;
 
@@ -298,8 +237,7 @@ const EventPage = () => {
                 className={`relative transition-all bg-[#F3F3F3] duration-500 ease-in-out cursor-pointer rounded-[20px] p-4 flex flex-col items-center w-full max-w-sm lg:max-w-none
                   ${isHovered ? "bg-[#F3F3F3]" : "lg:grayscale  lg:opacity-80"} 
                   /* Below 1024px: Forced Active State */
-                  max-lg:grayscale-0 max-lg:scale-100 max-lg:bg-[#F3F3F3] `}
-              >
+                  max-lg:grayscale-0 max-lg:scale-100 max-lg:bg-[#F3F3F3] `}>
                 <div className="w-full overflow-hidden rounded-[10px] mb-6 max-h-[500px] ">
                   <img
                     src={expert.image}
@@ -322,8 +260,7 @@ const EventPage = () => {
                   ${isHovered ? "mt-6 max-h-20 opacity-100 " : "lg:max-h-0 lg:opacity-0"}
                   /* Ensure visibility on mobile regardless of hover */
                   max-lg:max-h-20 max-lg:opacity-100 max-lg:mt-6
-                `}
-                  >
+                `}>
                     <a href={expert?.link} target="__blank">
                       <CommonButton
                         theme={"green"}
@@ -335,24 +272,15 @@ const EventPage = () => {
               </div>
             );
           })}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {!isPast && (
-      <motion.div
-        className="event-section-4"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <motion.div
+      <div
+        className="event-section-4">
+        <div
           className="flex-1 space-y-[60px] max-lg:space-y-[40px] max-md:space-y-[20px]"
-          variants={animation.fromLeftVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          id="book-meeting"
-        >
+          id="book-meeting">
           <h1 className="font-40-semibold uppercase text-[#141313]">
             Meet Our Experts at <br />
             <span className="text-[#00A99D]">Hall 8 | Stand 8A37</span>
@@ -377,14 +305,9 @@ const EventPage = () => {
               </div>
             </div>
           </div>
-        </motion.div>
-        <motion.div
-          className="flex-1"
-          variants={animation.fromRightVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        </div>
+        <div
+          className="flex-1">
           <form onSubmit={handleSubmit(onSubmit)} className="event-form">
             <div className="input-row">
               <TextField
@@ -434,8 +357,7 @@ const EventPage = () => {
                       <div
                         key={item.date}
                         className={`date-card ${field.value === item.date ? "active" : ""}`}
-                        onClick={() => field.onChange(item.date)}
-                      >
+                        onClick={() => field.onChange(item.date)}>
                         <p className="card-date">{item.date}</p>
                         <p className="card-day">{item.day}</p>
                       </div>
@@ -458,8 +380,8 @@ const EventPage = () => {
               />
             </div>
           </form>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
       )}
     </>
   );

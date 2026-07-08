@@ -2,7 +2,6 @@
 
 import React from "react";
 import { animation } from "../../helpers/utils";
-import { motion } from "framer-motion";
 import "./index.css";
 import CommonButton from "../../components/common/CommonButton";
 import BlogCard from "../../components/common/BlogCard";
@@ -24,7 +23,7 @@ const Blogs = () => {
   };
 
   const isInitialLoading = isLoading && blogs.length === 0;
-  const isFetchingMore = isValidating && blogs.length > 0;
+  const isFetchingMore = isValidating && blogs.length> 0;
 
   return (
     <>
@@ -34,32 +33,18 @@ const Blogs = () => {
         url={`${frontendUrl}/blogs`}
       />
       <div className="resources-main-div-2">
-        <motion.div
-          className="resources-title-main-div"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h1
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-40-regular color-white"
-          >
+        <div
+          className="resources-title-main-div">
+          <h1
+            className="font-40-regular color-white">
             Blogs
-          </motion.h1>
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-16-light color-white text-center"
-          >
+          </h1>
+          <p
+            className="font-16-light color-white text-center">
             Updates, innovations, and insights powering the next evolution of
             robotic logistics.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
       </div>
       {featuredLoading ? (
         <FeaturedSkeleton />
@@ -73,64 +58,43 @@ const Blogs = () => {
           />
         )
       )}
-      {(isInitialLoading || blogs?.length > 0) && (
+      {(isInitialLoading || blogs?.length> 0) && (
         <div className="bg-[#FDFDFD] class-gap">
           <div className="flex flex-row gap-4 items-center justify-start max-[1024px]:justify-center">
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              variants={animation.fadeInUpVariant}
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-              className="font-40-regular text-[#141313] "
-            >
+            <p
+              className="font-40-regular text-[#141313] ">
               Blogs
-            </motion.p>
+            </p>
           </div>
 
           <div className="blogs-data-map-div">
             {blogs?.map((item, index) => {
               return (
-                <motion.div
-                  key={index}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                  variants={animation.fadeInUpVariant}
-                  custom={index}
-                >
+                <div
+                  key={index}>
                   <BlogCard item={item} />
-                </motion.div>
+                </div>
               );
             })}
             {(isInitialLoading || isFetchingMore) &&
               Array.from({ length: 3 }).map((_, idx) => (
-                <motion.div
-                  key={`skeleton-${idx}`}
-                  initial="hidden"
-                  animate="visible"
-                  variants={animation.fadeInUpVariant}
-                >
+                <div
+                  key={`skeleton-${idx}`}>
                   <BlogSkeleton />
-                </motion.div>
+                </div>
               ))}
           </div>
 
           {hasMore && (
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={animation.fadeInUpVariant}
-              viewport={{ once: true, amount: 0.2 }}
-              className="self-center"
-            >
+            <div
+              className="self-center">
               <CommonButton
                 title={isFetchingMore ? "Wait..." : "See More"}
                 theme={"green"}
                 onClick={handleSeeMore}
                 disabled={isFetchingMore}
               />
-            </motion.div>
+            </div>
           )}
         </div>
       )}

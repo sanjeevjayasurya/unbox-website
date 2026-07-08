@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { animation } from "../../helpers/utils";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
@@ -50,7 +49,7 @@ const useCaseTabs = [
     id: "fc",
     label: "Retail",
     heading: "Omnichannel Retailers",
-    body: "Modern retail doesn't run on one channel. Store replenishment, online dispatch, Click & Collect preparation, and returns processing all happen in the same DC — often in the same shift. UnboxSort handles every flow simultaneously without requiring you to redesign your layout, expand your footprint, or add headcount every time volume grows.",
+    body: "Modern retail doesn't run on one channel. Store replenishment, online dispatch, Click & Collect preparation, and returns processing all happen in the same DC — often in the same shift. UnboxSort handles every flow simultaneously without requiring you to redesign your, expand your footprint, or add headcount every time volume grows.",
     metrics: [
       {
         value: "B2B and B2C order consolidation running in parallel",
@@ -161,7 +160,7 @@ const howSteps = [
   {
     num: "01",
     title: "Audit & design",
-    body: "We map your current throughput, space, and bottlenecks. Your customised audit comes back within 48 hours — including a recommended layout, robot count, and projected ROI at your volumes.",
+    body: "We map your current throughput, space, and bottlenecks. Your customised audit comes back within 48 hours — including a recommended, robot count, and projected ROI at your volumes.",
     icon: <RadarIcon />,
   },
   {
@@ -235,21 +234,18 @@ const FormPanel = () => {
             viewBox="0 0 28 28"
             fill="none"
             stroke="#079d92"
-            strokeWidth="2"
-          >
+            strokeWidth="2">
             <polyline points="5,14 11,20 23,8" />
           </svg>
         </div>
         <h3
           className="font-20-medium color-white"
-          style={{ marginBottom: "10px" }}
-        >
+          style={{ marginBottom: "10px" }}>
           You're in the queue.
         </h3>
         <p
           className="font-16-light"
-          style={{ color: "#5A6270", lineHeight: 1.6 }}
-        >
+          style={{ color: "#5A6270", lineHeight: 1.6 }}>
           Expect your customised sorting assessment within 48 business hours.
           Explore how similar operations have transformed their throughput
           below.
@@ -262,14 +258,12 @@ const FormPanel = () => {
     <div className="sb-form-wrap">
       <h3
         className="font-20-medium color-white"
-        style={{ marginBottom: "6px" }}
-      >
+        style={{ marginBottom: "6px" }}>
         Get your free sorting audit
       </h3>
       <p
         className="font-16-light"
-        style={{ color: "#8A919E", marginBottom: "24px", fontSize: "13px" }}
-      >
+        style={{ color: "#8A919E", marginBottom: "24px", fontSize: "13px" }}>
         Tell us about your operation. You'll receive a customised assessment
         within 48 hours.
       </p>
@@ -297,8 +291,7 @@ const FormPanel = () => {
                   facilityType === opt ? "selected" : ""
                 }`}
                 onClick={() => setFacilityType(opt)}
-                type="button"
-              >
+                type="button">
                 <span className="sb-option-radio" />
                 {opt}
               </button>
@@ -307,8 +300,7 @@ const FormPanel = () => {
           <button
             className="sb-btn-primary"
             onClick={() => setStep(2)}
-            type="button"
-          >
+            type="button">
             Continue →
           </button>
         </div>
@@ -322,8 +314,7 @@ const FormPanel = () => {
             value={formData.throughput}
             onChange={(e) =>
               setFormData({ ...formData, throughput: e.target.value })
-            }
-          >
+            }>
             <option value="">Select range</option>
             <option>Under 500/hr</option>
             <option>500 – 2,000/hr</option>
@@ -337,8 +328,7 @@ const FormPanel = () => {
             value={formData.challenge}
             onChange={(e) =>
               setFormData({ ...formData, challenge: e.target.value })
-            }
-          >
+            }>
             <option value="">Select challenge</option>
             <option>Peak season capacity</option>
             <option>Sorting accuracy & errors</option>
@@ -357,15 +347,13 @@ const FormPanel = () => {
           <button
             className="sb-btn-primary"
             onClick={() => setStep(3)}
-            type="button"
-          >
+            type="button">
             Continue →
           </button>
           <button
             className="sb-btn-secondary"
             onClick={() => setStep(1)}
-            type="button"
-          >
+            type="button">
             ← Back
           </button>
         </div>
@@ -404,15 +392,13 @@ const FormPanel = () => {
           <button
             className="sb-btn-primary"
             onClick={handleSubmit}
-            type="button"
-          >
+            type="button">
             Get My Free Audit →
           </button>
           <button
             className="sb-btn-secondary"
             onClick={() => setStep(2)}
-            type="button"
-          >
+            type="button">
             ← Back
           </button>
         </div>
@@ -441,8 +427,7 @@ const FormPanel = () => {
                 viewBox="0 0 10 10"
                 stroke="#079d92"
                 strokeWidth="1.5"
-                fill="none"
-              >
+                fill="none">
                 <polyline points="2,5 4,7 8,3" />
               </svg>
             </div>
@@ -459,25 +444,13 @@ const FormPanel = () => {
 
 const RoiBars = () => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 0.9", "end 0.5"],
-  });
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    const unsub = scrollYProgress.on("change", (v) => {
-      if (v > 0.1) setAnimate(true);
-    });
-    return unsub;
-  }, [scrollYProgress]);
+  const animate = true;
 
   return (
     <div ref={ref} className="sb-roi-chart">
       <p
         className="font-16-light color-grey-1"
-        style={{ fontSize: "13px", marginBottom: "24px" }}
-      >
+        style={{ fontSize: "13px", marginBottom: "24px" }}>
         Cost per package · 5,000 PPH, 200 destinations (US/EU market)
       </p>
       <div className="sb-roi-bars">
@@ -487,24 +460,20 @@ const RoiBars = () => {
               {bar.label}
             </span>
             <div className="sb-roi-bar-track">
-              <motion.div
+              <div
                 className="sb-roi-bar-fill"
                 style={{ background: bar.color, maxWidth: `${bar.pct}%` }}
-                initial={{ width: 0 }}
-                animate={animate ? { width: `${bar.pct}%` } : { width: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-              >
+                animate={animate ? { width: `${bar.pct}%` } : { width: 0 }}>
                 <span
                   style={{
                     fontSize: "11px",
                     fontWeight: 600,
                     color: bar.dark ? "#5A6270" : "white",
                     paddingRight: "10px",
-                  }}
-                >
+                  }}>
                   {bar.value}
                 </span>
-              </motion.div>
+              </div>
             </div>
           </div>
         ))}
@@ -516,8 +485,7 @@ const RoiBars = () => {
           color: "#8A919E",
           marginTop: "20px",
           lineHeight: 1.5,
-        }}
-      >
+        }}>
         Source: Unbox Robotics internal cost benchmarking study. US/EU market.
         Includes capex, labour, rental, utilities, and service costs over 7
         years.
@@ -540,7 +508,7 @@ const advantages = [
   {
     headline: "50–70% less floor space",
     proof:
-      "Vertical 3D layout within your existing footprint. No new building.",
+      "Vertical 3D within your existing footprint. No new building.",
     icon: <SpaceIcon />,
   },
   {
@@ -614,110 +582,76 @@ const SeriesBFundedPage = () => {
       {/* ── Slide-in form drawer (portal so it escapes stacking context) ── */}
       {/*
       {ReactDOM.createPortal(
-        <AnimatePresence>
-          {formOpen && (
+          formOpen && (
             <>
-              <motion.div
+              <div
                 className="sb-drawer-backdrop"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
                 onClick={() => setFormOpen(false)}
               />
-              <motion.div
+              <div
                 className="sb-drawer"
-                data-lenis-prevent
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "tween", duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-              >
+                data-lenis-prevent>
                 <button
                   className="sb-drawer-close"
                   onClick={() => setFormOpen(false)}
                   type="button"
-                  aria-label="Close"
-                >
+                  aria-label="Close">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <line x1="4" y1="4" x2="16" y2="16" />
                     <line x1="16" y1="4" x2="4" y2="16" />
                   </svg>
                 </button>
                 <FormPanel />
-              </motion.div>
+              </div>
             </>
-          )}
-        </AnimatePresence>,
+          ),
         document.body
       )}
       */}
 
       {/* ── Centered form modal ── */}
       {ReactDOM.createPortal(
-        <AnimatePresence>
-          {formOpen && (
-            <motion.div
+          formOpen && (
+            <div
               className="sb-modal-backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              onClick={() => setFormOpen(false)}
-            >
-              <motion.div
+              onClick={() => setFormOpen(false)}>
+              <div
                 className="sb-modal"
                 data-lenis-prevent
-                initial={{ opacity: 0, scale: 0.96, y: 12 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: 12 }}
-                transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
-                onClick={(e) => e.stopPropagation()}
-              >
+                onClick={(e) => e.stopPropagation()}>
                 <button
                   className="sb-modal-close"
                   onClick={() => setFormOpen(false)}
                   type="button"
-                  aria-label="Close"
-                >
+                  aria-label="Close">
                   <svg
                     width="20"
                     height="20"
                     viewBox="0 0 20 20"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="1.8"
-                  >
+                    strokeWidth="1.8">
                     <line x1="4" y1="4" x2="16" y2="16" />
                     <line x1="16" y1="4" x2="4" y2="16" />
                   </svg>
                 </button>
                 <FormPanel />
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>,
+              </div>
+            </div>
+          ),
         document.body
       )}
 
       {/* ── Hero ── */}
       <div className="sb-hero-wrap">
-        <motion.div
-          className="sb-eyebrow sb-eyebrow-top"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div
+          className="sb-eyebrow sb-eyebrow-top">
           Autonomous Sortation Technology
-        </motion.div>
+        </div>
 
         <div className="sb-hero-row">
-          <motion.div
-            className="sb-hero-video"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div
+            className="sb-hero-video">
             <div className="sb-hero-video-box">
               <video
                 src={seriesBFundVideo}
@@ -729,25 +663,17 @@ const SeriesBFundedPage = () => {
                 draggable={false}
               />
             </div>
-          </motion.div>
+          </div>
 
           <div className="sb-hero-content">
-            <motion.h1
-              className="font-40-regular color-black-1 sb-hero-h1"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
+            <h1
+              className="font-40-regular color-black-1 sb-hero-h1">
               Is your facility sorting at{" "}
               <span className="color-green-1">full potential?</span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              className="font-16-light color-black- sb-hero-sub"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            <p
+              className="font-16-light color-black- sb-hero-sub">
               Most warehouses leave throughput on the floor — buried under
               manual handling, limited by floor space, and exposed during peak
               demand.{" "}
@@ -755,18 +681,14 @@ const SeriesBFundedPage = () => {
                 The operations below process 3,000+ parcels per hour, in half
                 the footprint, with zero mis-sorts.
               </strong>
-            </motion.p>
+            </p>
 
             {/* Stats rail */}
-            <motion.div
-              className="sb-stats-rail"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
+            <div
+              className="sb-stats-rail">
               {heroStats.map((stat, i) => (
                 <React.Fragment key={stat.value}>
-                  {i > 0 && <div className="sb-stat-divider" />}
+                  {i> 0 && <div className="sb-stat-divider" />}
                   <div className="sb-stat-item">
                     <span className="sb-stat-num color-green-1">
                       {stat.value}
@@ -777,15 +699,11 @@ const SeriesBFundedPage = () => {
                   </div>
                 </React.Fragment>
               ))}
-            </motion.div>
+            </div>
 
             {/* CTA */}
-            <motion.div
-              className="flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-            >
+            <div
+              className="flex flex-wrap gap-4">
               <CommonButton
                 theme={"green"}
                 title={"Get Free Sorting Audit"}
@@ -796,7 +714,7 @@ const SeriesBFundedPage = () => {
                 title={"Book a Demo"}
                 onClick={() => router.push("/get-in-touch")}
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
@@ -811,30 +729,19 @@ const SeriesBFundedPage = () => {
           gap: "30px",
           paddingTop: "60px",
           paddingBottom: "60px",
-        }}
-      >
-        <motion.div
-          className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px] mx-auto px-5"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h2
-            className="font-40-regular color-black-1 text-center"
-            custom={0}
-            variants={animation.fadeInUpVariant}
-          >
+        }}>
+        <div
+          className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px] mx-auto px-5">
+          <h2
+            className="font-40-regular color-black-1 text-center">
             Trusted by Industry Leaders
-          </motion.h2>
-          <motion.p
-            className="font-16-light color-grey-1 text-center"
-            custom={1}
-            variants={animation.fadeInUpVariant}
-          >
+          </h2>
+          <p
+            className="font-16-light color-grey-1 text-center">
             Clients choose Unbox Robotics for compact, scalable automation that
             delivers unmatched operational precision.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
         <LogoScroller clients={clientInfo} speed="fast" />
       </div>
 
@@ -854,28 +761,18 @@ const SeriesBFundedPage = () => {
       {/* ── Use Cases ── */}
       <div className="bg-[#FDFDFD] overflow-hidden">
         <section className="industry-capability-section">
-          <motion.div
-            className="flex flex-col gap-[14px] md:gap-[20px] max-w-[1440px] mx-auto mb-[40px] md:mb-[60px]"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.h2
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-            >
+          <div
+            className="flex flex-col gap-[14px] md:gap-[20px] max-w-[1440px] mx-auto mb-[40px] md:mb-[60px]">
+            <h2
+              className="font-40-regular color-black-1 text-center">
               Built for the way your facility actually works
-            </motion.h2>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-            >
+            </h2>
+            <p
+              className="font-16-light color-grey-1 text-center">
               The same sorting problem looks different at a fulfilment centre
               versus a last-mile hub. Here's what the numbers look like in each.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           {/* Tabs */}
           <div className="sb-uc-tabs">
@@ -884,32 +781,25 @@ const SeriesBFundedPage = () => {
                 key={tab.id}
                 className={`sb-uc-tab${activeTab === i ? " active" : ""}`}
                 onClick={() => setActiveTab(i)}
-                type="button"
-              >
+                type="button">
                 {tab.label}
               </button>
             ))}
           </div>
 
           {/* Panel */}
-          <motion.div
+          <div
             key={activeUseCase.id}
-            className="sb-uc-panel"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
-          >
+            className="sb-uc-panel">
             <div className="sb-uc-info">
               <h3
                 className="font-40-regular color-black-1 text-center"
-                style={{ fontSize: "24px", marginBottom: "12px" }}
-              >
+                style={{ fontSize: "24px", marginBottom: "12px" }}>
                 {activeUseCase.heading}
               </h3>
               <p
                 className="font-16-light color-grey-1 text-center"
-                style={{ marginBottom: "24px", lineHeight: 1.7 }}
-              >
+                style={{ marginBottom: "24px", lineHeight: 1.7 }}>
                 {activeUseCase.body}
               </p>
               <div className="sb-uc-metrics">
@@ -930,8 +820,7 @@ const SeriesBFundedPage = () => {
             {/* <div className="sb-uc-client">
               <p
                 className="font-16-light color-green-1 !text-[11px] !font-semibold uppercase tracking-wider"
-                style={{ marginBottom: "10px" }}
-              >
+                style={{ marginBottom: "10px" }}>
                 Deployment result
               </p>
               <p
@@ -942,80 +831,59 @@ const SeriesBFundedPage = () => {
                   marginBottom: "16px",
                   fontStyle: "italic",
                   fontSize: "14px",
-                }}
-              >
+                }}>
                 "{activeUseCase.quote}"
               </p>
               <p
                 className="font-16-light"
-                style={{ color: "#5A6270", fontSize: "12px" }}
-              >
+                style={{ color: "#5A6270", fontSize: "12px" }}>
                 {activeUseCase.attr}
               </p>
             </div> */}
-          </motion.div>
+          </div>
         </section>
       </div>
 
       {/* ── How It Works ── */}
       {/* <div className="bg-[#141313] overflow-hidden">
         <section className="industry-capability-section">
-          <motion.div
-            className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px] mx-auto mb-[40px] md:mb-[60px]"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.h2
-              className="font-40-regular text-white text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-            >
+          <div
+            className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px] mx-auto mb-[40px] md:mb-[60px]">
+            <h2
+              className="font-40-regular text-white text-center">
               From day one to full speed
-            </motion.h2>
-            <motion.p
+            </h2>
+            <p
               className="font-16-light text-center"
-              style={{ color: "#8A919E" }}
-              custom={2}
-              variants={animation.fadeInUpVariant}
-            >
+              style={{ color: "#8A919E" }}>
               No months-long civil works. No facility shutdown. The system
               deploys on your existing floor, integrates with your WMS, and
               scales with your network.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           <div className="sb-how-steps">
             {howSteps.map((step, index) => (
-              <motion.article
+              <article
                 key={step.num}
-                className="sb-how-step"
-                custom={index}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-              >
+                className="sb-how-step">
                 <span className="sb-how-step-num">{step.num}</span>
                 <div
                   className="sb-how-step-icon industry-capability-icon"
-                  style={{ color: "#06B1A4" }}
-                >
+                  style={{ color: "#06B1A4" }}>
                   {step.icon}
                 </div>
                 <h3
                   className="font-20-medium"
-                  style={{ color: "white", marginBottom: "12px" }}
-                >
+                  style={{ color: "white", marginBottom: "12px" }}>
                   {step.title}
                 </h3>
                 <p
                   className="font-16-light"
-                  style={{ color: "#5A6270", lineHeight: 1.6 }}
-                >
+                  style={{ color: "#5A6270", lineHeight: 1.6 }}>
                   {step.body}
                 </p>
-              </motion.article>
+              </article>
             ))}
           </div>
         </section>
@@ -1023,51 +891,34 @@ const SeriesBFundedPage = () => {
       {/* ── Why Operators Choose UnboxSort — 8 advantages ── */}
       <div className="bg-[#FDFDFD] overflow-hidden">
         <section className="industry-stakeholder-section">
-          <motion.div
-            className="industry-stakeholder-header"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.h2
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-            >
+          <div
+            className="industry-stakeholder-header">
+            <h2
+              className="font-40-regular color-black-1 text-center">
               Why Operators Choose UnboxSort
-            </motion.h2>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-            >
+            </h2>
+            <p
+              className="font-16-light color-grey-1 text-center">
               Eight advantages that separate UnboxSort from every other
               sortation option on the market.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {advantages.map((item, index) => (
-              <motion.article
+              <article
                 key={item.headline}
-                className="bg-white border border-[#E0E0E0] rounded-[12px] p-5 text-center flex flex-col items-center gap-3"
-                custom={index}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+                className="bg-white border border-[#E0E0E0] rounded-[12px] p-5 text-center flex flex-col items-center gap-3">
                 <div
                   className="use-case-adv-icon w-[44px] h-[44px] rounded-[12px] bg-[#E8F5F4] flex items-center justify-center flex-shrink-0"
-                  style={{ color: "#079d92" }}
-                >
+                  style={{ color: "#079d92" }}>
                   {item.icon}
                 </div>
                 <h3 className="font-16-medium color-black-1">
                   {item.headline}
                 </h3>
                 <p className="font-16-light color-black-1 ">{item.proof}</p>
-              </motion.article>
+              </article>
             ))}
           </div>
 
@@ -1080,28 +931,18 @@ const SeriesBFundedPage = () => {
       {/* ── SR Series Specs ── */}
       <div className="bg-[#F8F8F8] overflow-hidden">
         <section className="industry-capability-section">
-          <motion.div
-            className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px] mx-auto mb-[40px] md:mb-[60px]"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.h2
-              className="font-40-regular color-black-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-            >
+          <div
+            className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px] mx-auto mb-[40px] md:mb-[60px]">
+            <h2
+              className="font-40-regular color-black-1 text-center">
               SR Series — vertical lift robots built for density
-            </motion.h2>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={2}
-              variants={animation.fadeInUpVariant}
-            >
+            </h2>
+            <p
+              className="font-16-light color-grey-1 text-center">
               Three models, same philosophy: go vertical, minimise footprint,
               handle the parcel range your operation sees every day.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           {/* Spec tabs */}
           <div className="sb-spec-tabs">
@@ -1110,20 +951,15 @@ const SeriesBFundedPage = () => {
                 key={m.id}
                 className={`sb-spec-tab${activeSpec === i ? " active" : ""}`}
                 onClick={() => setActiveSpec(i)}
-                type="button"
-              >
+                type="button">
                 {m.label}C
               </button>
             ))}
           </div>
 
-          <motion.div
+          <div
             key={activeSpecData.id}
-            className="sb-spec-grid"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
+            className="sb-spec-grid">
             {/* Spec card */}
             <div className="sb-spec-card">
               <div className="sb-spec-card-header">
@@ -1132,8 +968,7 @@ const SeriesBFundedPage = () => {
                 </span>
                 <span
                   className="font-16-light"
-                  style={{ color: "#8A919E", fontSize: "13px" }}
-                >
+                  style={{ color: "#8A919E", fontSize: "13px" }}>
                   {activeSpec === 0
                     ? "Standard"
                     : activeSpec === 1
@@ -1147,14 +982,12 @@ const SeriesBFundedPage = () => {
                   <div key={feat.name} className="sb-spec-row">
                     <span
                       className="font-16-light color-grey-1"
-                      style={{ fontSize: "12px" }}
-                    >
+                      style={{ fontSize: "12px" }}>
                       {feat.name}
                     </span>
                     <span
                       className="font-16-light color-green-1"
-                      style={{ fontSize: "13px", fontWeight: 500 }}
-                    >
+                      style={{ fontSize: "13px", fontWeight: 500 }}>
                       {feat.feature}
                     </span>
                   </div>
@@ -1162,42 +995,36 @@ const SeriesBFundedPage = () => {
                 <div className="sb-spec-row">
                   <span
                     className="font-16-light color-grey-1"
-                    style={{ fontSize: "12px" }}
-                  >
+                    style={{ fontSize: "12px" }}>
                     Charging
                   </span>
                   <span
                     className="font-16-light color-black-1"
-                    style={{ fontSize: "13px", fontWeight: 500 }}
-                  >
+                    style={{ fontSize: "13px", fontWeight: 500 }}>
                     Autonomous docking
                   </span>
                 </div>
                 <div className="sb-spec-row">
                   <span
                     className="font-16-light color-grey-1"
-                    style={{ fontSize: "12px" }}
-                  >
+                    style={{ fontSize: "12px" }}>
                     Navigation
                   </span>
                   <span
                     className="font-16-light color-black-1"
-                    style={{ fontSize: "13px", fontWeight: 500 }}
-                  >
+                    style={{ fontSize: "13px", fontWeight: 500 }}>
                     Data matrix camera
                   </span>
                 </div>
                 <div className="sb-spec-row">
                   <span
                     className="font-16-light color-grey-1"
-                    style={{ fontSize: "12px" }}
-                  >
+                    style={{ fontSize: "12px" }}>
                     Communication
                   </span>
                   <span
                     className="font-16-light color-black-1"
-                    style={{ fontSize: "13px", fontWeight: 500 }}
-                  >
+                    style={{ fontSize: "13px", fontWeight: 500 }}>
                     Wi-Fi 5 / Wi-Fi 6
                   </span>
                 </div>
@@ -1235,8 +1062,7 @@ const SeriesBFundedPage = () => {
                 <div key={card.spec} className="sb-spec-meaning-card">
                   <div
                     className="sb-smc-icon industry-capability-icon"
-                    style={{ color: "#079d92" }}
-                  >
+                    style={{ color: "#079d92" }}>
                     {card.icon}
                   </div>
                   <div>
@@ -1247,27 +1073,24 @@ const SeriesBFundedPage = () => {
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
                         marginBottom: "4px",
-                      }}
-                    >
+                      }}>
                       {card.spec}
                     </p>
                     <h4
                       className="font-16-medium color-black-1"
-                      style={{ marginBottom: "4px" }}
-                    >
+                      style={{ marginBottom: "4px" }}>
                       {card.title}
                     </h4>
                     <p
                       className="font-16-light color-grey-1"
-                      style={{ fontSize: "13px", lineHeight: 1.5 }}
-                    >
+                      style={{ fontSize: "13px", lineHeight: 1.5 }}>
                       {card.body}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </section>
       </div>
 
@@ -1275,76 +1098,48 @@ const SeriesBFundedPage = () => {
       <div className="bg-[#FDFDFD] overflow-hidden">
         <section className="industry-capability-section">
           <div className="sb-roi-grid">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="flex flex-col gap-[20px]"
-            >
-              <motion.h2
+            <div
+              className="flex flex-col gap-[20px]">
+              <h2
                 className="font-40-regular color-black-1"
-                custom={1}
-                variants={animation.fadeInUpVariant}
-                style={{ lineHeight: 1.1, letterSpacing: "-0.02em" }}
-              >
+                style={{ lineHeight: 1.1, letterSpacing: "-0.02em" }}>
                 The lowest cost per sort in{" "}
                 <span className="color-green-1">the market.</span>
-              </motion.h2>
-              <motion.p
+              </h2>
+              <p
                 className="font-16-light color-grey-1"
-                custom={2}
-                variants={animation.fadeInUpVariant}
-                style={{ lineHeight: 1.7 }}
-              >
+                style={{ lineHeight: 1.7 }}>
                 Capital investment is one number. What you actually spend over 7
                 years is another. At 5,000 parcels per hour across 200
                 destinations, the total cost of ownership comparison tells a
                 clear story.
-              </motion.p>
+              </p>
               <div className="flex flex-col gap-[12px]">
                 {roiItems.map((item) => (
-                  <motion.div
+                  <div
                     key={item}
-                    className="sb-roi-item"
-                    custom={3}
-                    variants={animation.fadeInUpVariant}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
-                  >
+                    className="sb-roi-item">
                     <div className="sb-roi-dot" />
                     <p
                       className="font-16-light color-black-1"
-                      style={{ fontSize: "14px", lineHeight: 1.5 }}
-                    >
+                      style={{ fontSize: "14px", lineHeight: 1.5 }}>
                       {item}
                     </p>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-              <motion.div
-                custom={4}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+              <div>
                 <CommonButton
                   theme={"green"}
                   title={"See what this looks like for your volumes"}
                   onClick={() => router.push("/get-in-touch")}
                 />
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div>
               <RoiBars />
-            </motion.div>
+            </div>
           </div>
         </section>
       </div>
@@ -1357,45 +1152,22 @@ const SeriesBFundedPage = () => {
       </div> */}
 
       {/* ── CTA ── */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="bg-[#141313] mb-10 py-12 md:py-20 px-5 md:px-15 flex flex-col gap-10 md:gap-[60px] items-center justify-center"
-      >
+      <div
+        className="bg-[#141313] mb-10 py-12 md:py-20 px-5 md:px-15 flex flex-col gap-10 md:gap-[60px] items-center justify-center">
         <div className="flex flex-col items-center justify-center gap-[14px]">
-          <motion.h2
-            className="font-40-regular text-white text-center max-w-[858px]"
-            custom={1}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <h2
+            className="font-40-regular text-white text-center max-w-[858px]">
             Stop guessing. Start with a real operations assessment.
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="font-16-light text-center"
-            style={{ color: "#5A6270", maxWidth: "480px" }}
-            custom={2}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            Share your throughput and space. Get back a customised sortation
-            layout, robot count, and ROI projection — within 48 hours, at no
+            style={{ color: "#5A6270", maxWidth: "480px" }}>
+            Share your throughput and space. Get back a customised sortation, robot count, and ROI projection — within 48 hours, at no
             cost.
-          </motion.p>
+          </p>
         </div>
-        <motion.div
-          custom={3}
-          className="flex flex-wrap gap-4 justify-center"
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div
+          className="flex flex-wrap gap-4 justify-center">
           <CommonButton
             theme={"green"}
             title={"Get Free Audit"}
@@ -1406,20 +1178,14 @@ const SeriesBFundedPage = () => {
             title={"Book a Demo"}
             onClick={() => router.push("/get-in-touch")}
           />
-        </motion.div>
-        <motion.p
+        </div>
+        <p
           className="font-16-light"
-          style={{ color: "#3A4050", fontSize: "12px" }}
-          custom={4}
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+          style={{ color: "#3A4050", fontSize: "12px" }}>
           No obligation · 48-hour turnaround · Used by global enterprise
           operations
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
     </>
   );
 };

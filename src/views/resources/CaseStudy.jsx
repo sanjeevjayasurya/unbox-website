@@ -3,7 +3,6 @@
 import React from "react";
 import "./index.css";
 import { animation } from "../../helpers/utils";
-import { motion } from "framer-motion";
 import CommonButton from "../../components/common/CommonButton";
 import Link from "next/link";
 import CaseStudyCard from "../../components/common/CaseStudyCard";
@@ -29,7 +28,7 @@ const CaseStudy = () => {
   };
 
   const isInitialLoading = isLoading && caseStudies.length === 0;
-  const isFetchingMore = isValidating && caseStudies.length > 0;
+  const isFetchingMore = isValidating && caseStudies.length> 0;
 
   return (
     <>
@@ -41,33 +40,19 @@ const CaseStudy = () => {
         url={`${frontendUrl}/case-study`}
       />
       <div className="resources-main-div-2">
-        <motion.div
-          className="resources-title-main-div"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h1
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-40-regular color-white"
-          >
+        <div
+          className="resources-title-main-div">
+          <h1
+            className="font-40-regular color-white">
             Case Study
-          </motion.h1>
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-16-light color-white text-center max-w-[800px]"
-          >
+          </h1>
+          <p
+            className="font-16-light color-white text-center max-w-[800px]">
             Dive into real-world examples of how Unbox Robotics is helping
             logistics, e-commerce, and retail leaders achieve operational
             excellence.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
       </div>
 
       {featuredLoading ? (
@@ -81,119 +66,76 @@ const CaseStudy = () => {
           />
         )
       )}
-      {(isInitialLoading || caseStudies?.length > 0) && (
+      {(isInitialLoading || caseStudies?.length> 0) && (
         <div className="bg-[#FDFDFD] class-gap">
           <div className="space-y-5">
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              variants={animation.fadeInUpVariant}
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-              className="font-40-regular text-[#141313] "
-            >
+            <p
+              className="font-40-regular text-[#141313] ">
               Case Studies
-            </motion.p>
+            </p>
           </div>
 
           <div className="blogs-data-map-div">
             {caseStudies?.map((item, index) => {
               return (
-                <motion.div
-                  key={index}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                  variants={animation.fadeInUpVariant}
-                  custom={index}
-                >
+                <div
+                  key={index}>
                   <CaseStudyCard item={item} />
-                </motion.div>
+                </div>
               );
             })}
             {(isInitialLoading || isFetchingMore) &&
               Array.from({ length: 3 }).map((_, idx) => (
-                <motion.div
-                  key={`skeleton-${idx}`}
-                  initial="hidden"
-                  animate="visible"
-                  variants={animation.fadeInUpVariant}
-                >
+                <div
+                  key={`skeleton-${idx}`}>
                   <CaseStudySkeleton />
-                </motion.div>
+                </div>
               ))}
           </div>
 
           {hasMore && (
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={animation.fadeInUpVariant}
-              viewport={{ once: true, amount: 0.2 }}
-              className="self-center"
-            >
+            <div
+              className="self-center">
               <CommonButton
                 title={isFetchingMore ? "Wait..." : "See More"}
                 theme={"green"}
                 onClick={handleSeeMore}
                 disabled={isFetchingMore}
               />
-            </motion.div>
+            </div>
           )}
         </div>
       )}
 
-      {(recentLoading || recentBlogs?.length > 0) && (
+      {(recentLoading || recentBlogs?.length> 0) && (
         <div className="bg-[#FDFDFD] class-gap">
           <div className="flex justify-between">
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              variants={animation.fadeInUpVariant}
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-              className="font-40-regular text-[#141313]"
-            >
+            <p
+              className="font-40-regular text-[#141313]">
               Recent Blogs
-            </motion.p>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={animation.fadeInUpVariant}
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0.2}
-            >
+            </p>
+            <div>
               <Link href={"/blogs"}>
                 <CommonButton title={"View All"} theme={"green"} />
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           <div className="blogs-data-map-div">
             {recentBlogs?.map((item, index) => {
               return (
-                <motion.div
-                  key={index}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                  variants={animation.fadeInUpVariant}
-                  custom={index}
-                >
+                <div
+                  key={index}>
                   <BlogCard item={item} />
-                </motion.div>
+                </div>
               );
             })}
             {recentLoading &&
               Array.from({ length: 3 }).map((_, idx) => (
-                <motion.div
-                  key={`skeleton-blog-${idx}`}
-                  initial="hidden"
-                  animate="visible"
-                  variants={animation.fadeInUpVariant}
-                >
+                <div
+                  key={`skeleton-blog-${idx}`}>
                   <BlogSkeleton />
-                </motion.div>
+                </div>
               ))}
           </div>
         </div>

@@ -7,7 +7,6 @@ import "swiper/css";
 import "./index.css";
 import { testimonialData } from "../../helpers/config";
 import AnimatedArrowButton from "../common/AnimatedArrowButton";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import { techServiceData } from "../../views/technology/config";
 
@@ -18,16 +17,10 @@ const TechServiceSlider = () => {
   const activeTestimonial = testimonialData[activeIndex];
 
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <section>
       <div className="testimonial-section">
-        <motion.div
-          className="testimonial-left"
-          variants={animation.fromLeftVariant}
-        >
+        <div
+          className="testimonial-left">
           <Swiper
             modules={[Autoplay, Controller]}
             loop={true}
@@ -38,8 +31,7 @@ const TechServiceSlider = () => {
             onSwiper={setImageSwiper}
             controller={{ control: textSwiper }}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            className="testimonial-swiper"
-          >
+            className="testimonial-swiper">
             {techServiceData?.map((testimonial) => (
               <SwiperSlide key={testimonial?.id}>
                 <img
@@ -50,20 +42,17 @@ const TechServiceSlider = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="testimonial-right"
-          variants={animation.fromRightVariant}
-        >
+        <div
+          className="testimonial-right">
           <Swiper
             modules={[Controller]}
             loop={true}
             onSwiper={setTextSwiper}
             controller={{ control: imageSwiper }}
             allowTouchMove={false}
-            className="testimonial-text-swiper"
-          >
+            className="testimonial-text-swiper">
             {techServiceData?.map((testimonial) => (
               <SwiperSlide key={testimonial.id}>
                 <div className="flex flex-col gap-[16px] md:gap-[40px]">
@@ -88,9 +77,9 @@ const TechServiceSlider = () => {
               onClick={() => imageSwiper?.slideNext()}
             />
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

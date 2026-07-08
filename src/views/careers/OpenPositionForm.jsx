@@ -5,7 +5,6 @@ import { useRouter, useParams } from "next/navigation";
 import "./index.css";
 import axios from "axios";
 import { z } from "zod";
-import { motion } from "framer-motion";
 import { base_url } from "../../helpers/config";
 import { useJob } from "../../hooks/useJobs";
 import JobHeader from "./JobHeader";
@@ -297,8 +296,7 @@ const OpenPositionForm = () => {
             <div
               className={`input-main-style salary-field ${
                 errors[f.id] ? "error-border" : ""
-              }`}
-            >
+              }`}>
               <CommonDropdown
                 className="bare-dropdown salary-currency"
                 label="INR"
@@ -327,8 +325,7 @@ const OpenPositionForm = () => {
               <div
                 className={`input-main-style ${
                   errors[f.id] ? "error-border" : ""
-                }`}
-              >
+                }`}>
                 <input
                   type="number"
                   min="0"
@@ -398,11 +395,8 @@ const OpenPositionForm = () => {
 
       {/* Body */}
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="open-positions-about-div"
-          initial="hidden"
-          animate="visible"
-        >
+        <div
+          className="open-positions-about-div">
           {submitted ? (
             <div className="apply-success">
               {alreadyApplied ? (
@@ -497,7 +491,7 @@ const OpenPositionForm = () => {
               </div>
             </>
           )}
-        </motion.div>
+        </div>
       </div>
     </>
   );

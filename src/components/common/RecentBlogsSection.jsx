@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import CommonButton from "./CommonButton";
 import BlogCard from "./BlogCard";
@@ -20,41 +19,23 @@ const RecentBlogsSection = ({ recentBlogs, title = "Recent Blogs" }) => {
   return (
     <div className="bg-[#FDFDFD] class-gap">
       <div className="flex justify-between">
-        <motion.p
-          initial="hidden"
-          whileInView="visible"
-          variants={animation.fadeInUpVariant}
-          viewport={{ once: true, amount: 0.2 }}
-          custom={0}
-          className="font-medium text-[40px] text-[#141313] max-[1024px]:text-[26px]"
-        >
+        <p
+          className="font-medium text-[40px] text-[#141313] max-[1024px]:text-[26px]">
           {title}
-        </motion.p>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={animation.fadeInUpVariant}
-          viewport={{ once: true, amount: 0.2 }}
-          custom={0.2}
-        >
+        </p>
+        <div>
           <Link href="/blogs">
             <CommonButton title="View All" theme="green" />
           </Link>
-        </motion.div>
+        </div>
       </div>
 
       <div className="blogs-data-map-div">
         {recentBlogs.map((item, index) => (
-          <motion.div
-            key={item.slug || item.id || index}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={animation.fadeInUpVariant}
-            custom={index}
-          >
+          <div
+            key={item.slug || item.id || index}>
             <BlogCard item={item} />
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

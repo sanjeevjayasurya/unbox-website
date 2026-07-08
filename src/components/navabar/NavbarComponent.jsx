@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import "./index.css";
 import NavLogo from "../../assets/icons/nav-logo.svg";
 import ArrowDown from "../../assets/icons/drop-down.svg";
@@ -186,12 +185,8 @@ const NavbarComponent = ({ shouldAnimate }) => {
 
   return (
     <>
-      <motion.header
-        className={`navbar-main-container ${isOpen && isMobile && "h-screen"}`}
-        initial={shouldAnimate ? "hidden" : false}
-        animate={shouldAnimate ? "visible" : false}
-        variants={animation.navVariants}
-      >
+      <header
+        className={`navbar-main-container ${isOpen && isMobile && "h-screen"}`}>
         {showBanner && <NewsBanner onClose={() => setShowBanner(false)} />}
         <div className="wrap-navabar">
           <div className="navbar-container">
@@ -212,22 +207,19 @@ const NavbarComponent = ({ shouldAnimate }) => {
                   href={"/"}
                   className={`nav-link py-[10px] px-[12px] ${
                     activeLink === "/" && "active-link"
-                  }`}
-                >
+                  }`}>
                   Home
                 </Link>
                 {/* Solutions Dropdown */}
                 <div className="relative">
                   <div
                     className="relative"
-                    onMouseLeave={() => setSolutionOpen(false)}
-                  >
+                    onMouseLeave={() => setSolutionOpen(false)}>
                     <button
                       className="flex items-center gap-[8px] z-10 relative py-[10px] px-[12px] "
                       onMouseEnter={() => setSolutionOpen(true)}
                       aria-expanded={solutionOpen}
-                      aria-haspopup="true"
-                    >
+                      aria-haspopup="true">
                       <span
                         className={`nav-link ${
                           [
@@ -237,8 +229,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           ].includes(activeLink)
                             ? "active-link"
                             : ""
-                        }`}
-                      >
+                        }`}>
                         Solutions
                       </span>
                       <ArrowDown
@@ -250,8 +241,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                     <div
                       className={`solution-custom-dropdown ${
                         solutionOpen ? "visible" : ""
-                      }`}
-                    >
+                      }`}>
                       <div className="solution-inner-custom-dropdown">
                         <div className="gap-[10px] flex flex-col flex-0 w-[444px]">
                           <div
@@ -259,8 +249,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                             onClick={() => {
                               router.push("/solutions-overview");
                               setSolutionOpen(false);
-                            }}
-                          >
+                            }}>
                             <div className="w-[105px] h-[100px] shrink-0 rounded-[14px] overflow-hidden">
                               <img
                                 src={solutionMenu}
@@ -285,8 +274,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                               onClick={() => {
                                 router.push(item.link);
                                 setSolutionOpen(false);
-                              }}
-                            >
+                              }}>
                               <div className="w-[105px] h-[100px] shrink-0 rounded-[14px] overflow-hidden">
                                 <img
                                   src={uboxSortImg}
@@ -312,56 +300,32 @@ const NavbarComponent = ({ shouldAnimate }) => {
                               const isActive =
                                 hoveredSolutionCategory === cat.key;
                               return (
-                                <motion.div
+                                <div
                                   key={cat.key}
                                   onMouseEnter={() =>
                                     setHoveredSolutionCategory(cat.key)
                                   }
-                                  initial={false}
-                                  animate={{
-                                    backgroundColor: isActive
-                                      ? "#F5F5F5"
-                                      : "rgba(245,245,245,0)",
-                                  }}
-                                  transition={{
-                                    duration: 0.25,
-                                    ease: "easeOut",
-                                  }}
-                                  className="py-[10px] px-3 rounded-[14px] cursor-pointer gap-1"
-                                >
+                                  className="py-[10px] px-3 rounded-[14px] cursor-pointer gap-1">
                                   <div className="flex gap-3 items-center">
                                     <cat.Icon />
-                                    <motion.h3
-                                      className="font-16-semibold flex flex-1 text-left"
-                                      initial={false}
-                                      animate={{
-                                        color: isActive
-                                          ? "var(--green-1)"
-                                          : "var(--black-1)",
-                                      }}
-                                      transition={{ duration: 0.25 }}
-                                    >
+                                    <h3
+                                      className="font-16-semibold flex flex-1 text-left">
                                       {cat.title}
-                                    </motion.h3>
+                                    </h3>
                                     {isActive && <MotifRight />}
                                   </div>
                                   <p className="font-12-regular text-[#818382] mt-1">
                                     {cat.desc}
                                   </p>
-                                </motion.div>
+                                </div>
                               );
                             })}
                           </div>
                           <div className="flex flex-col gap-y-[10px] flex-1 py-[10px] w-[200px] relative">
-                            <AnimatePresence mode="wait">
-                              <motion.div
+                            
+                              <div
                                 key={hoveredSolutionCategory}
-                                initial={{ opacity: 0, y: 6 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -6 }}
-                                transition={{ duration: 0.2, ease: "easeOut" }}
-                                className="flex flex-col gap-y-[10px]"
-                              >
+                                className="flex flex-col gap-y-[10px]">
                                 {solutionCategories
                                   .find(
                                     (c) => c.key === hoveredSolutionCategory
@@ -370,47 +334,30 @@ const NavbarComponent = ({ shouldAnimate }) => {
                                     const isActiveItem =
                                       activeLink === item.link;
                                     return (
-                                      <motion.div
+                                      <div
                                         key={item.title}
                                         className="cursor-pointer gap-[10px]"
                                         onClick={() => {
                                           router.push(item.link);
                                           setSolutionOpen(false);
-                                        }}
-                                        initial={{ opacity: 0, y: 4 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{
-                                          duration: 0.2,
-                                          delay: 0.04 * idx,
-                                          ease: "easeOut",
-                                        }}
-                                        whileHover="hover"
-                                      >
-                                        <motion.h4
+                                        }}>
+                                        <h4
                                           className="font-14-semibold"
-                                          initial={false}
-                                          animate={{
-                                            color: isActiveItem
-                                              ? "var(--green-1)"
-                                              : "var(--black-1)",
-                                          }}
                                           variants={{
                                             hover: {
                                               color: "var(--green-1)",
                                             },
-                                          }}
-                                          transition={{ duration: 0.2 }}
-                                        >
+                                          }}>
                                           {item.title}
-                                        </motion.h4>
+                                        </h4>
                                         <p className="font-10-regular text-[#818382] mt-1">
                                           {item.desc}
                                         </p>
-                                      </motion.div>
+                                      </div>
                                     );
                                   })}
-                              </motion.div>
-                            </AnimatePresence>
+                              </div>
+                            
                           </div>
                         </div>
                         {/* <div className="solution-menu-overview relative">
@@ -463,10 +410,9 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           </div>
                         </div>
                         {/* {solutionMenuItems?.map((item) => (
-                          <motion.div
+                          <div
                             className="solution-menu-item"
-                            key={item?.id}
-                          >
+                            key={item?.id}>
 
                             <div className="flex flex-col gap-[10px]">
                               <h2 className="font-16-semibold color-black-1">
@@ -485,7 +431,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                                 }}
                               />
                             </div>
-                          </motion.div>
+                          </div>
                         ))}
                         <div className="flex-1 flex justify-center items-center">
                           <h2 className="font-20-medium color-black">
@@ -501,8 +447,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                   href={"/technology"}
                   className={`nav-link py-[10px] px-[12px] ${
                     activeLink === "/technology" && "active-link"
-                  }`}
-                >
+                  }`}>
                   Technology
                 </Link>
 
@@ -511,22 +456,19 @@ const NavbarComponent = ({ shouldAnimate }) => {
                   href={"/industry"}
                   className={`nav-link py-[10px] px-[12px] ${
                     activeLink === "/industry" && "active-link"
-                  }`}
-                >
+                  }`}>
                   Industry
                 </Link>
                 {/* Company Dropdown */}
                 <div className="relative">
                   <div
                     className="relative"
-                    onMouseLeave={() => setCompanyOpen(false)}
-                  >
+                    onMouseLeave={() => setCompanyOpen(false)}>
                     <button
                       className="flex items-center gap-[8px] z-10 relative py-[10px] px-[12px]"
                       onMouseEnter={() => setCompanyOpen(true)}
                       aria-expanded={companyOpen}
-                      aria-haspopup="true"
-                    >
+                      aria-haspopup="true">
                       <span
                         className={`nav-link ${
                           ["/about-us", "/news-events", "/careers"].includes(
@@ -534,8 +476,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           )
                             ? "active-link"
                             : ""
-                        }`}
-                      >
+                        }`}>
                         Company
                       </span>
                       <ArrowDown
@@ -547,16 +488,14 @@ const NavbarComponent = ({ shouldAnimate }) => {
                     <div
                       className={`custom-dropdown ${
                         companyOpen ? "visible" : ""
-                      }`}
-                    >
+                      }`}>
                       <div className="inner-custom-dropdown ">
                         <Link
                           href="/about-us"
                           onClick={() => setCompanyOpen(false)}
                           className={`popup-txt ${
                             activeLink === "/about-us" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           About us
                         </Link>
                         {/* <Link
@@ -564,8 +503,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           onClick={() => setCompanyOpen(false)}
                           className={`popup-txt ${
                             activeLink === "/news-events" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           News & Events
                         </Link> */}
 
@@ -574,8 +512,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           onClick={() => setCompanyOpen(false)}
                           className={`popup-txt ${
                             activeLink === "/events" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           Events
                         </Link>
                         <Link
@@ -583,8 +520,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           onClick={() => setCompanyOpen(false)}
                           className={`popup-txt ${
                             activeLink === "/careers" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           Careers
                         </Link>
                       </div>
@@ -595,14 +531,12 @@ const NavbarComponent = ({ shouldAnimate }) => {
                 <div className="relative">
                   <div
                     className="relative"
-                    onMouseLeave={() => setResourcesOpen(false)}
-                  >
+                    onMouseLeave={() => setResourcesOpen(false)}>
                     <button
                       className="flex items-center gap-[8px] z-10 relative py-[10px] px-[12px] "
                       onMouseEnter={() => setResourcesOpen(true)}
                       aria-expanded={resourcesOpen}
-                      aria-haspopup="true"
-                    >
+                      aria-haspopup="true">
                       <span
                         className={`nav-link ${
                           [
@@ -617,8 +551,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           ].includes(activeLink)
                             ? "active-link"
                             : ""
-                        }`}
-                      >
+                        }`}>
                         Resources
                       </span>
                       <ArrowDown
@@ -630,16 +563,14 @@ const NavbarComponent = ({ shouldAnimate }) => {
                     <div
                       className={`custom-dropdown ${
                         resourcesOpen ? "visible" : ""
-                      }`}
-                    >
+                      }`}>
                       <div className="inner-custom-dropdown ">
                         <Link
                           href="/blogs"
                           onClick={() => setResourcesOpen(false)}
                           className={`popup-txt ${
                             activeLink === "/blogs" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           Blogs
                         </Link>
                         <Link
@@ -647,8 +578,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           onClick={() => setResourcesOpen(false)}
                           className={`popup-txt ${
                             activeLink === "/case-study" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           Case Study
                         </Link>
                         <Link
@@ -656,8 +586,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           onClick={() => setResourcesOpen(false)}
                           className={`popup-txt ${
                             activeLink === "/pr-news" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           PR & News
                         </Link>
                         {/* <Link
@@ -665,8 +594,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           onClick={() => setResourcesOpen(false)}
                           className={`popup-txt ${
                             activeLink === "/white-paper" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           White Paper
                         </Link> */}
                       </div>
@@ -696,8 +624,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                   className="menu-toggle"
                   onClick={toggleMenu}
                   aria-label={isOpen ? "Close menu" : "Open menu"}
-                  aria-expanded={isOpen}
-                >
+                  aria-expanded={isOpen}>
                   {!isOpen ? (
                     <div className="dot-grid">
                       <span />
@@ -715,33 +642,26 @@ const NavbarComponent = ({ shouldAnimate }) => {
               </div>
             </div>
 
-            <AnimatePresence>
+            
               {isOpen && (
-                <motion.div
+                <div
                   key="responsive-menu"
                   className="responsive-menu"
-                  data-lenis-prevent
-                  variants={menuVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                >
-                  <motion.div variants={menuItemVariants}>
+                  data-lenis-prevent>
+                  <div>
                     <Link
                       href={"/"}
                       className={`nav-link res-menu-btn ${
                         activeLink === "/" ? "active-link" : ""
-                      }`}
-                    >
+                      }`}>
                       Home
                     </Link>
-                  </motion.div>
+                  </div>
 
-                  <motion.div variants={menuItemVariants} className="dropdown">
+                  <div className="dropdown">
                     <button
                       className="res-menu-btn relative"
-                      onClick={() => toggleDropdown("solutions")}
-                    >
+                      onClick={() => toggleDropdown("solutions")}>
                       <span
                         className={`nav-link ${
                           [
@@ -751,8 +671,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           ].includes(activeLink)
                             ? "active-link"
                             : ""
-                        }`}
-                      >
+                        }`}>
                         Solutions
                       </span>
                       <ArrowDown
@@ -762,20 +681,15 @@ const NavbarComponent = ({ shouldAnimate }) => {
                       />
                     </button>
                     {openDropdown === "solutions" && (
-                      <motion.div
-                        className="res-solution-grid"
-                        variants={menuItemVariants}
-                        initial="hidden"
-                        animate="visible"
-                      >
+                      <div
+                        className="res-solution-grid">
                         {/* Solutions Overview card */}
                         <div
                           className="res-solution-card"
                           onClick={() => {
                             router.push("/solutions-overview");
                             setIsOpen(false);
-                          }}
-                        >
+                          }}>
                           <div className="res-solution-card-img">
                             <img src={solutionMenu} alt="Solutions Overview" />
                           </div>
@@ -798,8 +712,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                             onClick={() => {
                               router.push(item.link);
                               setIsOpen(false);
-                            }}
-                          >
+                            }}>
                             <div className="res-solution-card-img">
                               <img src={uboxSortImg} alt={item?.title} />
                             </div>
@@ -827,8 +740,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                                   setHoveredSolutionCategory((prev) =>
                                     prev === cat.key ? null : cat.key
                                   )
-                                }
-                              >
+                                }>
                                 <div className="res-solution-cat-head">
                                   <cat.Icon />
                                   <h3
@@ -837,8 +749,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                                       color: isActive
                                         ? "var(--green-1)"
                                         : "var(--black-1)",
-                                    }}
-                                  >
+                                    }}>
                                     {cat.title}
                                   </h3>
                                   {isActive && (
@@ -856,16 +767,11 @@ const NavbarComponent = ({ shouldAnimate }) => {
                                 </p>
                               </div>
 
-                              <AnimatePresence initial={false}>
+                              
                                 {isActive && (
-                                  <motion.div
+                                  <div
                                     key={`${cat.key}-items`}
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: "auto" }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    transition={{ duration: 0.25 }}
-                                    className="res-solution-items"
-                                  >
+                                    className="res-solution-items">
                                     {cat.items.map((item) => {
                                       const isActiveItem =
                                         activeLink === item.link;
@@ -878,8 +784,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                                           onClick={() => {
                                             router.push(item.link);
                                             setIsOpen(false);
-                                          }}
-                                        >
+                                          }}>
                                           <h4 className="font-14-semibold color-black-1">
                                             {item.title}
                                           </h4>
@@ -889,43 +794,40 @@ const NavbarComponent = ({ shouldAnimate }) => {
                                         </div>
                                       );
                                     })}
-                                  </motion.div>
+                                  </div>
                                 )}
-                              </AnimatePresence>
+                              
                             </div>
                           );
                         })}
-                      </motion.div>
+                      </div>
                     )}
-                  </motion.div>
+                  </div>
 
-                  <motion.div variants={menuItemVariants}>
+                  <div>
                     <Link
                       href={"/technology"}
                       className={`nav-link res-menu-btn ${
                         activeLink === "/technology" ? "active-link" : ""
-                      }`}
-                    >
+                      }`}>
                       Technology
                     </Link>
-                  </motion.div>
+                  </div>
 
-                  <motion.div variants={menuItemVariants}>
+                  <div>
                     <Link
                       href={"/industry"}
                       className={`nav-link res-menu-btn ${
                         activeLink === "/industry" ? "active-link" : ""
-                      }`}
-                    >
+                      }`}>
                       Industry
                     </Link>
-                  </motion.div>
+                  </div>
 
-                  <motion.div variants={menuItemVariants} className="dropdown">
+                  <div className="dropdown">
                     <button
                       className="res-menu-btn relative"
-                      onClick={() => toggleDropdown("company")}
-                    >
+                      onClick={() => toggleDropdown("company")}>
                       <span
                         className={`nav-link ${
                           ["/about-us", "/news-events", "/careers"].includes(
@@ -933,8 +835,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           )
                             ? "active-link"
                             : ""
-                        }`}
-                      >
+                        }`}>
                         Company
                       </span>
                       <ArrowDown
@@ -944,38 +845,20 @@ const NavbarComponent = ({ shouldAnimate }) => {
                       />
                     </button>
                     {openDropdown === "company" && (
-                      <motion.div
-                        className="res-company-dropdown-div"
-                        custom={1}
-                        variants={menuItemVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.2 }}
-                      >
+                      <div
+                        className="res-company-dropdown-div">
                         <Link
                           href="/about-us"
                           className={`res-menu-dropdown-item ${
                             activeLink === "/about-us" ? "active-link" : ""
-                          }`}
-                          custom={1}
-                          variants={menuItemVariants}
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: true, amount: 0.2 }}
-                        >
+                          }`}>
                           About us
                         </Link>
                         {/* <Link
                           href="/news-events"
                           className={`res-menu-dropdown-item ${
                             activeLink === "/news-events" ? "active-link" : ""
-                          }`}
-                          custom={2}
-                          variants={menuItemVariants}
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: true, amount: 0.2 }}
-                        >
+                          }`}>
                           News & Events
                         </Link> */}
 
@@ -983,37 +866,24 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           href="/events"
                           className={`res-menu-dropdown-item ${
                             activeLink === "/events" ? "active-link" : ""
-                          }`}
-                          custom={2}
-                          variants={menuItemVariants}
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: true, amount: 0.2 }}
-                        >
+                          }`}>
                           Events
                         </Link>
                         <Link
                           href="/careers"
                           className={`res-menu-dropdown-item ${
                             activeLink === "/careers" ? "active-link" : ""
-                          }`}
-                          custom={3}
-                          variants={menuItemVariants}
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: true, amount: 0.2 }}
-                        >
+                          }`}>
                           Careers
                         </Link>
-                      </motion.div>
+                      </div>
                     )}
-                  </motion.div>
+                  </div>
 
-                  <motion.div variants={menuItemVariants} className="dropdown">
+                  <div className="dropdown">
                     <button
                       className="res-menu-btn relative"
-                      onClick={() => toggleDropdown("resources")}
-                    >
+                      onClick={() => toggleDropdown("resources")}>
                       <span
                         className={`nav-link ${
                           [
@@ -1028,8 +898,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                           ].includes(activeLink)
                             ? "active-link"
                             : ""
-                        }`}
-                      >
+                        }`}>
                         Resources
                       </span>
                       <ArrowDown
@@ -1039,55 +908,45 @@ const NavbarComponent = ({ shouldAnimate }) => {
                       />
                     </button>
                     {openDropdown === "resources" && (
-                      <motion.div
-                        className="res-company-dropdown-div"
-                        custom={1}
-                        variants={menuItemVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.2 }}
-                      >
+                      <div
+                        className="res-company-dropdown-div">
                         <Link
                           href="/blogs"
                           className={`res-menu-dropdown-item ${
                             activeLink === "/blogs" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           Blogs
                         </Link>
                         <Link
                           href="/case-study"
                           className={`res-menu-dropdown-item ${
                             activeLink === "/case-study" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           Case Study
                         </Link>
                         <Link
                           href="/pr-news"
                           className={`res-menu-dropdown-item ${
                             activeLink === "/pr-news" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           PR & News
                         </Link>
                         {/* <Link
                           href="/white-paper"
                           className={`res-menu-dropdown-item ${
                             activeLink === "/white-paper" ? "active-link" : ""
-                          }`}
-                        >
+                          }`}>
                           White Paper
                         </Link> */}
-                      </motion.div>
+                      </div>
                     )}
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               )}
-            </AnimatePresence>
+            
           </div>
         </div>
-      </motion.header>
+      </header>
       <div
         className={`global-blur-overlay ${
           companyOpen || resourcesOpen || solutionOpen ? "active" : ""

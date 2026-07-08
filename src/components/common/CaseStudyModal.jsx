@@ -10,7 +10,6 @@ import TextField from "./form/TextField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import {
   backendUrl,
@@ -168,17 +167,11 @@ const CaseStudyModal = ({
       keyboard={true}
       backdrop={true}
       scrollable={false}
-      animation={false}
-    >
-      <AnimatePresence>
+      animation={false}>
+      
         {visible && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 24 }}
-            className="modal-main overflow-visible bg-white rounded-lg"
-          >
+          <div
+            className="modal-main overflow-visible bg-white rounded-lg">
             <div className="modal-header-div">
               <div className="flex flex-row gap-2 items-center">
                 <div className="p-[12px] bg-[#079D921A] rounded-full">
@@ -195,15 +188,13 @@ const CaseStudyModal = ({
                 type="button"
                 onClick={handleClose}
                 className="cursor-pointer bg-transparent border-0 p-0"
-                aria-label="Close modal"
-              >
+                aria-label="Close modal">
                 <Close stroke="black" aria-hidden="true" />
               </button>
             </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="w-full space-y-10"
-            >
+              className="w-full space-y-10">
               <div className="modal-form-div">
                 <div className="modal-input-div">
                   <div className="flex-1">
@@ -282,9 +273,9 @@ const CaseStudyModal = ({
                 </div>
               </div>
             </form>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      
     </Modal>
   );
 };

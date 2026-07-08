@@ -4,7 +4,6 @@ import React from "react";
 import Location from "../../assets/icons/location.svg";
 import Clock from "../../assets/icons/clock.svg";
 import Right from "../../assets/icons/arrow-up-right-green.svg";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 
 // Flat list of open roles. Each card: department pill, title, summary,
@@ -13,7 +12,7 @@ const CareersPositionComponent = ({ data, onClick }) => {
   return (
     <div className="careers-jobs-list">
       {data.map((job, index) => (
-        <motion.div
+        <div
           className="career-job-card"
           key={job.id ?? index}
           role="button"
@@ -24,13 +23,7 @@ const CareersPositionComponent = ({ data, onClick }) => {
               e.preventDefault();
               onClick(job);
             }
-          }}
-          custom={index}
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.01 }}
-        >
+          }}>
           <div className="career-job-card-top">
             <div className="career-job-card-main">
               {job.department && (
@@ -53,8 +46,7 @@ const CareersPositionComponent = ({ data, onClick }) => {
               onClick={(e) => {
                 e.stopPropagation();
                 onClick(job);
-              }}
-            >
+              }}>
               <span className="font-16-regular color-black-1">Apply</span>
               <div className="animated-Icon">
                 <Right />
@@ -86,8 +78,7 @@ const CareersPositionComponent = ({ data, onClick }) => {
                   viewBox="0 0 16 16"
                   fill="none"
                   className="career-location-svg"
-                  aria-hidden="true"
-                >
+                  aria-hidden="true">
                   <path
                     d="M2.5 13.5h11M3.5 13.5V4l4-2 4 2v9.5M6 6h1M9 6h1M6 8.5h1M9 8.5h1M6 11h1M9 11h1"
                     stroke="#079d92"
@@ -102,7 +93,7 @@ const CareersPositionComponent = ({ data, onClick }) => {
               </div>
             )}
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
   );

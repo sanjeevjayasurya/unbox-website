@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { animation } from "../../../helpers/utils";
-import { motion, AnimatePresence } from "framer-motion";
 import CommonButton from "../../../components/common/CommonButton";
 import { useRouter } from "next/navigation";
 import HelmetWrapper from "../../../components/common/HelmetWrapper";
@@ -228,47 +227,25 @@ const IndustryECommercePage = () => {
             <SchemaMarkup schema={industryECommerceSchema} />
 {/* Hero */}
       <div className="bg-[#FDFDFD] overflow-hidden">
-        <motion.div
-          className="technology-header"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="technology-header">
           <div className="flex flex-col gap-[14px] md:gap-[20px] max-w-[828px]">
-            <motion.h1
-              className="font-40-regular !font-extralight color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <h1
+              className="font-40-regular !font-extralight color-black-1 text-center">
               The Robotic Sortation System Built for
               <br />
               <span className="!font-semibold">E-Commerce at Scale.</span>
-            </motion.h1>
-            <motion.p
-              className="font-16-light color-grey-1 text-center max-w-[800px]"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            </h1>
+            <p
+              className="font-16-light color-grey-1 text-center max-w-[800px]">
               UnboxSort delivers AI-powered warehouse sorting that doubles
               throughput, reduces warehouse footprint by 50%, and achieves
               99.99%+ robotic sorting accuracy without disrupting your live
               operation.
-            </motion.p>
+            </p>
 
-            <motion.div
-              className="flex flex-wrap gap-4 justify-center"
-              custom={2}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <div
+              className="flex flex-wrap gap-4 justify-center">
               <CommonButton
                 theme={"green"}
                 title={"Book a Demo"}
@@ -279,20 +256,16 @@ const IndustryECommercePage = () => {
                 title={"See Case Studies"}
                 onClick={() => router.push("/case-study")}
               />
-            </motion.div>
+            </div>
           </div>
 
-          {/* <motion.img
+          {/* <img
             src={industryHeaderImg}
             alt="industry-header"
             className="industry-header-img"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: [0, 0.71, 0.2, 1.01] }}
             draggable={false}
           /> */}
-        </motion.div>
+        </div>
       </div>
 
       {/* Retail info cards */}
@@ -300,16 +273,10 @@ const IndustryECommercePage = () => {
         <section className="industry-retail-info-section">
           <div className="industry-retail-info-grid">
             {retailInfoCards.map((card, index) => (
-              <motion.article
+              <article
                 key={card.title}
                 className="industry-retail-info-card"
-                custom={index}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              >
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}>
                 {card.icon}
                 <div className="space-y-3">
                   <h3 className="font-20-medium !text-[18px] color-black-1">
@@ -317,7 +284,7 @@ const IndustryECommercePage = () => {
                   </h3>
                   <p className="font-16-light color-black-1">{card.desc}</p>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
         </section>
@@ -328,21 +295,15 @@ const IndustryECommercePage = () => {
         <section className="industry-retail-kpi-section">
           <div className="industry-retail-kpi-grid">
             {retailKpiCards.map((item, index) => (
-              <motion.article
+              <article
                 key={item.label}
                 className="industry-retail-kpi-card"
-                custom={index}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}>
                 <h3 className="text-[46px] max-md:text-[28px] font-semibold text-[#00A99D]">
                   {item.value}
                 </h3>
                 <p className="font-16-light color-black-1">{item.label}</p>
-              </motion.article>
+              </article>
             ))}
           </div>
         </section>
@@ -350,31 +311,15 @@ const IndustryECommercePage = () => {
 
       {/* Smarter architecture section */}
       <div className="bg-[#FDFDFD] overflow-hidden">
-        <motion.div
-          className="technology-section-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="technology-section-4">
           <div className="flex flex-col gap-[14px] md:gap-[20px]">
-            <motion.h1
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <h1
+              className="font-40-regular color-black-1 text-center">
               A smarter architecture for automated parcel sorting
-            </motion.h1>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            </h1>
+            <p
+              className="font-16-light color-grey-1 text-center">
               UnboxSort robots consolidate live orders across thousands of SKUs
               and destinations sorting from pick to dispatch-ready in a single
               automated pass. The RCS layer manages fleet-level routing across
@@ -383,44 +328,30 @@ const IndustryECommercePage = () => {
               collapsing a 4-step manual consolidation process into one
               continuous flow, without stopping for wave resets or shift
               changes.
-            </motion.p>
+            </p>
           </div>
 
-          <motion.img
+          <img
             src={SmarterArchImg}
             draggable={false}
             alt="UnboxSort smarter architecture for e-commerce fulfilment"
             className="industry-smarter-img"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: [0, 0.71, 0.2, 1.01] }}
           />
-        </motion.div>
+        </div>
       </div>
 
       {/* Comparison section */}
       <div className="bg-[#FDFDFD] overflow-hidden">
         <section className="industry-comparison-section">
-          <motion.div
-            className="industry-comparison-header"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.h2
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-            >
+          <div
+            className="industry-comparison-header">
+            <h2
+              className="font-40-regular color-black-1 text-center">
               Why e-commerce fulfillment operations demand smarter warehouse
               automation
-            </motion.h2>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-            >
+            </h2>
+            <p
+              className="font-16-light color-grey-1 text-center">
               Growing order volumes, faster delivery promises, and rising return
               rates are compressing the consolidation window inside every
               fulfillment center. A four-step manual process that worked at 500
@@ -428,58 +359,34 @@ const IndustryECommercePage = () => {
               directly delays dispatch. For e-commerce operators, the bottleneck
               is no longer picking, it is what happens between the pick zone and
               the outbound dock.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           <div className="industry-comparison-grid">
-            <motion.h3
-              className="font-16-semibold color-black-1"
-              custom={0}
-              variants={animation.fromLeftItemVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            <h3
+              className="font-16-semibold color-black-1">
               What holds e-commerce operations back
-            </motion.h3>
-            <motion.h3
-              className="font-16-semibold color-black-1"
-              custom={0}
-              variants={animation.itemFromRightVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            </h3>
+            <h3
+              className="font-16-semibold color-black-1">
               How Unbox solves it
-            </motion.h3>
+            </h3>
             {challengePoints.map((item, index) => (
               <React.Fragment key={index}>
-                <motion.article
-                  className="industry-comparison-item"
-                  custom={index}
-                  variants={animation.fromLeftItemVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                >
+                <article
+                  className="industry-comparison-item">
                   <div className="w-5 h-5 flex items-center justify-center">
                     <span className="industry-comparison-dot industry-comparison-dot-left" />
                   </div>
                   <p className="font-16-light color-grey-1">{item}</p>
-                </motion.article>
-                <motion.article
-                  className="industry-comparison-item bg-[#F8F8F8]"
-                  custom={index}
-                  variants={animation.itemFromRightVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                >
+                </article>
+                <article
+                  className="industry-comparison-item bg-[#F8F8F8]">
                   <div className="w-5 h-5 flex items-center justify-center">
                     <span className="industry-comparison-dot industry-comparison-dot-right" />
                   </div>
                   <p className="font-16-light color-black-1">{solutionPoints[index]}</p>
-                </motion.article>
+                </article>
               </React.Fragment>
             ))}
           </div>
@@ -491,22 +398,16 @@ const IndustryECommercePage = () => {
         <section className="industry-capability-section">
           <div className="industry-capability-grid">
             {retailCapabilityCards.map((item, index) => (
-              <motion.article
+              <article
                 key={item.title}
                 className="industry-capability-card"
-                custom={index}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              >
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}>
                 <div className="industry-capability-icon">{item.icon}</div>
                 <div className="space-y-[10px]">
                   <h3 className="font-20-medium color-black-1">{item.title}</h3>
                   <p className="font-16-light color-black-1">{item.desc}</p>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
         </section>
@@ -516,27 +417,15 @@ const IndustryECommercePage = () => {
       {/* <div className="bg-[#FDFDFD] overflow-hidden">
         <section className="industry-market-data-section">
           <div className="industry-market-data-content">
-            <motion.h2
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            <h2
+              className="font-40-regular color-black-1 text-center">
               Market data - warehouse automation industry
-            </motion.h2>
+            </h2>
             <div className="industry-market-data-grid">
               {marketDataCards.map((item, index) => (
-                <motion.article
+                <article
                   key={item.title}
-                  className="industry-market-data-card"
-                  custom={index}
-                  variants={animation.fadeInUpVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                >
+                  className="industry-market-data-card">
                   <div className="industry-market-data-title-wrap">
                     <span className="industry-market-data-icon">
                       {item.icon}
@@ -546,7 +435,7 @@ const IndustryECommercePage = () => {
                     </h3>
                   </div>
                   <p className="font-16-light color-black-1">{item.desc}</p>
-                </motion.article>
+                </article>
               ))}
             </div>
           </div>
@@ -558,16 +447,9 @@ const IndustryECommercePage = () => {
         <section className="industry-case-study-section">
           <div
             className="industry-case-study-top"
-            style={{ gridTemplateColumns: "minmax(0, 1fr)" }}
-          >
-            <motion.div
-              className="industry-case-study-content"
-              custom={0}
-              variants={animation.fromLeftItemVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
+            <div
+              className="industry-case-study-content">
               <p className="font-20-medium color-green-1">Case Study</p>
               <h2 className="font-40-regular color-black-1">
                 How a Leading Fashion Marketplace Doubled Consolidation Output
@@ -586,15 +468,9 @@ const IndustryECommercePage = () => {
                   onClick={() => router.push("/case-study")}
                 />
               </div>
-            </motion.div>
-            <motion.div
-              className="industry-case-study-image-wrap"
-              custom={0}
-              variants={animation.itemFromRightVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            </div>
+            <div
+              className="industry-case-study-image-wrap">
               <video
                 src={caseStudyVideo}
                 autoPlay
@@ -605,34 +481,22 @@ const IndustryECommercePage = () => {
                 draggable={false}
                 className="industry-case-study-image"
               />
-            </motion.div>
+            </div>
           </div>
 
           <div className="industry-case-study-kpi-grid">
             {caseStudyKpis.map((item, index) => (
-              <motion.article
+              <article
                 key={item.label}
-                className="industry-case-study-kpi-card"
-                custom={index}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-              >
+                className="industry-case-study-kpi-card">
                 <h3 className="font-20-medium color-green-1">{item.value}</h3>
                 <p className="font-20-regular color-black-1">{item.label}</p>
-              </motion.article>
+              </article>
             ))}
           </div>
 
-          <motion.div
-            className="industry-case-study-quote"
-            custom={0}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
+          <div
+            className="industry-case-study-quote">
             <p className="font-20-regular color-black-1">
               &ldquo;Unbox helped us move from a four-step to a two-step
               consolidation process. The robotic sortation system is reliable,
@@ -640,36 +504,26 @@ const IndustryECommercePage = () => {
               accuracy.&rdquo;
             </p>
             <p className="font-20-medium color-green-1">Automation Leader</p>
-          </motion.div>
+          </div>
         </section>
       </div>
 
       {/* Stakeholder impact */}
       <div className="bg-[#FDFDFD] overflow-hidden">
         <section className="industry-stakeholder-section">
-          <motion.div
-            className="industry-stakeholder-header"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.h2
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-            >
+          <div
+            className="industry-stakeholder-header">
+            <h2
+              className="font-40-regular color-black-1 text-center">
               How UnboxSort is Reshaping E-Commerce Warehouse Automation for Every Stakeholder
-            </motion.h2>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-            >
+            </h2>
+            <p
+              className="font-16-light color-grey-1 text-center">
               Whether you&apos;re driving operations, managing capital, or
               building scalable infrastructure Unbox delivers measurable results
               against what matters most to you.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           <div className="industry-stakeholder-card">
             <div className="industry-stakeholder-tabs">
@@ -680,22 +534,16 @@ const IndustryECommercePage = () => {
                   className={`industry-stakeholder-tab ${
                     activeStakeholderTab.id === tab.id ? "active" : ""
                   }`}
-                  onClick={() => setActiveStakeholderTab(tab)}
-                >
+                  onClick={() => setActiveStakeholderTab(tab)}>
                   {tab.label}
                 </button>
               ))}
             </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
+            
+              <div
                 key={activeStakeholderTab.id}
-                className="industry-stakeholder-content"
-                variants={stakeholderContentVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-              >
+                className="industry-stakeholder-content">
                 <div className="industry-stakeholder-image-wrap">
                   <ImageComponent
                     src={activeStakeholderTab.image}
@@ -716,8 +564,8 @@ const IndustryECommercePage = () => {
                     ))}
                   </ul>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            
           </div>
         </section>
       </div>
@@ -726,30 +574,18 @@ const IndustryECommercePage = () => {
       <div className="bg-[#FDFDFD] overflow-hidden">
         <section className="industry-trust-section">
           <div className="industry-trust-content">
-            <motion.h2
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            <h2
+              className="font-40-regular color-black-1 text-center">
               Why Unbox is the trusted robotic sortation system for e-commerce
-            </motion.h2>
+            </h2>
 
             <div className="industry-trust-copy">
               {retailTrustParagraphs.map((paragraph, index) => (
-                <motion.p
+                <p
                   key={paragraph}
-                  className="font-16-light color-grey-1 text-center"
-                  custom={index}
-                  variants={animation.fadeInUpVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                >
+                  className="font-16-light color-grey-1 text-center">
                   {paragraph}
-                </motion.p>
+                </p>
               ))}
             </div>
           </div>
@@ -762,44 +598,22 @@ const IndustryECommercePage = () => {
       />
 
       {/* CTA Section */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="bg-[#141313] mb-10 py-12 md:py-20 px-5 md:px-15 flex flex-col gap-10 md:gap-[60px] items-center justify-center"
-      >
+      <div
+        className="bg-[#141313] mb-10 py-12 md:py-20 px-5 md:px-15 flex flex-col gap-10 md:gap-[60px] items-center justify-center">
         <div className="flex flex-col items-center justify-center gap-[14px]">
-          <motion.h1
-            className="font-40-regular text-white text-center max-w-[858px]"
-            custom={0}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <h1
+            className="font-40-regular text-white text-center max-w-[858px]">
             Ready to transform your e-commerce fulfillment with warehouse
             automation?
-          </motion.h1>
-          <motion.p
-            className="font-16-light text-white text-center"
-            custom={1}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          </h1>
+          <p
+            className="font-16-light text-white text-center">
             Talk to our team and see how Unbox robotic sortation can be deployed
             within your existing retail DC footprint — with ROI in 6–9 months.
-          </motion.p>
+          </p>
         </div>
-        <motion.div
-          custom={2}
-          className="flex flex-wrap gap-4 justify-center"
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div
+          className="flex flex-wrap gap-4 justify-center">
           <CommonButton
             theme={"green"}
             title={"Book a Demo"}
@@ -810,8 +624,8 @@ const IndustryECommercePage = () => {
             title={"Calculate ROI"}
             onClick={() => router.push("/get-in-touch")}
           />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import "./index.css";
 import ArrowDown from "../../assets/icons/arrow-down.svg";
 import { animation } from "../../helpers/utils";
@@ -15,36 +14,26 @@ const TechAccordion = ({ data }) => {
   };
 
   return (
-    <motion.div
-      className="tech-accordion-container"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-    >
-      <motion.div
-        className="impact-image-container flex-1"
-        variants={animation.fromLeftVariant}
-      >
+    <div
+      className="tech-accordion-container">
+      <div
+        className="impact-image-container flex-1">
         <ImageComponent
           src={data[activeIndex]?.image}
           alt={data[activeIndex]?.title}
           className="common-img"
         />
-      </motion.div>
+      </div>
 
       <div className="tech-accordion flex-1">
         {data?.map((item, index) => (
-          <motion.div
-            key={index}
-            custom={index}
-            variants={animation.itemFromRightVariant}
-          >
+          <div
+            key={index}>
             <div
               onClick={() => handleAccordionClick(index)}
               className={`tech-accordion-item cursor-pointer ${
                 index === activeIndex ? "active" : ""
-              }`}
-            >
+              }`}>
               <div className="impact-accordion-title">
                 <h2 className="font-20-regular flex items-center ">
                   {item.title}
@@ -52,8 +41,7 @@ const TechAccordion = ({ data }) => {
                 {/* <div
                   className={`accordion-arrow-icon ${
                     index === activeIndex ? "open" : ""
-                  }`}
-                >
+                  }`}>
                   <ArrowDown
                     width={26}
                     height={26}
@@ -65,10 +53,10 @@ const TechAccordion = ({ data }) => {
                 <p className="font-16-light text-[#FFFFFF]">{item.content}</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

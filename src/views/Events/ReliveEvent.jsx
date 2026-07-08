@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import CommonButton from "../../components/common/CommonButton";
 import AnimatedArrowButton from "../../components/common/AnimatedArrowButton";
@@ -23,15 +22,10 @@ const ReliveEvent = () => {
 
   return (
     <div className="bg-[#FDFDFD] class-gap">
-      <motion.div
-        className="relive-head"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-        variants={animation.fadeInUpVariant}
-      >
+      <div
+        className="relive-head">
         <p className="font-40-regular text-[#141313]">{e.title}</p>
-        {n > 1 && (
+        {n> 1 && (
           <div className="relive-arrows">
             <AnimatedArrowButton
               direction="up-right"
@@ -45,16 +39,12 @@ const ReliveEvent = () => {
             />
           </div>
         )}
-      </motion.div>
+      </div>
 
       {/* Keyed on the active event so switching cross-fades the whole recap. */}
-      <motion.div
+      <div
         className="relive-content"
-        key={index}
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-      >
+        key={index}>
         <div className="relive-top">
           <div className="relive-main-img">
             <ImageComponent
@@ -113,7 +103,7 @@ const ReliveEvent = () => {
             }}
           />
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

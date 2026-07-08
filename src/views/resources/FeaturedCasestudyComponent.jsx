@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-
 import Link from "next/link";
 import File from "../../assets/icons/FileText.svg";
 import Timer from "../../assets/icons/timer.svg";
@@ -24,12 +22,7 @@ const FeaturedCasestudyComponent = ({ title, data, redirectUrl }) => {
 
   return (
     <div className="bg-[#FDFDFD] class-gap">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={animation.fadeInUpVariant}
-        viewport={{ once: true, amount: 0.2 }}
-      >
+      <div>
         <div className="flex flex-row gap-4 items-center justify-start max-[1024px]:justify-center">
           <p className="font-40-medium text-[#141313] ">Featured {title}</p>
           <div className="px-[16px] py-[10px] bg-[#079D921A] rounded-[100px] items-center justify-center flex ">
@@ -38,12 +31,8 @@ const FeaturedCasestudyComponent = ({ title, data, redirectUrl }) => {
             </p>
           </div>
         </div>
-      </motion.div>
-      <motion.div
-        initial={{ y: 30 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
+      </div>
+      <div>
         <div className="flex bg-[#079D92] rounded-[24px] gap-[20px] max-[768px]:gap-3 p-5  max-[768px]:p-3 max-[1024px]:flex-col">
           <div className="w-[440px] h-auto  rounded-[20px] overflow-hidden max-[1024px]:w-full max-[1024px]:h-[458px]  max-[768px]:h-[300px]">
             <img
@@ -115,7 +104,7 @@ const FeaturedCasestudyComponent = ({ title, data, redirectUrl }) => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

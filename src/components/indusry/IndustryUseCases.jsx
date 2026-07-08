@@ -8,7 +8,6 @@ import "swiper/css";
 import "./index.css";
 import { industryUserCasesData } from "../../helpers/config";
 import AnimatedArrowButton from "../common/AnimatedArrowButton";
-import { motion, AnimatePresence } from "framer-motion";
 import { animation } from "../../helpers/utils";
 
 import RightIcon from "../../assets/icons/tick-circle.svg";
@@ -21,33 +20,24 @@ const IndustryUseCases = () => {
   const activeTestimonial = industryUserCasesData[activeIndex];
 
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="space-y-[20px]"
-    >
+    <section
+      className="space-y-[20px]">
       <div className="testimonial-section">
         {/* LEFT IMAGE / TAG */}
         <div className="flex-1">
           <div className="industruy-usecases-tag relative">
-            <AnimatePresence mode="wait">
-              <motion.div
+            
+              <div
                 key={activeIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="w-full h-full"
-              >
+                className="w-full h-full">
                 <ImageComponent
                   src={activeTestimonial?.image}
                   className="common-img"
                   draggable={false}
                   alt={activeTestimonial?.title || "Industry use case"}
                 />
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            
             <div className="bining-product-badge font-10-light text-white">
               {`${activeTestimonial?.id} / 3`}
             </div>
@@ -55,10 +45,8 @@ const IndustryUseCases = () => {
         </div>
 
         {/* RIGHT CONTENT */}
-        <motion.div
-          className="industry-usecases-right"
-          variants={animation.fromRightVariant}
-        >
+        <div
+          className="industry-usecases-right">
           <Swiper
             modules={[Autoplay]}
             loop={true}
@@ -68,8 +56,7 @@ const IndustryUseCases = () => {
             }}
             onSwiper={setImageSwiper}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            className="testimonial-text-swiper"
-          >
+            className="testimonial-text-swiper">
             {industryUserCasesData?.map((testimonial) => (
               <SwiperSlide key={testimonial.id}>
                 <div className="flex flex-col gap-[16px] md:gap-[20px]">
@@ -83,25 +70,19 @@ const IndustryUseCases = () => {
 
                   <div className="space-y-[18px]">
                     {testimonial?.tags?.map((item, index) => (
-                      <motion.div
+                      <div
                         className="flex items-center gap-[10px] md:gap-[20px]"
-                        key={`${testimonial.id}-${index}`}
-                        custom={index}
-                        variants={animation.itemFromRightVariant}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.1 }}
-                      >
+                        key={`${testimonial.id}-${index}`}>
                         <RightIcon />
                         <p className="font-20-regular color-black-1">{item}</p>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
-        </motion.div>
+        </div>
       </div>
 
       {/* CUSTOM NAV */}
@@ -116,7 +97,7 @@ const IndustryUseCases = () => {
           onClick={() => imageSwiper?.slideNext()}
         />
       </div>
-    </motion.section>
+    </section>
   );
 };
 

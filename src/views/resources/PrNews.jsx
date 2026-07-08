@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { animation } from "../../helpers/utils";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import CommonButton from "../../components/common/CommonButton";
 import SearchInput from "../../components/common/SearchInput";
@@ -44,7 +43,7 @@ const PrNews = () => {
   const handleSeeMore = () => setSize(size + 1);
 
   const isInitialLoading = isLoading && prNews.length === 0;
-  const isFetchingMore = isValidating && prNews.length > 0;
+  const isFetchingMore = isValidating && prNews.length> 0;
 
   const yearChips = ["All", ...years.map(String)];
 
@@ -67,32 +66,18 @@ const PrNews = () => {
 
       {/* Hero */}
       <div className="resources-main-div-2">
-        <motion.div
-          className="resources-title-main-div"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h1
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-40-regular color-white"
-          >
+        <div
+          className="resources-title-main-div">
+          <h1
+            className="font-40-regular color-white">
             PR & News
-          </motion.h1>
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-16-light color-white text-center max-w-[800px]"
-          >
+          </h1>
+          <p
+            className="font-16-light color-white text-center max-w-[800px]">
             Press releases, company milestones, product announcements and
             coverage from across the world of warehouse automation.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
       </div>
 
       {/* Featured Event */}
@@ -109,15 +94,10 @@ const PrNews = () => {
 
       {/* Where else to find us + filters + grid */}
       <div className="bg-[#FDFDFD] class-gap">
-        <motion.p
-          initial="hidden"
-          whileInView="visible"
-          variants={animation.fadeInUpVariant}
-          viewport={{ once: true, amount: 0.2 }}
-          className="font-40-regular text-[#141313]"
-        >
+        <p
+          className="font-40-regular text-[#141313]">
           Where else to find us
-        </motion.p>
+        </p>
 
         {/* Search + filter chips */}
         <div className="flex flex-col gap-6 bg-[#F5F5F5] rounded-[24px] p-6 max-[768px]:p-4">
@@ -141,15 +121,14 @@ const PrNews = () => {
                     onClick={() => setCategory(cat)}
                     className={`${chipBase} ${
                       category === cat ? chipActive : chipInactive
-                    }`}
-                  >
+                    }`}>
                     {cat}
                   </button>
                 ))}
               </div>
             </div>
 
-            {yearChips.length > 1 && (
+            {yearChips.length> 1 && (
               <div className="flex flex-col gap-3">
                 <p className="font-14-regular color-black-1 opacity-60">Year</p>
                 <div className="flex flex-wrap gap-3">
@@ -160,8 +139,7 @@ const PrNews = () => {
                       onClick={() => setYear(yr)}
                       className={`${chipBase} ${
                         year === yr ? chipActive : chipInactive
-                      }`}
-                    >
+                      }`}>
                       {yr}
                     </button>
                   ))}
@@ -174,27 +152,17 @@ const PrNews = () => {
         {/* Grid */}
         <div className="blogs-data-map-div">
           {prNews?.map((item, index) => (
-            <motion.div
-              key={item.id || index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={animation.fadeInUpVariant}
-              custom={index}
-            >
+            <div
+              key={item.id || index}>
               <PrNewsCard item={item} />
-            </motion.div>
+            </div>
           ))}
           {(isInitialLoading || isFetchingMore) &&
             Array.from({ length: 3 }).map((_, idx) => (
-              <motion.div
-                key={`skeleton-${idx}`}
-                initial="hidden"
-                animate="visible"
-                variants={animation.fadeInUpVariant}
-              >
+              <div
+                key={`skeleton-${idx}`}>
                 <CaseStudySkeleton />
-              </motion.div>
+              </div>
             ))}
         </div>
 
@@ -205,45 +173,30 @@ const PrNews = () => {
         )}
 
         {hasMore && (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="self-center"
-          >
+          <div
+            className="self-center">
             <CommonButton
               title={isFetchingMore ? "Wait..." : "See More"}
               theme={"green"}
               onClick={handleSeeMore}
               disabled={isFetchingMore}
             />
-          </motion.div>
+          </div>
         )}
       </div>
 
       {/* Covering Unbox? CTA */}
       <div className="bg-[#141313] w-full">
         <div className="class-gap items-center text-center">
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-40-regular color-white"
-          >
+          <p
+            className="font-40-regular color-white">
             Covering Unbox?
-          </motion.p>
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-16-light color-white max-w-[700px] text-center"
-          >
+          </p>
+          <p
+            className="font-16-light color-white max-w-[700px] text-center">
             For interviews, press assets, or media inquiries, reach our PR team
             directly. We typically respond within two business days.
-          </motion.p>
+          </p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <Link href="/get-in-touch">
               <CommonButton title={"Contact Press Team"} theme={"green"} />

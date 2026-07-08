@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import CommonButton from "../../components/common/CommonButton";
 import ImageComponent from "../../components/common/ImageComponent";
@@ -19,26 +18,16 @@ const FeaturedEvent = () => {
 
   return (
     <div className="bg-[#FDFDFD] class-gap" id="featured-event">
-      <motion.div
-        className="featured-event-head"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-        variants={animation.fadeInUpVariant}
-      >
+      <div
+        className="featured-event-head">
         <p className="font-40-regular text-[#141313]">Featured Event</p>
         <span className="next-up-pill font-14-regular color-green-1">
           Next Up
         </span>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="featured-event-card"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={animation.fadeInUpVariant}
-      >
+      <div
+        className="featured-event-card">
         <div className="featured-event-img">
           <ImageComponent src={e.image} alt={e.title} className="common-img" />
         </div>
@@ -78,7 +67,7 @@ const FeaturedEvent = () => {
             />
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import "./EventPopup.css";
 import LogimatIcon from "../../assets/icons/logimat-white.svg";
 import CloseIcon from "../../assets/icons/close.svg";
@@ -39,30 +38,17 @@ const EventPopup = ({ isOpen, onClose }) => {
     exit: { opacity: 0, scale: 0.8, y: 20, transition: { duration: 0.2 } },
   };
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
+  return isOpen ? (
+        <div
           className="event-popup-overlay"
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={overlayVariants}
-          onClick={onClose}
-        >
-          <motion.div
+          onClick={onClose}>
+          <div
             className="event-popup-container"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            onClick={(e) => e.stopPropagation()}
-          >
+            onClick={(e) => e.stopPropagation()}>
             <button
               className="close-btn-popup"
               onClick={onClose}
-              aria-label="Close popup"
-            >
+              aria-label="Close popup">
               <CloseIcon width="16" height="16" />
             </button>
             <div className="event-popup-content">
@@ -104,8 +90,7 @@ const EventPopup = ({ isOpen, onClose }) => {
                     <Link
                       href="/events/cemat-australia-2026"
                       className="flex-1 event-card-more"
-                      onClick={onClose}
-                    >
+                      onClick={onClose}>
                       <div>
                         <MotifeIcon width={60} height={60} />
                       </div>
@@ -117,11 +102,9 @@ const EventPopup = ({ isOpen, onClose }) => {
                 </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+          </div>
+        </div>
+      ) : null;
 };
 
 export default EventPopup;

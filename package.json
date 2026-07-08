@@ -23,7 +23,6 @@
     "country-list": "^2.3.0",
     "currency-map-symbol": "^4.0.5",
     "dompurify": "^3.3.3",
-    "framer-motion": "^12.19.1",
     "hls.js": "^1.6.15",
     "libphonenumber-js": "^1.12.10",
     "next": "^16.2.0",

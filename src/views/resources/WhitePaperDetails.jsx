@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useParams } from "next/navigation";
 import { animation } from "../../helpers/utils";
-import { motion } from "framer-motion";
 import CommonButton from "../../components/common/CommonButton";
 import { backendUrl, frontendUrl } from "../../helpers/config";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
@@ -50,8 +49,7 @@ const WhitePaperDetails = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-        }}
-      >
+        }}>
         <SimpleLoader />
       </div>
     );
@@ -67,13 +65,8 @@ const WhitePaperDetails = () => {
       />
       <div className="bg-[#FDFDFD] class-gap overflow-hidden">
         <div className="white-paper-details-div-1">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fromLeftVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="white-paper-inner-div "
-          >
+          <div
+            className="white-paper-inner-div ">
             <div className="white-paper-info-div">
               <p className="font-40-medium color-black-1">{state.title}</p>
               <p className="font-16-regular color-black-1">
@@ -89,24 +82,14 @@ const WhitePaperDetails = () => {
                 theme={"green"}
               />
             </div>
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fromRightVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="blogs-details-image-div "
-          >
+          </div>
+          <div
+            className="blogs-details-image-div ">
             <ImageComponent src={whitePaperImageUrl} className="common-img" alt={state?.title || "White paper cover image"} />
-          </motion.div>
+          </div>
         </div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={animation.fadeInUpVariant}
-          viewport={{ once: true, amount: 0.01 }}
-          className="white-paper-highligts-div  relative overflow-hidden"
-        >
+        <div
+          className="white-paper-highligts-div  relative overflow-hidden">
           <TiptapContent content={state?.content}   className="prose casestudy-content whitespace-normal max-w-full"/>
 
           <div
@@ -122,7 +105,7 @@ const WhitePaperDetails = () => {
               pointerEvents: "none",
             }}
           />
-        </motion.div>
+        </div>
       </div>
 
       <CaseStudyModal

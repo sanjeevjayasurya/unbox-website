@@ -11,7 +11,6 @@ import {
   locationQuestion,
   sfOrgId,
 } from "../../helpers/config";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import TextField from "../../components/common/form/TextField";
 import DropdownField from "../../components/common/form/DropdownField";
@@ -169,27 +168,19 @@ const GetInTouch = () => {
       />
             <SchemaMarkup schema={getInTouchSchema} />
 <div className="main-div-2">
-        <motion.div
-          className="title-main-div"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h1
-            variants={animation.fadeInUpVariant}
-            className="font-40-regular color-white"
-          >
+        <div
+          className="title-main-div">
+          <h1
+            className="font-40-regular color-white">
             Get In Touch
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={animation.fadeInUpVariant}
-            className="font-16-light color-white text-center"
-          >
+          <p
+            className="font-16-light color-white text-center">
             Ready to transform your logistics? Contact our team for pricing, a
             custom consultation, or to schedule a live system demonstration.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="input-main-div">
           {/* Input Rows (Keep your existing TextField/DropdownField components) */}
@@ -321,8 +312,7 @@ const GetInTouch = () => {
                       <Link
                         className="underline"
                         href="/privacy-policy"
-                        target="_blank"
-                      >
+                        target="_blank">
                         Privacy Policy
                       </Link>
                       . Your data will be used solely for the purposes stated
@@ -353,8 +343,7 @@ const GetInTouch = () => {
         action={`https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=${sfOrgId}`}
         method="POST"
         style={{ display: "none" }}
-        target="sf_hidden_iframe"
-      >
+        target="sf_hidden_iframe">
         <input type="hidden" name="oid" value={sfOrgId} />
         <input
           type="hidden"
@@ -380,8 +369,7 @@ const GetInTouch = () => {
         name="sf_hidden_iframe"
         id="sf_hidden_iframe"
         style={{ display: "none" }}
-        title="Salesforce Submission Hidden Frame"
-      ></iframe>
+        title="Salesforce Submission Hidden Frame"></iframe>
     </>
   );
 };

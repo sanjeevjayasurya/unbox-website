@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { base_url, turnstileSiteKey } from "../helpers/config";
-import { motion } from "framer-motion";
 import unboxLogo from "../assets/icons/unbox-white-logo.svg?url";
 import "./HumanGate.css";
 import SimpleLoader from "./loader/SimpleLoader";
@@ -132,12 +131,8 @@ const HumanGate = ({ children, onVerify, variant = "full", persist = true }) => 
         <div className="hg-glow-1"></div>
         <div className="hg-glow-2"></div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="hg-card"
-        >
+        <div
+          className="hg-card">
           <div className="hg-logo-container">
             <img src={unboxLogo} alt="Unbox Robotics" className="hg-logo" />
           </div>
@@ -154,7 +149,7 @@ const HumanGate = ({ children, onVerify, variant = "full", persist = true }) => 
           </div>
 
           <p className="hg-footer-text">Protected by Cloudflare Turnstile</p>
-        </motion.div>
+        </div>
       </div>
     );
   }

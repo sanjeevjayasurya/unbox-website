@@ -7,7 +7,6 @@ import PlayIcon from "../../assets/icons/playIcon.svg";
 import CloseIcon from "../../assets/icons/close.svg";
 import CommonButton from "../../components/common/CommonButton";
 import { animation } from "../../helpers/utils";
-import { AnimatePresence, motion } from "framer-motion";
 import { createPortal } from "react-dom";
 import CaseStudyModal from "../../components/common/CaseStudyModal";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
@@ -66,30 +65,18 @@ const CaseStudyDetails = () => {
   }, [isVideoPopupOpen]);
 
   const blogUrl = `${frontendUrl}/case-study/${slug}`;
-  const videoPopup = (
-    <AnimatePresence>
-      {isVideoPopupOpen && mediaUrl && (
-        <motion.div
+  const videoPopup = isVideoPopupOpen && mediaUrl ? (
+        <div
           className="case-study-video-popup"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setIsVideoPopupOpen(false)}
-        >
-          <motion.div
+          onClick={() => setIsVideoPopupOpen(false)}>
+          <div
             className="case-study-video-popup__dialog"
-            initial={{ opacity: 0, scale: 0.88, y: 32 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.92, y: 24 }}
-            transition={{ duration: 0.28, ease: "easeOut" }}
-            onClick={(event) => event.stopPropagation()}
-          >
+            onClick={(event) => event.stopPropagation()}>
             <button
               type="button"
               className="case-study-video-popup__close"
               onClick={() => setIsVideoPopupOpen(false)}
-              aria-label="Close video"
-            >
+              aria-label="Close video">
               <CloseIcon width={20} height={20} />
             </button>
             <HLSVideoPlayer
@@ -99,11 +86,9 @@ const CaseStudyDetails = () => {
               autoPlay={true}
               controls={true}
             />
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+          </div>
+        </div>
+      ) : null;
 
   if (detailError) {
     return (
@@ -125,8 +110,7 @@ const CaseStudyDetails = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-        }}
-      >
+        }}>
         <SimpleLoader />
       </div>
     );
@@ -143,13 +127,8 @@ const CaseStudyDetails = () => {
       <SchemaMarkup schema={createCaseStudySchema(state, slug)} />
       <div className="bg-[#FDFDFD] class-gap overflow-hidden">
         <div className="blogs-details-div-1">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fromLeftVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="blogs-details-data-div"
-          >
+          <div
+            className="blogs-details-data-div">
             <div className="blogs-details-inner-div-1">
               <p className="font-20-regular color-green-1">Case Study</p>
               <p className="font-40-semibold color-black-1">{state.title}</p>
@@ -165,20 +144,15 @@ const CaseStudyDetails = () => {
               title={state?.title}
               className="max-[1024px]:!hidden"
             />
-          </motion.div>
-          <motion.div
-            initial={{ x: 100 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 0.9, ease: "easeInOut", delay: 0.2 }}
-            className="blogs-details-image-div"
-          >
+          </div>
+          <div
+            className="blogs-details-image-div">
             {state?.mediaType === "video" ? (
               <button
                 type="button"
                 className="case-study-video-trigger"
                 onClick={() => setIsVideoPopupOpen(true)}
-                aria-label={`Play ${state?.title || "case study video"}`}
-              >
+                aria-label={`Play ${state?.title || "case study video"}`}>
                 <img
                   src={videoThumbnailUrl}
                   className="common-img"
@@ -201,7 +175,7 @@ const CaseStudyDetails = () => {
                 draggable={false}
               />
             )}
-          </motion.div>
+          </div>
         </div>
 
         <ShareSection
@@ -210,13 +184,8 @@ const CaseStudyDetails = () => {
           className="!hidden max-[1024px]:!flex"
         />
         {!!state?.clientMessage && (
-          <motion.section
-            initial="hidden"
-            animate="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.01 }}
-            className="case-study-testimonial !flex-col !items-center !gap-5"
-          >
+          <section
+            className="case-study-testimonial !flex-col !items-center !gap-5">
             <q className="font-20-regular color-black-1 italic text-center">
               {state?.clientMessage}
             </q>
@@ -237,15 +206,10 @@ const CaseStudyDetails = () => {
                 </p>
               </div>
             )}
-          </motion.section>
+          </section>
         )}
-        <motion.div
-          className="blogs-details-div-2 relative overflow-hidden"
-          initial="hidden"
-          animate="visible"
-          custom={1}
-          variants={animation.fadeInUpVariant}
-        >
+        <div
+          className="blogs-details-div-2 relative overflow-hidden">
           <TiptapContent
             content={state?.content}
             className="prose casestudy-content whitespace-normal max-w-full"
@@ -264,21 +228,16 @@ const CaseStudyDetails = () => {
               pointerEvents: "none",
             }}
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={animation.fadeInUpVariant}
-          viewport={{ once: true, amount: 0.2 }}
-          className="blogs-details-btn"
-        >
+        <div
+          className="blogs-details-btn">
           <CommonButton
             title={"Download"}
             theme={"green"}
             onClick={() => setCaseStudyModal(true)}
           />
-        </motion.div>
+        </div>
       </div>
 
       <CaseStudyModal

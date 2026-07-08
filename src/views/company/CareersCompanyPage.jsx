@@ -6,7 +6,6 @@ import CareersPositionComponent from "../../components/company/CareersPositionCo
 import { careerHeroImage } from "../../helpers/assets";
 import Search from "../../assets/icons/search-normal.svg";
 import LocationPin from "../../assets/icons/location.svg";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import { useRouter } from "next/navigation";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
@@ -137,74 +136,46 @@ const CareersCompanyPage = () => {
 
       {/* ---------- Hero ---------- */}
       <section className="careers-hero-wrap">
-        <motion.div
-          className="careers-hero"
-          initial={{ scale: 1.04 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1, ease: [0, 0.71, 0.2, 1.01] }}
-        >
+        <div
+          className="careers-hero">
           <ImageComponent
             src={careerHeroImage}
             className="common-img"
             alt="Join the Unbox Robotics team"
           />
           <div className="careers-hero-overlay">
-            <motion.h1
-              className="color-white careers-hero-title"
-              variants={animation.fadeInUpVariant}
-              custom={1}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            <h1
+              className="color-white careers-hero-title">
               Join the Minds Behind the{" "}
               <span className="hero-accent">Machines.</span>
-            </motion.h1>
-            <motion.p
-              className="font-16-light color-white careers-hero-sub"
-              variants={animation.fadeInUpVariant}
-              custom={2}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            </h1>
+            <p
+              className="font-16-light color-white careers-hero-sub">
               Become part of a passionate team designing intelligent robotic
               solutions for the world's fastest-growing industries.
-            </motion.p>
-            <motion.div
-              variants={animation.fadeInUpVariant}
-              custom={3}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            </p>
+            <div>
               <CommonButton
                 theme="green"
                 title="View Open Position"
                 onClick={scrollToOpenPositions}
               />
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ---------- Why you should work with Unbox ---------- */}
       <section className="careers-section why-work-section">
-        <motion.h2
-          className="font-40-regular color-black-1"
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <h2
+          className="font-40-regular color-black-1">
           Why you should work with Unbox Robotics
-        </motion.h2>
+        </h2>
         <div className="why-work-card">
           <div
             className="why-work-tabs flex p-[3px] rounded-full max-[567px]:rounded-[16px] border-[#141313] border max-[567px]:!bg-transparent  max-[567px]:border-none justify-between"
             role="tablist"
-            aria-label="Why work with us"
-          >
+            aria-label="Why work with us">
             {careersWhyWorkTabs.map((tab, index) => (
               <button
                 key={tab.id}
@@ -216,13 +187,11 @@ const CareersCompanyPage = () => {
                   activeTab === index
                     ? "is-active text-white"
                     : "text-[#141313]"
-                }`}
-              >
+                }`}>
                 {activeTab === index && (
-                  <motion.div
+                  <div
                     layoutId="whyWorkActivePill"
                     className="why-work-pill absolute inset-0 bg-black rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
                 <span className="relative z-10">{tab.label}</span>
@@ -241,15 +210,11 @@ const CareersCompanyPage = () => {
                 draggable={false}
               />
             </div>
-            <motion.p
+            <p
               key={`txt-${activeTabData.id}`}
-              className="font-24-light color-black-1 why-work-text"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
+              className="font-24-light color-black-1 why-work-text">
               {activeTabData.description}
-            </motion.p>
+            </p>
           </div>
         </div>
       </section>
@@ -257,43 +222,26 @@ const CareersCompanyPage = () => {
       {/* ---------- Life at Unbox ---------- */}
       <section className="careers-section life-section">
         <div className="careers-section-head">
-          <motion.h2
-            className="font-40-regular color-black-1"
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <h2
+            className="font-40-regular color-black-1">
             Life at Unbox
-          </motion.h2>
-          <motion.p
-            className="font-16-light color-grey-1"
-            variants={animation.fadeInUpVariant}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          </h2>
+          <p
+            className="font-16-light color-grey-1">
             A look at the teams, labs and deployments behind the platform.
-          </motion.p>
+          </p>
         </div>
         <div className="life-gallery">
           {lifeAtUnboxImages.map((img, index) => (
-            <motion.div
+            <div
               key={img.id}
-              className={`life-tile life-tile-${index + 1}`}
-              variants={animation.linkVariant}
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
-            >
+              className={`life-tile life-tile-${index + 1}`}>
               <ImageComponent
                 src={img.image}
                 className="common-img"
                 alt={img.alt}
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -302,37 +250,20 @@ const CareersCompanyPage = () => {
       <div className="why-join-bg">
         <section className="careers-section why-join-section">
           <div className="careers-section-head">
-            <motion.h2
-              className="font-40-regular color-black-1"
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            <h2
+              className="font-40-regular color-black-1">
               Why Join Us
-            </motion.h2>
-            <motion.p
-              className="font-16-light color-grey-1"
-              variants={animation.fadeInUpVariant}
-              custom={1}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            </h2>
+            <p
+              className="font-16-light color-grey-1">
               Support to do the best work of your career
-            </motion.p>
+            </p>
           </div>
           <div className="why-join-grid">
             {whyJoinUsList.map((item, index) => (
-              <motion.div
+              <div
                 key={item.id}
-                className="why-join-card"
-                variants={animation.fadeInUpVariant}
-                custom={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
-              >
+                className="why-join-card">
                 {item.icon}
                 <div className="why-join-card-text">
                   <p className="font-20-medium color-black-1">{item.title}</p>
@@ -340,7 +271,7 @@ const CareersCompanyPage = () => {
                     {item.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </section>
@@ -349,37 +280,20 @@ const CareersCompanyPage = () => {
       {/* ---------- Where we are ---------- */}
       <section className="careers-section locations-section">
         <div className="careers-section-head">
-          <motion.h2
-            className="font-40-regular color-black-1"
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <h2
+            className="font-40-regular color-black-1">
             Where we are
-          </motion.h2>
-          <motion.p
-            className="font-16-light color-grey-1"
-            variants={animation.fadeInUpVariant}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          </h2>
+          <p
+            className="font-16-light color-grey-1">
             Our offices and engineering hubs across India.
-          </motion.p>
+          </p>
         </div>
         <div className="locations-grid">
           {careerLocations.map((loc, index) => (
-            <motion.div
+            <div
               key={loc.id}
-              className="location-card"
-              variants={animation.fadeInUpVariant}
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+              className="location-card">
               <div className="location-card-left">
                 <LocationPin stroke="#079d92" width={28} height={28} />
                 <div className="location-card-info">
@@ -390,7 +304,7 @@ const CareersCompanyPage = () => {
               <span className="location-tag font-14-regular color-black-1">
                 {loc.tag}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -399,28 +313,16 @@ const CareersCompanyPage = () => {
       <section
         className="careers-section open-positions-section"
         id="open-positions"
-        ref={openPositionsRef}
-      >
+        ref={openPositionsRef}>
         <div className="careers-section-head">
-          <motion.h2
-            className="font-40-regular color-black-1"
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <h2
+            className="font-40-regular color-black-1">
             Open Positions
-          </motion.h2>
-          <motion.p
-            className="font-16-light color-grey-1"
-            variants={animation.fadeInUpVariant}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          </h2>
+          <p
+            className="font-16-light color-grey-1">
             Explore open roles across engineering, deployment and operations.
-          </motion.p>
+          </p>
         </div>
 
         <div className="open-positions-search">
@@ -438,8 +340,7 @@ const CareersCompanyPage = () => {
               type="button"
               className="search-clear-btn"
               aria-label="Clear search"
-              onClick={() => setSearchTerm("")}
-            >
+              onClick={() => setSearchTerm("")}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
                   d="M12 4L4 12M4 4l8 8"
@@ -464,8 +365,7 @@ const CareersCompanyPage = () => {
                   className={`filter-chip font-14-regular ${
                     selectedDepartment === ALL ? "is-active" : ""
                   }`}
-                  onClick={() => setSelectedDepartment(ALL)}
-                >
+                  onClick={() => setSelectedDepartment(ALL)}>
                   All
                   <span className="chip-count">{baseFiltered.length}</span>
                 </button>
@@ -476,8 +376,7 @@ const CareersCompanyPage = () => {
                     className={`filter-chip font-14-regular ${
                       selectedDepartment === dept ? "is-active" : ""
                     }`}
-                    onClick={() => setSelectedDepartment(dept)}
-                  >
+                    onClick={() => setSelectedDepartment(dept)}>
                     {dept}
                     <span className="chip-count">{count}</span>
                   </button>
@@ -485,7 +384,7 @@ const CareersCompanyPage = () => {
               </div>
             </div>
 
-            {locationOptions.length > 0 && (
+            {locationOptions.length> 0 && (
               <div className="chips-group">
                 <p className="font-14-regular color-grey-1 chips-group-label">
                   Location
@@ -496,8 +395,7 @@ const CareersCompanyPage = () => {
                     className={`filter-chip font-14-regular ${
                       selectedLocation === ALL ? "is-active" : ""
                     }`}
-                    onClick={() => setSelectedLocation(ALL)}
-                  >
+                    onClick={() => setSelectedLocation(ALL)}>
                     All
                   </button>
                   {locationOptions.map((loc) => (
@@ -507,8 +405,7 @@ const CareersCompanyPage = () => {
                       className={`filter-chip font-14-regular ${
                         selectedLocation === loc ? "is-active" : ""
                       }`}
-                      onClick={() => setSelectedLocation(loc)}
-                    >
+                      onClick={() => setSelectedLocation(loc)}>
                       {loc}
                     </button>
                   ))}
@@ -544,7 +441,7 @@ const CareersCompanyPage = () => {
               data={visibleJobs}
               onClick={(job) => router.push(`/careers/${job.id}`)}
             />
-            {remaining > 0 && (
+            {remaining> 0 && (
               <div className="load-more-wrap">
                 <CommonButton
                   theme="green"

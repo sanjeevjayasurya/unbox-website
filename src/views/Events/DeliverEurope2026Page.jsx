@@ -31,17 +31,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Swal from "sweetalert2";
 import TextField from "../../components/common/form/TextField";
 import { animation } from "../../helpers/utils";
-import { AnimatePresence, motion } from "framer-motion";
 import { base_url, rsvpApiEndPoint } from "../../helpers/config";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
 import SchemaMarkup from "../../components/common/SchemaMarkup";
 import { deliverEurope2026Schema } from "../../helpers/schemas";
-import caseStudyVideo from "./assets/unbox-robot.mp4";
+import caseStudyVideo from "./assets/unbox-robot.webm";
 import MotifeIcon from "./assets/motife.svg";
 import { europeEventLogo, unboxsort3 } from "../../helpers/assets";
 import { isEventPast } from "./config";
 
-const deliverEuropeHero = process.env.PUBLIC_URL + "/images/deliver-europe-hero.webp";
+const deliverEuropeHero =
+  process.env.PUBLIC_URL + "/images/deliver-europe-hero.webp";
 
 const PUBLIC_EMAIL_DOMAINS = [
   "gmail.com",
@@ -220,132 +220,113 @@ const RSVPModal = ({ visible, onClose }) => {
     }
   };
 
-  const modal = (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          className="de-rsvp-overlay"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-        >
-          <motion.div
-            className="de-rsvp-modal"
-            data-lenis-prevent
-            initial={{ opacity: 0, scale: 0.9, y: 32 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            onClick={(e) => e.stopPropagation()}
+  const modal = visible ? (
+    <div className="de-rsvp-overlay" onClick={onClose}>
+      <div
+        className="de-rsvp-modal"
+        data-lenis-prevent
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="de-rsvp-modal-header">
+          <p className="font-20-medium color-black-1">RSVP to our Session</p>
+          <button
+            type="button"
+            onClick={onClose}
+            className="de-rsvp-close-btn"
+            aria-label="Close"
           >
-            {/* Header */}
-            <div className="de-rsvp-modal-header">
-              <p className="font-20-medium color-black-1">
-                RSVP to our Session
-              </p>
-              <button
-                type="button"
-                onClick={onClose}
-                className="de-rsvp-close-btn"
-                aria-label="Close"
-              >
-                <CloseIcon stroke="black" aria-hidden="true" />
-              </button>
+            <CloseIcon stroke="black" aria-hidden="true" />
+          </button>
+        </div>
+
+        {/* Session banner */}
+        <div className="de-rsvp-session-banner">
+          <img
+            src={lukasz}
+            alt="Lukasz Banachowicz"
+            className="de-rsvp-speaker-avatar"
+            draggable={false}
+          />
+          <div className="de-rsvp-banner-text">
+            <p className="font-20-light color-black-1">
+              World's First{" "}
+              <span className="!font-semibold">Vertical Mobile Sortation:</span>{" "}
+              Redefining Warehouse Physics in Three Dimensions
+            </p>
+            <p className="font-14-regular color-black-1">
+              Speaker: Łukasz Banachowicz, Sales Director EMEA, Unbox Robotics
+            </p>
+          </div>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit(onSubmit)} className="de-rsvp-form">
+          <TextField
+            label="Full Name"
+            name="fullName"
+            required
+            register={register}
+            error={errors.fullName?.message}
+          />
+          <TextField
+            label="Company Name"
+            name="companyName"
+            required
+            register={register}
+            error={errors.companyName?.message}
+          />
+          <div className="de-form-row">
+            <TextField
+              label="Title"
+              name="title"
+              required
+              register={register}
+              error={errors.title?.message}
+            />
+            <TextField
+              label="Company Email ID"
+              name="companyEmail"
+              type="email"
+              required
+              register={register}
+              error={errors.companyEmail?.message}
+            />
+          </div>
+
+          {/* Date / Location */}
+          <div className="de-rsvp-session-meta">
+            <div className="de-rsvp-meta-item flex-1">
+              <div className="de-rsvp-meta-icon">
+                <CalendarIcon fill="#079D92" width={20} height={20} />
+              </div>
+              <span className="font-16-light color-black-1">
+                Thu 4 , June 2026
+              </span>
             </div>
-
-            {/* Session banner */}
-            <div className="de-rsvp-session-banner">
-              <img
-                src={lukasz}
-                alt="Lukasz Banachowicz"
-                className="de-rsvp-speaker-avatar"
-                draggable={false}
-              />
-              <div className="de-rsvp-banner-text">
-                <p className="font-20-light color-black-1">
-                  World's First{" "}
-                  <span className="!font-semibold">
-                    Vertical Mobile Sortation:
-                  </span>{" "}
-                  Redefining Warehouse Physics in Three Dimensions
-                </p>
-                <p className="font-14-regular color-black-1">
-                  Speaker: Łukasz Banachowicz, Sales Director EMEA, Unbox
-                  Robotics
-                </p>
+            <div className="de-rsvp-meta-item flex-1">
+              <div className="de-rsvp-meta-icon">
+                <LocationIcon stroke="#079D92" width={20} height={20} />
               </div>
+              <span className="font-16-light color-black-1">
+                TAETS Event Park, Amsterdam
+              </span>
             </div>
+          </div>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit(onSubmit)} className="de-rsvp-form">
-              <TextField
-                label="Full Name"
-                name="fullName"
-                required
-                register={register}
-                error={errors.fullName?.message}
-              />
-              <TextField
-                label="Company Name"
-                name="companyName"
-                required
-                register={register}
-                error={errors.companyName?.message}
-              />
-              <div className="de-form-row">
-                <TextField
-                  label="Title"
-                  name="title"
-                  required
-                  register={register}
-                  error={errors.title?.message}
-                />
-                <TextField
-                  label="Company Email ID"
-                  name="companyEmail"
-                  type="email"
-                  required
-                  register={register}
-                  error={errors.companyEmail?.message}
-                />
-              </div>
-
-              {/* Date / Location */}
-              <div className="de-rsvp-session-meta">
-                <div className="de-rsvp-meta-item flex-1">
-                  <div className="de-rsvp-meta-icon">
-                    <CalendarIcon fill="#079D92" width={20} height={20} />
-                  </div>
-                  <span className="font-16-light color-black-1">
-                    Thu 4 , June 2026
-                  </span>
-                </div>
-                <div className="de-rsvp-meta-item flex-1">
-                  <div className="de-rsvp-meta-icon">
-                    <LocationIcon stroke="#079D92" width={20} height={20} />
-                  </div>
-                  <span className="font-16-light color-black-1">
-                    TAETS Event Park, Amsterdam
-                  </span>
-                </div>
-              </div>
-
-              {/* Submit */}
-              <div className="de-rsvp-row">
-                <CommonButton
-                  type="submit"
-                  theme={"green"}
-                  disabled={isSubmitting}
-                  title={isSubmitting ? "Submitting..." : "RSVP to Our Session"}
-                />
-              </div>
-            </form>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+          {/* Submit */}
+          <div className="de-rsvp-row">
+            <CommonButton
+              type="submit"
+              theme={"green"}
+              disabled={isSubmitting}
+              title={isSubmitting ? "Submitting..." : "RSVP to Our Session"}
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  ) : null;
 
   return typeof document !== "undefined"
     ? createPortal(modal, document.body)
@@ -379,12 +360,7 @@ const DeliverEurope2026Page = () => {
             draggable={false}
           />
           <div className="de-hero-gradient" />
-          <motion.div
-            className="de-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={animation.fromLeftVariant}
-          >
+          <div className="de-hero-content">
             <div className="de-hero-title-wrap">
               <span className="de-hero-title-bar" />
               <h1 className="text-white res-font-48-extralight">
@@ -451,20 +427,13 @@ const DeliverEurope2026Page = () => {
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ── 2. SPEAKING SESSION ── */}
       <section className="de-section">
-        <motion.div
-          className="flex gap-5 max-[768px]:flex-col"
-          variants={animation.fadeInUpVariant}
-          custom={0}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className="flex gap-5 max-[768px]:flex-col">
           {/* Left — speaker photo card */}
           <div className="de-speaker-card">
             <div className="de-speaker-img-box">
@@ -499,42 +468,21 @@ const DeliverEurope2026Page = () => {
               Sales Director EMEA, Unbox Robotics
             </p>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ── 3. WHAT WE ARE SHOWCASING ── */}
       <section className="de-section">
         <div className="space-y-5">
-          <motion.h2
-            className="font-40-regular color-black-1 text-center"
-            variants={animation.fadeInUpVariant}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <h2 className="font-40-regular color-black-1 text-center">
             What We Are Showcasing UnboxSort
-          </motion.h2>
-          <motion.p
-            className="font-16-light color-grey-1 text-center"
-            variants={animation.fadeInUpVariant}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          </h2>
+          <p className="font-16-light color-grey-1 text-center">
             Vertical robotic sortation, built for Omnichannel DCs.
-          </motion.p>
+          </p>
         </div>
 
-        <motion.div
-          className="industry-case-study-image-wrap"
-          custom={0}
-          variants={animation.itemFromRightVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div className="industry-case-study-image-wrap">
           <video
             src={caseStudyVideo}
             autoPlay
@@ -545,31 +493,19 @@ const DeliverEurope2026Page = () => {
             draggable={false}
             className="industry-case-study-image"
           />
-        </motion.div>
+        </div>
 
         <div className="de-showcase-split">
-          <motion.div
-            className="de-showcase-half-img-wrap"
-            variants={animation.fromLeftVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div className="de-showcase-half-img-wrap">
             <img
               src={unboxsort3}
               className="de-showcase-half-img"
               alt="product image"
               draggable={false}
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="de-swarm-card"
-            variants={animation.fromRightVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div className="de-swarm-card">
             <p className="font-16-light color-black-1 uppercase">Powered By</p>
             <div className="space-y-5">
               <h3 className="font-40-regular text-[var(--green-2)]">
@@ -587,17 +523,10 @@ const DeliverEurope2026Page = () => {
             <p className="font-20-medium color-black-1">
               Inspired by ant colonies. Built for warehouses.
             </p>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          className="de-stats-grid"
-          variants={animation.fadeInUpVariant}
-          custom={3}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className="de-stats-grid">
           {showcaseStats.map((stat, i) => (
             <div key={i} className="de-stat-card">
               <div className="de-stat-card-icon">
@@ -611,34 +540,22 @@ const DeliverEurope2026Page = () => {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* ── 4. LIVE WITH LEADING BRANDS ── */}
       <section className="de-section-2">
         <div className="flex flex-col gap-5">
-          <motion.h2
-            className="font-40-regular color-black-1 text-center"
-            variants={animation.fadeInUpVariant}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <h2 className="font-40-regular color-black-1 text-center">
             Live with Leading Brands
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="font-16-light color-grey-1 text-center"
             style={{ maxWidth: 660, margin: "0 auto" }}
-            variants={animation.fadeInUpVariant}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
           >
             Live deployments across Europe, India, Turkey, and beyond. Many more
             stories at the booth.
-          </motion.p>
+          </p>
         </div>
 
         <div className="de-scroller-breakout">
@@ -646,14 +563,7 @@ const DeliverEurope2026Page = () => {
         </div>
 
         <div className="de-brands-cards-wrap">
-          <motion.div
-            className="de-brands-grid"
-            variants={animation.fadeInUpVariant}
-            custom={3}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <div className="de-brands-grid">
             {brandsData.map((brand, i) => (
               <div key={i} className="de-brand-card">
                 <p className="font-20-medium text-[var(--green-2)] uppercase">
@@ -665,42 +575,22 @@ const DeliverEurope2026Page = () => {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ── 5. MEET THE TEAM ── */}
       <section className="de-section">
         <div className="flex flex-col gap-5">
-          <motion.h2
-            className="font-40-regular color-black-1 text-center"
-            variants={animation.fadeInUpVariant}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <h2 className="font-40-regular color-black-1 text-center">
             Meet the Team at Booth C66
-          </motion.h2>
-          <motion.p
-            className="font-16-light color-grey-1 text-center"
-            variants={animation.fadeInUpVariant}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          </h2>
+          <p className="font-16-light color-grey-1 text-center">
             The two of us will be at the booth across both days.
-          </motion.p>
+          </p>
         </div>
 
-        <motion.div
-          className="flex flex-col lg:flex-row lg:min-h-[700px] items-center justify-center gap-8 lg:gap-4"
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className="flex flex-col lg:flex-row lg:min-h-[700px] items-center justify-center gap-8 lg:gap-4">
           {experts.map((expert) => {
             const isHovered = teamHoveredId === expert.id;
 
@@ -742,51 +632,30 @@ const DeliverEurope2026Page = () => {
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </section>
 
       {/* ── 6. WHY VISIT US ── */}
       <section className="de-section">
         <div>
-          <motion.h2
-            className="font-40-regular color-black-1 text-center"
-            variants={animation.fadeInUpVariant}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <h2 className="font-40-regular color-black-1 text-center">
             Why Visit Us
-          </motion.h2>
+          </h2>
         </div>
 
-        <motion.div
-          className="de-why-grid"
-          variants={animation.fadeInUpVariant}
-          custom={1}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className="de-why-grid">
           {whyVisitItems.map((item) => (
             <div key={item.id} className={`de-why-item`}>
               <MotifeIcon />
               <p className={`font-20-regular`}>{item.text}</p>
             </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* ── 7. DARK BOOTH CTA (upcoming events only) ── */}
       {!isPast && (
-        <motion.div
-          className="de-booth-cta"
-          variants={animation.fadeInUpVariant}
-          custom={0}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <div className="de-booth-cta">
           <p
             className="font-40-regular"
             style={{ color: "#fff", textAlign: "center" }}
@@ -799,7 +668,7 @@ const DeliverEurope2026Page = () => {
           >
             <CommonButton theme="white" title="Book A Meeting" />
           </a>
-        </motion.div>
+        </div>
       )}
 
       {/* RSVP Modal */}

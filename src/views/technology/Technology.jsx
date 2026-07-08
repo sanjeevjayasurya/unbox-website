@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import "./index.css";
 import { animation } from "../../helpers/utils";
-import { motion } from "framer-motion";
 import { techAccordionData, techHelp } from "./config";
 import TechAccordion from "../../components/technology/TechAccordion";
 import BiningSlider from "../../components/technology/BiningSlider";
@@ -30,47 +29,24 @@ const Technology = () => {
       <SchemaMarkup schema={technologySchema} />
       {/* header */}
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="technology-header"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="technology-header">
           <div className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px]">
-            <motion.h1
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <h1
+              className="font-40-regular color-black-1 text-center">
               Our Core Technology
-            </motion.h1>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            </h1>
+            <p
+              className="font-16-light color-grey-1 text-center">
               Unbox Robotics is built on a focused set of core technologies.
               Vertical robotic sortation, swarm-enabled fleet coordination, and
               tightly integrated hardware-software systems, designed to maximise
               throughput, accuracy, and space efficiency in real warehouse
               environments.
-            </motion.p>
+            </p>
           </div>
-          <motion.div
-            className="git-container max-w-[843px]"
-            initial={{ scale: 0.95 }}
-            animate={{ scale: 1 }}
-            transition={{
-              duration: 1,
-              ease: [0, 0.71, 0.2, 1.01],
-            }}
-          >
+          <div
+            className="git-container max-w-[843px]">
             <video
               src={TechnologyVideo}
               poster={technologyPoster}
@@ -83,40 +59,24 @@ const Technology = () => {
               className="common-img"
               fetchPriority="high"
             />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="technology-section-2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h1
-            className="font-40-regular color-black-1 text-center"
-            custom={0}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+        <div
+          className="technology-section-2">
+          <h1
+            className="font-40-regular color-black-1 text-center">
             Core Technology Pillars
-          </motion.h1>
+          </h1>
 
           <div className="tech-help-container">
             {techHelp?.map((item, index) => {
               return (
-                <motion.div
+                <div
                   className="flex-1 tech-help-item"
-                  key={index}
-                  custom={index}
-                  variants={animation.linkVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                >
+                  key={index}>
                   {item?.icon}
                   <div className="flex flex-col gap-[12px]">
                     <h3 className="font-20-medium color-black-1">
@@ -126,57 +86,32 @@ const Technology = () => {
                       {item?.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="technology-section-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="technology-section-4">
           <div className="flex flex-col gap-[14px] md:gap-[20px] max-w-[800px]">
-            <motion.h1
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <h1
+              className="font-40-regular color-black-1 text-center">
               Automation Beyond the Robot
-            </motion.h1>
-            <motion.p
-              className="font-16-light color-grey-1 text-center"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            </h1>
+            <p
+              className="font-16-light color-grey-1 text-center">
               To deliver reliable, end-to-end sortation performance, Unbox
               integrates a set of tightly coupled peripheral systems that
               automate induction, measurement, safety, and output handling.
-            </motion.p>
+            </p>
           </div>
-          <motion.div
-            className="technology-section-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.div
-              className="flex-1 technology-section-3-right"
-              variants={animation.fromRightVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+          <div
+            className="technology-section-3">
+            <div
+              className="flex-1 technology-section-3-right">
               <div className="space-y-5">
                 <h2 className="font-40-regular color-white">
                   Multi-Level Binning Systems
@@ -189,44 +124,28 @@ const Technology = () => {
               <div className="w-full">
                 <BiningSlider />
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="technology-section-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="technology-section-4">
           <div className="flex flex-col gap-[14px] md:gap-[20px] ">
-            <motion.h1
-              className="font-40-regular color-black-1 text-center"
-              custom={0}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <h1
+              className="font-40-regular color-black-1 text-center">
               Built for Accuracy, Uptime, and Safe Operations
-            </motion.h1>
-            <motion.p
-              className="font-16-light color-grey-1 text-center max-w-[900px] mx-auto"
-              custom={1}
-              variants={animation.fadeInUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            </h1>
+            <p
+              className="font-16-light color-grey-1 text-center max-w-[900px] mx-auto">
               Unbox integrates measurement, charging, and safety systems
               directly into the robotic workflow to eliminate manual
               intervention and ensure consistent operations.
-            </motion.p>
+            </p>
           </div>
           <TechAccordion data={techAccordionData} />
-        </motion.div>
+        </div>
       </div>
     </>
   );

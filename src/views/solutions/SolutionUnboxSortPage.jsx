@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import "./index.css";
 import SolutionUnboxHeroSection from "../../components/solutions/SolutionUnboxHeroSection";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import { workAreaData } from "./config";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
@@ -30,13 +29,8 @@ const SolutionUnboxSortPage = () => {
         <SolutionUnboxHeroSection />
       </div>
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={animation.fadeInUpVariant}
-          viewport={{ once: true, amount: 0.2 }}
-          className="solutions-unbox-div-2"
-        >
+        <div
+          className="solutions-unbox-div-2">
           <p className="font-20-light text-[#818382] text-center">
             Traditional sortation systems struggle with space limitations,
             high labor demands, slow processing, and sorting errors. UnboxSort
@@ -44,15 +38,10 @@ const SolutionUnboxSortPage = () => {
             approach that increases efficiency and accuracy while using less
             floor space.
           </p>
-        </motion.div>
+        </div>
         <div className="solutions-unbox-div-3">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="div-3-header"
-          >
+          <div
+            className="div-3-header">
             <p className="font-40-regular color-black-1 text-center">
               UnboxSort’s Superpowers
             </p>
@@ -61,28 +50,19 @@ const SolutionUnboxSortPage = () => {
               to every warehouse challenge. Discover the powerful ways our
               system can enhance your current supply chain.
             </p>
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="w-full"
-          >
+          </div>
+          <div
+            className="w-full">
             <BiningUnboxSortSlider />
-          </motion.div>
+          </div>
         </div>
         <div className="solutions-unbox-div-4">
           <TechAccordion data={workAreaData} />
         </div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="solutions-unbox-div-6"
-        >
+        <div
+          className="solutions-unbox-div-6">
           <MachineTabs />
-        </motion.div>
+        </div>
       </div>
     </>
   );

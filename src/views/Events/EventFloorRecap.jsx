@@ -1,33 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import CommonButton from "../../components/common/CommonButton";
 import ImageComponent from "../../components/common/ImageComponent";
 
 const Head = ({ title, subtitle }) => (
   <div className="recap-head">
-    <motion.h2
-      className="font-40-regular color-black-1 text-center"
-      variants={animation.fadeInUpVariant}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
-    >
+    <h2
+      className="font-40-regular color-black-1 text-center">
       {title}
-    </motion.h2>
+    </h2>
     {subtitle && (
-      <motion.p
-        className="font-16-light color-grey-1 text-center recap-subtitle"
-        variants={animation.fadeInUpVariant}
-        custom={1}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-      >
+      <p
+        className="font-16-light color-grey-1 text-center recap-subtitle">
         {subtitle}
-      </motion.p>
+      </p>
     )}
   </div>
 );
@@ -43,13 +31,8 @@ const RecapResources = ({ resources }) => {
     <section className="recap-section">
       <Head title={resources.title} subtitle={resources.subtitle} />
       <div className="recap-resources">
-        <motion.div
-          className="recap-takeaways"
-          variants={animation.fromLeftVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="recap-takeaways">
           <p className="font-24-medium color-black-1">
             {resources.takeawaysTitle}
           </p>
@@ -62,43 +45,31 @@ const RecapResources = ({ resources }) => {
                   type="button"
                   aria-pressed={isActive}
                   className={`takeaway-card ${isActive ? "is-active" : ""}`}
-                  onClick={() => setActive(i)}
-                >
+                  onClick={() => setActive(i)}>
                   <p
                     className={`font-20-medium takeaway-title ${
                       isActive ? "color-white" : "color-black-1"
-                    }`}
-                  >
+                    }`}>
                     {t.title}
                   </p>
                   <p
                     className={`font-16-light takeaway-text ${
                       isActive ? "color-white" : "color-grey-1"
-                    }`}
-                  >
+                    }`}>
                     {t.text}
                   </p>
                 </button>
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="recap-recording"
-          variants={animation.fromRightVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="recap-recording">
           {recording && (
-            <motion.div
+            <div
               key={active}
-              className="recap-recording-inner"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, ease: "easeOut" }}
-            >
+              className="recap-recording-inner">
               <div className="recap-recording-img">
                 <ImageComponent
                   src={recording.image}
@@ -122,9 +93,9 @@ const RecapResources = ({ resources }) => {
                   }
                 />
               </div>
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -142,15 +113,9 @@ const EventFloorRecap = ({ data }) => {
           <Head title={moments.title} subtitle={moments.subtitle} />
           <div className="moments-gallery">
             {moments.gallery.map((img, i) => (
-              <motion.div
+              <div
                 key={img.id}
-                className={`moment-tile moment-tile-${i + 1}`}
-                variants={animation.linkVariant}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
-              >
+                className={`moment-tile moment-tile-${i + 1}`}>
                 <ImageComponent
                   src={img.image}
                   alt={img.caption}
@@ -160,29 +125,23 @@ const EventFloorRecap = ({ data }) => {
                 <p className="moment-caption font-16-medium color-white">
                   {img.caption}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </section>
       )}
 
       {/* ── Impact stats ── */}
-      {stats && stats.length > 0 && (
+      {stats && stats.length> 0 && (
         <section className="recap-section">
           <div className="recap-stats-grid">
             {stats.map((s, i) => (
-              <motion.div
+              <div
                 key={i}
-                className="recap-stat-card"
-                variants={animation.fadeInUpVariant}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-              >
+                className="recap-stat-card">
                 <p className="font-40-semibold color-green-1">{s.value}</p>
                 <p className="font-16-light color-grey-1">{s.label}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </section>

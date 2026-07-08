@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import Location from "../../assets/icons/location.svg";
 import Clock from "../../assets/icons/clock.svg";
@@ -9,21 +8,15 @@ import Clock from "../../assets/icons/clock.svg";
 // Shared dark header for the job details / apply pages — matches the
 // Get In Touch page header (.title-main-div) styling.
 const JobHeader = ({ title, location, type }) => (
-  <motion.div
-    className="job-header"
-    initial="hidden"
-    animate="visible"
-    variants={animation.fadeInUpVariant}
-  >
-    <motion.h1
-      variants={animation.fadeInUpVariant}
-      className="font-40-regular color-white text-center"
-    >
+  <div
+    className="job-header">
+    <h1
+      className="font-40-regular color-white text-center">
       {title}
-    </motion.h1>
+    </h1>
 
     {(location || type) && (
-      <motion.div variants={animation.fadeInUpVariant} className="job-header-meta">
+      <div className="job-header-meta">
         {location && (
           <span className="job-header-chip">
             <Location stroke="#ffffff" className="job-header-icon" />
@@ -36,9 +29,9 @@ const JobHeader = ({ title, location, type }) => (
             <span className="font-14-regular color-white">{type}</span>
           </span>
         )}
-      </motion.div>
+      </div>
     )}
-  </motion.div>
+  </div>
 );
 
 export default JobHeader;

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
 import LogoScroller from "../../components/home/LogoScroller";
 import ImageComponent from "../../components/common/ImageComponent";
@@ -60,19 +59,14 @@ const fadeRight = {
 
 function AnimatedSection({ children, variants, custom, className, style }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = true;
   return (
-    <motion.div
+    <div
       ref={ref}
-      variants={variants}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      custom={custom}
       className={className}
-      style={style}
-    >
+      style={style}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -84,10 +78,10 @@ const ProductOverviewPage = () => {
   const selectedMachine = machineTabsData[0];
 
   const impactRef = useRef(null);
-  const impactInView = useInView(impactRef, { once: true, margin: "-80px" });
+  const impactInView = true;
 
   const specsRef = useRef(null);
-  const specsInView = useInView(specsRef, { once: true, margin: "-80px" });
+  const specsInView = true;
 
   return (
     <>
@@ -98,7 +92,7 @@ const ProductOverviewPage = () => {
 
       <div className="product-overview-page">
         <section className="product-overview-hero">
-          <AnimatedSection variants={fadeUp} custom={0} className="product-overview-headline">
+          <AnimatedSection className="product-overview-headline">
             <h1 className="font-40-regular color-black-1 text-center">
               Next-Generation Autonomous Sorting for Modern Fulfillment
             </h1>
@@ -110,7 +104,7 @@ const ProductOverviewPage = () => {
           </AnimatedSection>
 
           <div className="product-overview-hero-grid">
-            <AnimatedSection variants={fadeLeft} custom={0.15} className="product-overview-hero-media">
+            <AnimatedSection className="product-overview-hero-media">
               <ImageComponent
                 src={HeroRobot}
                 alt="UnboxSort product overview"
@@ -118,7 +112,7 @@ const ProductOverviewPage = () => {
               />
             </AnimatedSection>
 
-            <AnimatedSection variants={fadeRight} custom={0.25} className="product-overview-form-card">
+            <AnimatedSection className="product-overview-form-card">
               <div className="form-card-header">
                 <div className="form-icon">
                   <ContactIcon />
@@ -129,8 +123,7 @@ const ProductOverviewPage = () => {
                   </h3>
                   <p
                     className="font-12-light color-black-1"
-                    style={{ fontSize: "10px", marginTop: "2px" }}
-                  >
+                    style={{ fontSize: "10px", marginTop: "2px" }}>
                     Optimize your facility for operations
                   </p>
                 </div>
@@ -172,7 +165,7 @@ const ProductOverviewPage = () => {
         </section>
 
         <section className="product-overview-section">
-          <AnimatedSection variants={fadeUp} custom={0} className="product-overview-title-wrap">
+          <AnimatedSection className="product-overview-title-wrap">
             <h2 className="font-40-regular color-black-1 text-center">
               Trusted by Industry Leaders
             </h2>
@@ -185,7 +178,7 @@ const ProductOverviewPage = () => {
         </section>
 
         <section className="product-overview-feature-row">
-          <AnimatedSection variants={fadeLeft} custom={0} className="product-overview-feature-copy">
+          <AnimatedSection className="product-overview-feature-copy">
             <h2 className="font-40-regular color-black-1 uppercase">
               INSTANT COMMAND,
               <br />
@@ -199,7 +192,7 @@ const ProductOverviewPage = () => {
               effortlessly.
             </p>
           </AnimatedSection>
-          <AnimatedSection variants={fadeRight} custom={0.15} className="product-overview-feature-media">
+          <AnimatedSection className="product-overview-feature-media">
             <ImageComponent
               src={UnboxRobot}
               alt="UnboxSort in operation"
@@ -210,21 +203,15 @@ const ProductOverviewPage = () => {
 
         <section className="product-overview-specs">
           <div className="product-overview-machine-content-v2" ref={specsRef}>
-            <motion.div
-              className="product-overview-machine-copy"
-              variants={fadeLeft}
-              initial="hidden"
-              animate={specsInView ? "visible" : "hidden"}
-              custom={0}
-            >
+            <div
+              className="product-overview-machine-copy">
               <h2 className="font-40-regular color-black-1 uppercase text-left">
                 MEET THE UNBOXSORT <span className="color-green-1">SR</span>{" "}
                 SERIES
               </h2>
               <p
                 className="font-16-light color-black-1 text-left"
-                style={{ marginTop: "16px", marginBottom: "32px" }}
-              >
+                style={{ marginTop: "16px", marginBottom: "32px" }}>
                 The UnboxSort solution utilizes the SR series which features
                 vertical lift robots engineered for compact, high-density
                 sortation. Designed to handle varied parcels for modern,
@@ -233,14 +220,9 @@ const ProductOverviewPage = () => {
 
               <div className="product-overview-machine-spec-grid-v2">
                 {selectedMachine.content.features.map((feature, i) => (
-                  <motion.article
+                  <article
                     key={feature.name}
-                    className="product-overview-machine-spec-item-v2"
-                    variants={fadeUp}
-                    initial="hidden"
-                    animate={specsInView ? "visible" : "hidden"}
-                    custom={0.1 + i * 0.08}
-                  >
+                    className="product-overview-machine-spec-item-v2">
                     <div className="product-overview-machine-icon-wrap-v2">
                       <feature.image className="product-overview-machine-icon-v2" />
                     </div>
@@ -252,24 +234,19 @@ const ProductOverviewPage = () => {
                         {feature.feature}
                       </p>
                     </div>
-                  </motion.article>
+                  </article>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="product-overview-machine-image-wrap-v2"
-              variants={fadeRight}
-              initial="hidden"
-              animate={specsInView ? "visible" : "hidden"}
-              custom={0.2}
-            >
+            <div
+              className="product-overview-machine-image-wrap-v2">
               <ImageComponent
                 src={Robot}
                 alt={`${selectedMachine.label} robot`}
                 className="common-img machine-v2-img"
               />
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -281,13 +258,8 @@ const ProductOverviewPage = () => {
               className="common-img product-overview-impact-image"
             />
             <div className="product-overview-impact-overlay">
-              <motion.div
-                className="product-overview-title-wrap product-overview-title-wrap-dark"
-                variants={fadeUp}
-                initial="hidden"
-                animate={impactInView ? "visible" : "hidden"}
-                custom={0}
-              >
+              <div
+                className="product-overview-title-wrap product-overview-title-wrap-dark">
                 <h2 className="font-40-regular color-white text-center">
                   Unbox Sort Revolutionizes Parcel Distribution
                 </h2>
@@ -298,25 +270,19 @@ const ProductOverviewPage = () => {
                   complexities into predictable, outperforming capacity, and
                   efficiency.
                 </p>
-              </motion.div>
+              </div>
               <div className="product-overview-impact-grid">
                 {distributionHighlights.map((item, i) => (
-                  <motion.article
+                  <article
                     key={item.title}
-                    className="product-overview-impact-point-v2"
-                    variants={fadeUp}
-                    initial="hidden"
-                    animate={impactInView ? "visible" : "hidden"}
-                    custom={0.2 + i * 0.1}
-                  >
+                    className="product-overview-impact-point-v2">
                     <div className="check-icon-wrap">
                       <svg
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                        xmlns="http://www.w3.org/2000/svg">
                         <circle cx="12" cy="12" r="10" fill="#00AFA9" />
                         <path
                           d="M7.5 12L10.5 15L16.5 9"
@@ -331,7 +297,7 @@ const ProductOverviewPage = () => {
                       {item.title}
                     </h3>
                     <h6 className="font-20-light max-[768px]:!text-[12px] color-white">{item.desc}</h6>
-                  </motion.article>
+                  </article>
                 ))}
               </div>
             </div>

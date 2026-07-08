@@ -6,7 +6,6 @@ import { useParams } from "next/navigation";
 import "./index.css";
 import CommonButton from "../../components/common/CommonButton";
 import { animation } from "../../helpers/utils";
-import { motion } from "framer-motion";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
 import SchemaMarkup from "../../components/common/SchemaMarkup";
 import { createPrNewsSchema } from "../../helpers/schemas";
@@ -58,8 +57,7 @@ const PrNewsDetails = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-        }}
-      >
+        }}>
         <SimpleLoader />
       </div>
     );
@@ -82,13 +80,8 @@ const PrNewsDetails = () => {
       <div className="bg-[#FDFDFD] class-gap overflow-hidden">
         {/* Header */}
         <div className="blogs-details-div-1">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fromLeftVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="blogs-details-data-div"
-          >
+          <div
+            className="blogs-details-data-div">
             <div className="blogs-details-inner-div-1">
               {!!state?.category && (
                 <p className="font-20-regular color-green-1">{state.category}</p>
@@ -108,13 +101,9 @@ const PrNewsDetails = () => {
               title={state?.title}
               className="max-[1024px]:!hidden"
             />
-          </motion.div>
-          <motion.div
-            initial={{ x: 100 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 0.9, ease: "easeInOut", delay: 0.2 }}
-            className="blogs-details-image-div"
-          >
+          </div>
+          <div
+            className="blogs-details-image-div">
             <img
               src={mediaUrl}
               className="common-img"
@@ -123,7 +112,7 @@ const PrNewsDetails = () => {
               loading="eager"
               draggable={false}
             />
-          </motion.div>
+          </div>
         </div>
 
         <ShareSection
@@ -133,32 +122,22 @@ const PrNewsDetails = () => {
         />
 
         {/* Body */}
-        <motion.div
-          className="blogs-details-div-2 relative overflow-hidden"
-          initial="hidden"
-          animate="visible"
-          custom={1}
-          variants={animation.fadeInUpVariant}
-        >
+        <div
+          className="blogs-details-div-2 relative overflow-hidden">
           <TiptapContent
             content={state?.content}
             className="prose casestudy-content whitespace-normal max-w-full"
           />
-        </motion.div>
+        </div>
 
         {/* Read the original coverage */}
         {!!state?.externalUrl && (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="blogs-details-btn"
-          >
+          <div
+            className="blogs-details-btn">
             <a href={state.externalUrl} target="_blank" rel="noreferrer">
               <CommonButton title={"Read the original coverage"} theme={"green"} />
             </a>
-          </motion.div>
+          </div>
         )}
 
         {/* Static About Unbox Robotics block (common to all PR & News) */}
@@ -166,29 +145,18 @@ const PrNewsDetails = () => {
       </div>
 
       {/* More from the Newsroom */}
-      {recentPrNews?.length > 0 && (
+      {recentPrNews?.length> 0 && (
         <div className="bg-[#FDFDFD] class-gap">
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-40-regular text-[#141313]"
-          >
+          <p
+            className="font-40-regular text-[#141313]">
             More from the Newsroom
-          </motion.p>
+          </p>
           <div className="blogs-data-map-div">
             {recentPrNews.map((item, index) => (
-              <motion.div
-                key={item.id || index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-                variants={animation.fadeInUpVariant}
-                custom={index}
-              >
+              <div
+                key={item.id || index}>
                 <PrNewsCard item={item} />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -197,15 +165,10 @@ const PrNewsDetails = () => {
       {/* See what the news is about CTA */}
       <div className="bg-[#141313] w-full">
         <div className="class-gap items-center text-center">
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="font-40-regular color-white"
-          >
+          <p
+            className="font-40-regular color-white">
             See what the news is about
-          </motion.p>
+          </p>
           <Link href="/get-in-touch">
             <CommonButton title={"Book A Meeting"} theme={"white"} />
           </Link>

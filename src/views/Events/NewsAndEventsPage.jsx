@@ -10,7 +10,6 @@ import EventStats from "./EventStats";
 import PastEventsCarousel from "./PastEventsCarousel";
 import BlogCard from "../../components/common/BlogCard";
 import CommonButton from "../../components/common/CommonButton";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
 import SchemaMarkup from "../../components/common/SchemaMarkup";
@@ -43,57 +42,35 @@ const NewsAndEventsPage = () => {
 
       <EventStats />
 
-       {(recentLoading || recentBlogs?.length > 0) && (
+       {(recentLoading || recentBlogs?.length> 0) && (
         <div className="bg-[#FDFDFD] class-gap">
           <div className="flex justify-between">
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              variants={animation.fadeInUpVariant}
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-              className="font-40-regular text-[#141313]"
-            >
+            <p
+              className="font-40-regular text-[#141313]">
               Recent Blogs
-            </motion.p>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={animation.fadeInUpVariant}
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0.2}
-            >
+            </p>
+            <div>
               <Link href={"/blogs"}>
                 <CommonButton title={"View All"} theme={"green"} />
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           <div className="blogs-data-map-div">
             {recentBlogs?.map((item, index) => {
               return (
-                <motion.div
-                  key={index}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                  variants={animation.fadeInUpVariant}
-                  custom={index}
-                >
+                <div
+                  key={index}>
                   <BlogCard item={item} />
-                </motion.div>
+                </div>
               );
             })}
             {recentLoading &&
               Array.from({ length: 3 }).map((_, idx) => (
-                <motion.div
-                  key={`skeleton-blog-${idx}`}
-                  initial="hidden"
-                  animate="visible"
-                  variants={animation.fadeInUpVariant}
-                >
+                <div
+                  key={`skeleton-blog-${idx}`}>
                   <BlogSkeleton />
-                </motion.div>
+                </div>
               ))}
           </div>
         </div>

@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import ImageComponent from "../../components/common/ImageComponent";
 import { findUsEvents } from "./config";
@@ -23,16 +22,11 @@ const WhereToFindUs = () => {
 
   return (
     <div className="bg-[#FDFDFD] class-gap">
-      {eventTabs.length > 1 && (
-      <motion.div
+      {eventTabs.length> 1 && (
+      <div
         className="find-us-toggle flex p-[3px] rounded-full border-[#141313] border justify-between"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-        variants={animation.fadeInUpVariant}
         role="tablist"
-        aria-label="Filter events"
-      >
+        aria-label="Filter events">
         {eventTabs.map((tab) => (
           <button
             key={tab}
@@ -42,41 +36,28 @@ const WhereToFindUs = () => {
             onClick={() => setActiveTab(tab)}
             className={`rounded-full font-16-light transition-colors relative w-full px-[24px] py-[10px] ${
               activeTab === tab ? "text-white" : "text-[#141313]"
-            }`}
-          >
+            }`}>
             {activeTab === tab && (
-              <motion.div
+              <div
                 layoutId="findUsActivePill"
                 className="absolute inset-0 bg-black rounded-full"
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
               />
             )}
             <span className="relative z-10 text-nowrap">{tab}</span>
           </button>
         ))}
-      </motion.div>
+      </div>
       )}
 
-      <motion.p
-        className="font-40-regular text-[#141313]"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-        variants={animation.fadeInUpVariant}
-      >
+      <p
+        className="font-40-regular text-[#141313]">
         Where else to find us
-      </motion.p>
+      </p>
 
       <div className="where-find-grid">
         {events.map((item, index) => (
-          <motion.div
-            key={item.id}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={animation.fadeInUpVariant}
-            custom={index}
-          >
+          <div
+            key={item.id}>
             <Link href={item.link} className="where-find-card">
               <div className="where-find-img">
                 <ImageComponent
@@ -110,7 +91,7 @@ const WhereToFindUs = () => {
                 </span>
               </div>
             </Link>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import companyImage from "../../assets/images/company/company.webp";
 
@@ -13,13 +12,8 @@ import companyImage from "../../assets/images/company/company.webp";
  */
 const AboutUnbox = () => {
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      variants={animation.fadeInUpVariant}
-      viewport={{ once: true, amount: 0.15 }}
-      className="flex gap-[20px] max-[1024px]:flex-col items-stretch"
-    >
+    <div
+      className="flex gap-[20px] max-[1024px]:flex-col items-stretch">
       <div className="flex-1 flex flex-col  gap-6 bg-[#F5F5F5] rounded-[24px] p-6 max-[768px]:p-4">
         <p className="font-16-regular !font-semibold uppercase color-green-1 tracking-wide">
           About Unbox Robotics
@@ -41,7 +35,7 @@ const AboutUnbox = () => {
           draggable={false}
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 

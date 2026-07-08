@@ -5,7 +5,6 @@ import "./index.css";
 import { useRouter, useParams } from "next/navigation";
 import DOMPurify from "dompurify";
 import CommonButton from "../../components/common/CommonButton";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import { frontendUrl, linkedinUrl, instagramUrl } from "../../helpers/config";
 import { useJob } from "../../hooks/useJobs";
@@ -48,30 +47,14 @@ const OpenPositionDetails = () => {
         type={state.type}
       />
       <div className="bg-[#FDFDFD]">
-        <motion.div
-          className="open-positions-about-div"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.p
-            className="font-20-medium color-black-1"
-            custom={1}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+        <div
+          className="open-positions-about-div">
+          <p
+            className="font-20-medium color-black-1">
             About Unbox Robotics
-          </motion.p>
-          <motion.p
-            className="open-positions-about-sub-title"
-            custom={1}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          </p>
+          <p
+            className="open-positions-about-sub-title">
             We at Unbox Robotics are revolutionizing warehouses and distribution
             centers by building the world's most compact, powerful, and flexible
             mobile robotics systems for the new age of warehousing.  Our product
@@ -83,38 +66,21 @@ const OpenPositionDetails = () => {
             and doers and would love to have you join us at the Pune, India
             office and build the future of on-demand robotics logistics
             solutions
-          </motion.p>
+          </p>
           {descriptionHtml ? (
             <>
-              <motion.p
-                className="font-20-medium color-black-1"
-                custom={1}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+              <p
+                className="font-20-medium color-black-1">
                 Job Description:
-              </motion.p>
-              <motion.div
+              </p>
+              <div
                 className="font-16-light color-black-1 open-positions-description"
-                custom={1}
-                variants={animation.fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
                 dangerouslySetInnerHTML={{ __html: descriptionHtml }}
               />
             </>
           ) : null}
-          <motion.div
-            className="font-16-light color-black-1"
-            custom={1}
-            variants={animation.fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <div
+            className="font-16-light color-black-1">
             <ul className="">
               <li>
                 Also, to learn more about what is like to be a Unbox employee,
@@ -130,18 +96,13 @@ const OpenPositionDetails = () => {
                 <a href={instagramUrl}>{instagramUrl}</a>
               </li>
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={animation.fadeInUpVariant}
-            viewport={{ once: true, amount: 0.2 }}
-            className="open-postions-btn-div"
-          >
+          <div
+            className="open-postions-btn-div">
             <CommonButton title={"Apply Now"} onClick={handleApply} />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </>
   );

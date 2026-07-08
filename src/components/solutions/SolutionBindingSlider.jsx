@@ -9,7 +9,6 @@ import "./index.css";
 import { unboxSuperPowerDataCards } from "../../helpers/config";
 
 import AnimatedArrowButton from "../common/AnimatedArrowButton";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import { usePathname } from "next/navigation";
 import ImageComponent from "../common/ImageComponent";
@@ -46,33 +45,22 @@ const SolutionBindingSlider = () => {
   }, [swiperRef, initialSlide]);
 
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="space-y-[20px]"
-    >
+    <section
+      className="space-y-[20px]">
       <div className="testimonial-section">
         {/* LEFT IMAGE */}
-        <motion.div
-          className="flex-1 solution-binding-overview"
-          variants={animation.fromRightVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div
+          className="flex-1 solution-binding-overview">
           <ImageComponent
             src={activeTestimonial?.image}
             className="object-contain object-center w-full h-full"
             alt={activeTestimonial?.title || "UnboxSort sortation feature"}
           />
-        </motion.div>
+        </div>
 
         {/* RIGHT CONTENT */}
-        <motion.div
-          className="industry-usecases-right"
-          variants={animation.fromRightVariant}
-        >
+        <div
+          className="industry-usecases-right">
           <Swiper
             modules={[Autoplay]}
             loop
@@ -84,8 +72,7 @@ const SolutionBindingSlider = () => {
             initialSlide={initialSlide}
             onSwiper={setSwiperRef}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            className="testimonial-text-swiper"
-          >
+            className="testimonial-text-swiper">
             {unboxSuperPowerDataCards.map((testimonial, index) => (
               <SwiperSlide key={testimonial.id} className="relative ">
                 <div className="flex flex-col gap-[16px] md:gap-[20px]">
@@ -106,8 +93,7 @@ const SolutionBindingSlider = () => {
                       {testimonial.list?.map((item, idx) => (
                         <li
                           key={idx}
-                          className="font-16-light leading-relaxed text-[#141313] mb-1"
-                        >
+                          className="font-16-light leading-relaxed text-[#141313] mb-1">
                           {item}
                         </li>
                       ))}
@@ -120,7 +106,7 @@ const SolutionBindingSlider = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </motion.div>
+        </div>
       </div>
 
       {/* CUSTOM NAV */}
@@ -135,7 +121,7 @@ const SolutionBindingSlider = () => {
           onClick={() => swiperRef?.slideNext()}
         />
       </div>
-    </motion.section>
+    </section>
   );
 };
 

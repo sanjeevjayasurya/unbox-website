@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { animation } from "../../helpers/utils";
 import CommonButton from "../../components/common/CommonButton";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
@@ -58,12 +57,8 @@ const GenericEventPage = () => {
             draggable={false}
           />
           <div className="de-hero-gradient" />
-          <motion.div
-            className="de-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={animation.fromLeftVariant}
-          >
+          <div
+            className="de-hero-content">
             <div className="space-y-5">
               <div className="de-hero-title-wrap">
                 <span className="de-hero-title-bar" />
@@ -119,7 +114,7 @@ const GenericEventPage = () => {
                 draggable={false}
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -130,23 +125,17 @@ const GenericEventPage = () => {
 
       {/* Upcoming events → booking CTA band */}
       {!isPast && (
-        <motion.div
-          className="de-booth-cta"
-          variants={animation.fadeInUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <div
+          className="de-booth-cta">
           <p
             className="font-40-regular"
-            style={{ color: "#fff", textAlign: "center" }}
-          >
+            style={{ color: "#fff", textAlign: "center" }}>
             {(f.location || event.location)} &nbsp;|&nbsp; {event.date}
           </p>
           <a href="/get-in-touch">
             <CommonButton theme="white" title="Book A Meeting" />
           </a>
-        </motion.div>
+        </div>
       )}
     </>
   );

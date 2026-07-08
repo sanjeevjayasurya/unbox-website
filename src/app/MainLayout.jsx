@@ -6,7 +6,7 @@ import NavbarComponent from "@/components/navabar/NavbarComponent";
 import Footer from "@/components/footer/Footer";
 import SmoothScroll from "@/components/common/SmoothScroll";
 import CookieBanner from "@/components/CookieBanner";
-import EventPopup from "@/components/common/EventPopup";
+// import EventPopup from "@/components/common/EventPopup";
 
 export default function MainLayout({ children }) {
   const pathname = usePathname();
@@ -15,7 +15,7 @@ export default function MainLayout({ children }) {
   const isDeliverRoute = pathname === "/events/deliver-europe-2026";
   const isCematRoute = pathname === "/events/cemat-australia-2026";
   const suppressPopup = isBlogsRoute || isDeliverRoute || isCematRoute;
-  const [isEventPopupOpen, setIsEventPopupOpen] = useState(false);
+  // const [isEventPopupOpen, setIsEventPopupOpen] = useState(false);
 
   useEffect(() => {
     if (suppressPopup) {
@@ -40,10 +40,10 @@ export default function MainLayout({ children }) {
     }
   }, [suppressPopup, pathname]);
 
-  const handleClosePopup = () => {
-    setIsEventPopupOpen(false);
-    sessionStorage.setItem("cematPopupClosed", "true");
-  };
+  // const handleClosePopup = () => {
+  //   setIsEventPopupOpen(false);
+  //   sessionStorage.setItem("cematPopupClosed", "true");
+  // };
 
   if (isSuccessPage) {
     return <div className="main-content">{children}</div>;
@@ -60,7 +60,7 @@ export default function MainLayout({ children }) {
         <Footer />
       </div>
       <CookieBanner />
-      <EventPopup isOpen={isEventPopupOpen} onClose={handleClosePopup} />
+      {/* <EventPopup isOpen={isEventPopupOpen} onClose={handleClosePopup} /> */}
     </>
   );
 }
