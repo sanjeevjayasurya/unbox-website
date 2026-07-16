@@ -175,6 +175,66 @@ function unbox_fetch_json($url) {
     return $data;
 }
 
+/**
+ * Fetch every page from an Unbox admin list endpoint.
+ */
+function unbox_fetch_all_pages($path, $items_key, $limit = 50) {
+    $items = [];
+    $page = 1;
+
+    while (true) {
+        $response = unbox_fetch_json(UNBOX_ADMIN_API . $path . '?page=' . $page . '&limit=' . $limit);
+        $page_items = $response[$items_key] ?? [];
+
+        if (!is_array($page_items) || !$page_items) {
+            break;
+        }
+
+        $items = array_merge($items, $page_items);
+        $total_pages = intval($response['pages'] ?? 0);
+        if (!$total_pages && isset($response['total'])) {
+            $total_pages = (int) ceil(intval($response['total']) / $limit);
+        }
+        if ($total_pages && $page >= $total_pages) {
+            break;
+        }
+
+        $page++;
+    }
+
+    return $items;
+}
+
+/**
+ * Reuse an attachment already imported for this post.
+ */
+function unbox_find_existing_attachment($parent_id, $filename, $source_url = '') {
+    if (!$parent_id) {
+        return 0;
+    }
+
+    $filename = sanitize_file_name($filename);
+    $source_hash = $source_url ? hash('sha256', $source_url) : '';
+    $attachments = get_posts([
+        'post_parent' => $parent_id,
+        'post_type' => 'attachment',
+        'post_status' => 'inherit',
+        'numberposts' => -1,
+        'fields' => 'ids',
+    ]);
+
+    foreach ($attachments as $attachment_id) {
+        if ($source_hash && get_post_meta($attachment_id, '_unbox_import_source', true) === $source_hash) {
+            return intval($attachment_id);
+        }
+        if ($filename && sanitize_file_name(basename(get_attached_file($attachment_id))) === $filename) {
+            return intval($attachment_id);
+        }
+    }
+
+    return 0;
+}
+
 function unbox_sideload_media($url, $parent_id = 0, $filename = '') {
     if (!$url || strpos($url, '.m3u8') !== false) {
         return 0;
@@ -200,6 +260,10 @@ function unbox_sideload_media($url, $parent_id = 0, $filename = '') {
             'image/svg+xml' => 'svg',
         ][$mime] ?? 'bin';
         $name = $filename ?: ('inline-' . wp_generate_password(8, false) . '.' . $ext);
+        $existing_id = unbox_find_existing_attachment($parent_id, $name, $url);
+        if ($existing_id) {
+            return $existing_id;
+        }
         $tmp = wp_tempnam($name);
         if (!$tmp) {
             return 0;
@@ -211,20 +275,26 @@ function unbox_sideload_media($url, $parent_id = 0, $filename = '') {
             @unlink($tmp);
             return 0;
         }
+        update_post_meta($id, '_unbox_import_source', hash('sha256', $url));
         return intval($id);
     }
 
+    $name = $filename ?: basename(parse_url($url, PHP_URL_PATH) ?: 'file.bin');
+    $existing_id = unbox_find_existing_attachment($parent_id, $name, $url);
+    if ($existing_id) {
+        return $existing_id;
+    }
     $tmp = download_url($url, 90);
     if (is_wp_error($tmp)) {
         return 0;
     }
-    $name = $filename ?: basename(parse_url($url, PHP_URL_PATH) ?: 'file.bin');
     $file_array = ['name' => $name, 'tmp_name' => $tmp];
     $id = media_handle_sideload($file_array, $parent_id);
     if (is_wp_error($id)) {
         @unlink($tmp);
         return 0;
     }
+    update_post_meta($id, '_unbox_import_source', hash('sha256', $url));
     return intval($id);
 }
 
@@ -294,13 +364,13 @@ function unbox_upsert_by_slug($post_type, $slug, $args) {
 function unbox_import_prod_content() {
     try {
         $api = UNBOX_ADMIN_API;
-        $blogs_page = unbox_fetch_json($api . '/front/blogs?page=1&limit=50');
-        $cases_page = unbox_fetch_json($api . '/front/case-studies?page=1&limit=50');
+        $blogs = unbox_fetch_all_pages('/front/blogs', 'blogs');
+        $cases = unbox_fetch_all_pages('/front/case-studies', 'caseStudies');
         $featured_blog = unbox_fetch_json($api . '/front/blogs/featured')['blog'] ?? null;
         $featured_case = unbox_fetch_json($api . '/front/case-studies/featured')['caseStudy'] ?? null;
 
         $blog_slugs = [];
-        foreach (($blogs_page['blogs'] ?? []) as $b) {
+        foreach ($blogs as $b) {
             $blog_slugs[$b['slug']] = true;
         }
         if (!empty($featured_blog['slug'])) {
@@ -308,7 +378,7 @@ function unbox_import_prod_content() {
         }
 
         $case_slugs = [];
-        foreach (($cases_page['caseStudies'] ?? []) as $c) {
+        foreach ($cases as $c) {
             $case_slugs[$c['slug']] = true;
         }
         if (!empty($featured_case['slug'])) {
