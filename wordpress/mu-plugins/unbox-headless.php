@@ -142,6 +142,17 @@ add_action('rest_api_init', function () {
             return current_user_can('manage_options');
         },
         'callback' => 'unbox_import_prod_content',
+        'args' => [
+            'type' => [
+                'type' => 'string',
+                'required' => false,
+                'enum' => ['blogs', 'case-studies', 'all'],
+            ],
+            'slug' => [
+                'type' => 'string',
+                'required' => false,
+            ],
+        ],
     ]);
 });
 
@@ -420,33 +431,82 @@ function unbox_upsert_by_slug($post_type, $slug, $args) {
     return intval($id);
 }
 
-function unbox_import_prod_content() {
+function unbox_import_prod_content(WP_REST_Request $request = null) {
+    @set_time_limit(0);
+    @ini_set('max_execution_time', '0');
+
     try {
         $api = UNBOX_ADMIN_API;
-        $blogs = unbox_fetch_all_pages('/front/blogs', 'blogs');
-        $cases = unbox_fetch_all_pages('/front/case-studies', 'caseStudies');
-        $featured_blog = unbox_fetch_json($api . '/front/blogs/featured')['blog'] ?? null;
-        $featured_case = unbox_fetch_json($api . '/front/case-studies/featured')['caseStudy'] ?? null;
+        $only_type = $request ? sanitize_text_field((string) $request->get_param('type')) : '';
+        $only_slug = $request ? sanitize_title((string) $request->get_param('slug')) : '';
+        if (!$only_type) {
+            $only_type = 'all';
+        }
 
+        $featured_blog = null;
+        $featured_case = null;
         $blog_slugs = [];
-        foreach ($blogs as $b) {
-            $blog_slugs[$b['slug']] = true;
-        }
-        if (!empty($featured_blog['slug'])) {
-            $blog_slugs[$featured_blog['slug']] = true;
+        $case_slugs = [];
+
+        $import_blogs = ($only_type === 'all' || $only_type === 'blogs');
+        $import_cases = ($only_type === 'all' || $only_type === 'case-studies');
+
+        if ($import_blogs) {
+            if ($only_slug) {
+                $blog_slugs[$only_slug] = true;
+            } else {
+                $blogs = unbox_fetch_all_pages('/front/blogs', 'blogs');
+                $featured_blog = unbox_fetch_json($api . '/front/blogs/featured')['blog'] ?? null;
+                foreach ($blogs as $b) {
+                    $blog_slugs[$b['slug']] = true;
+                }
+                if (!empty($featured_blog['slug'])) {
+                    $blog_slugs[$featured_blog['slug']] = true;
+                }
+            }
         }
 
-        $case_slugs = [];
-        foreach ($cases as $c) {
-            $case_slugs[$c['slug']] = true;
+        if ($import_cases) {
+            if ($only_slug) {
+                // When type=all with a slug, try both; with type=case-studies only cases.
+                if ($only_type === 'case-studies' || $only_type === 'all') {
+                    $case_slugs[$only_slug] = true;
+                }
+            } else {
+                $cases = unbox_fetch_all_pages('/front/case-studies', 'caseStudies');
+                $featured_case = unbox_fetch_json($api . '/front/case-studies/featured')['caseStudy'] ?? null;
+                foreach ($cases as $c) {
+                    $case_slugs[$c['slug']] = true;
+                }
+                if (!empty($featured_case['slug'])) {
+                    $case_slugs[$featured_case['slug']] = true;
+                }
+            }
         }
-        if (!empty($featured_case['slug'])) {
-            $case_slugs[$featured_case['slug']] = true;
+
+        // Single-slug + type=all: only keep the matching collection after probing.
+        if ($only_slug && $only_type === 'all') {
+            $blog_slugs = [$only_slug => true];
+            $case_slugs = [$only_slug => true];
+        } elseif ($only_slug && $only_type === 'blogs') {
+            $case_slugs = [];
+        } elseif ($only_slug && $only_type === 'case-studies') {
+            $blog_slugs = [];
         }
 
         $created_posts = [];
         foreach (array_keys($blog_slugs) as $slug) {
-            $blog = unbox_fetch_json($api . '/front/blogs/' . rawurlencode($slug))['blog'];
+            try {
+                $blog = unbox_fetch_json($api . '/front/blogs/' . rawurlencode($slug))['blog'] ?? null;
+            } catch (Exception $e) {
+                if ($only_slug) {
+                    continue;
+                }
+                throw $e;
+            }
+            if (!$blog) {
+                continue;
+            }
             $is_featured = (!empty($featured_blog['slug']) && $featured_blog['slug'] === $slug) || !empty($blog['featured']);
             $category = $blog['category'] ?: 'Blog';
             $term = term_exists($category, 'category');
@@ -506,7 +566,17 @@ function unbox_import_prod_content() {
 
         $created_cases = [];
         foreach (array_keys($case_slugs) as $slug) {
-            $cs = unbox_fetch_json($api . '/front/case-studies/' . rawurlencode($slug))['caseStudy'];
+            try {
+                $cs = unbox_fetch_json($api . '/front/case-studies/' . rawurlencode($slug))['caseStudy'] ?? null;
+            } catch (Exception $e) {
+                if ($only_slug) {
+                    continue;
+                }
+                throw $e;
+            }
+            if (!$cs) {
+                continue;
+            }
             $is_featured = (!empty($featured_case['slug']) && $featured_case['slug'] === $slug) || !empty($cs['featured']);
             $tag = $cs['tags'] ?? '';
             $tag_ids = [];
