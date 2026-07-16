@@ -4,10 +4,7 @@ import React, { useEffect, Suspense, lazy } from "react";
 import "./index.css";
 import WarehouseShowcase from "../../components/home/WarehouseShowcase";
 import Faq from "../../components/home/Faq";
-import {
-  unboxIntroImage,
-  warehouseImage3,
-} from "../../helpers/assets";
+import { unboxIntroImage, warehouseImage3 } from "../../helpers/assets";
 import CommonButton from "../../components/common/CommonButton";
 import LogoScroller from "../../components/home/LogoScroller";
 import { clientInfo, faqData } from "../../helpers/config";
@@ -77,6 +74,8 @@ const HomePage = () => {
                 src={unboxIntroImage}
                 alt="Unbox Robotics robotic sortation system introduction"
                 className="common-img"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
 
@@ -188,7 +187,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <Faq data={faqData?.slice(0,7)} exploreBtnVisible={true}/>
+      <Faq data={faqData?.slice(0, 7)} exploreBtnVisible={true} />
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import SurveyPage from "@/views/survey/SurveyPage";
 
 export const metadata = {
@@ -5,5 +6,9 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <SurveyPage />;
+  return (
+    <Suspense fallback={null}>
+      <SurveyPage />
+    </Suspense>
+  );
 }

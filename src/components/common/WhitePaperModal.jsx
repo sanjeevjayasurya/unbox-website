@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Close from "../../assets/icons/Close_SM.svg";
 import CommonButton from "./CommonButton";

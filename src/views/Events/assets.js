@@ -19,6 +19,5 @@ export const productImage = _assetUrl(require("./assets/download.webp"));
 export const whyUnboxImage = _assetUrl(require("./assets/why-unbox.webp"));
 export const cematAusHero = _assetUrl(require("./assets/cemat-aus-hero.webp"));
 export const heroVideo = _assetUrl(require("./assets/unbox-robot.webm"));
-export const heroVideoPoster = _assetUrl(
-  require("./assets/unbox-robot-poster.jpg"),
-);
+// Match seo.js LCP preload — same shot as the JPG, much smaller.
+export const heroVideoPoster = "/images/hero-poster.webp";

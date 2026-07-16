@@ -7,7 +7,7 @@
   background-color: var(--white);
   position: relative;
   overflow: hidden;
-  font-family: "Be Vietnam Pro", sans-serif;
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
 }
 
 .hg-glow-1 {

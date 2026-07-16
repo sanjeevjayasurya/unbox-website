@@ -21,7 +21,7 @@
   align-items: flex-start;
 }
 .open-positions-title-txt {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 500;
   font-size: 40px;
   line-height: 100%;
@@ -50,7 +50,7 @@
   gap: 10px;
 }
 .open-position-location-text {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -71,7 +71,7 @@
   overflow: hidden;
 }
 .open-positions-about-title {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 500;
   font-size: 20px;
   line-height: 100%;
@@ -80,7 +80,7 @@
   color: var(--black-1);
 }
 .open-positions-about-sub-title {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 300;
   font-size: 16px;
   line-height: 120%;
@@ -251,7 +251,7 @@
   margin-bottom: 12px;
 }
 .datepicker-title {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 500;
   font-size: 15px;
   color: var(--black-1);
@@ -310,7 +310,7 @@
   align-items: center;
   justify-content: center;
   height: 32px;
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-size: 12px;
   font-weight: 500;
   color: var(--grey-1);
@@ -320,7 +320,7 @@
   border: none;
   border-radius: 9px;
   background: transparent;
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-size: 13px;
   color: var(--black-1);
   cursor: pointer;
@@ -358,7 +358,7 @@
   border: none;
   background: transparent;
   color: var(--green-1);
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -388,7 +388,7 @@
   text-decoration: underline;
 }
 .open-positions-about-sub-title-2 {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
@@ -424,7 +424,7 @@
   stroke: var(--green-1);
 }
 .upload-txt {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 500;
   font-size: 14px;
   line-height: 120%;
@@ -434,7 +434,7 @@
   color: var(--black-1);
 }
 .upload-txt-span {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -460,7 +460,7 @@
   gap: 2px;
 }
 .resume-file-name {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -469,7 +469,7 @@
   color: var(--black-1);
 }
 .resume-file-size {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
@@ -494,7 +494,7 @@
   flex: 1;
 }
 .form-input-title {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -536,7 +536,7 @@
   /* max-width: 50%; */
 }
 .currency-code-txt {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -569,7 +569,7 @@
   /* border: 1px solid red; */
 }
 .experience-txt {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -640,7 +640,7 @@
   gap: 4px;
 }
 .add-txt {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -716,7 +716,7 @@
   background-size: 14px;
 }
 .agreement-txt {
-  font-family: "Be Vietnam Pro";
+  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;

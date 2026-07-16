@@ -31,7 +31,7 @@ const surveySchema = z.object({
 
 const SurveyPage = () => {
   const router = useRouter();
-  const [searchParams] = useSearchParams();
+  const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
   const [tokenStatus, setTokenStatus] = useState("loading"); // loading | valid | invalid | completed | declined

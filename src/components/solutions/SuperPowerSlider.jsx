@@ -14,9 +14,10 @@ const SuperPowerSlider = () => {
 
   const [activeIndex, setActiveIndex] = useState(1);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
+  const [isTablet, setIsTablet] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(1280);
 
   const handleSlideChange = (swiper) => {
     // Always use realIndex to map to original data
@@ -26,13 +27,26 @@ const SuperPowerSlider = () => {
 
   useEffect(() => {
     const handleResize = () => {
+      setWindowWidth(window.innerWidth);
       setIsMobile(window.innerWidth <= 780);
       setIsTablet(window.innerWidth <= 1024);
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const slidesPerView =
+    windowWidth <= 390
+      ? 1.4
+      : windowWidth <= 440
+        ? 1.7
+        : windowWidth < 769
+          ? 2
+          : windowWidth < 1024
+            ? 1.9
+            : 2.5;
 
   return (
     <div className="flex flex-col items-center gap-5 justify-center">
@@ -41,17 +55,7 @@ const SuperPowerSlider = () => {
         onSwiper={setImageSwiper}
         onSlideChange={handleSlideChange}
         onSlideChangeTransitionEnd={handleSlideChange} // ensures correct focus after loop wrap
-        slidesPerView={
-          window.innerWidth <= 390
-            ? 1.4
-            : window.innerWidth <= 440
-            ? 1.7
-            : window.innerWidth < 769
-            ? 2
-            : window?.innerWidth < 1024
-            ? 1.9
-            : 2.5
-        }
+        slidesPerView={slidesPerView}
         centeredSlides={true}
         loop={false} // Infinite loop enabled
         initialSlide={1}

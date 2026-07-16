@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import { useRouteError, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import "./error.css";
 import CommonButton from "../../components/common/CommonButton";
 
 const ErrorPage = () => {
-  const error = useRouteError();
   const router = useRouter();
 
   return (
@@ -15,11 +14,6 @@ const ErrorPage = () => {
         <h1 className="font-40-regular text-black-1 ">Oops!</h1>
         <p className="font-16-light text-black-1 ">
           Sorry, an unexpected error has occurred.
-        </p>
-        <p>
-          <i className="font-16-light text-black-1">
-            {error?.statusText || error?.message}
-          </i>
         </p>
         <div className="mt-10">
           <CommonButton
