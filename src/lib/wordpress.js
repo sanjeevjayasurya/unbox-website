@@ -170,7 +170,8 @@ async function wpFetch(path) {
 
   const url = `${base}/wp-json/wp/v2${path}`;
   const response = await fetch(url, {
-    next: { revalidate: 3600 },
+    // Cache WP responses on the Next server for an hour (ISR-style).
+    next: { revalidate: 3600, tags: ["wordpress"] },
   });
 
   if (!response.ok) {
@@ -187,12 +188,20 @@ async function wpFetch(path) {
   };
 }
 
+// List/featured/recent only need cards — omit `content` so Next can cache
+ // responses (full posts with inlined media often exceed the 2MB fetch cache).
+const LIST_FIELDS =
+  "id,date,modified,slug,title,excerpt,acf,featured_media,_links";
+const DETAIL_FIELDS =
+  "id,date,modified,slug,title,excerpt,content,acf,featured_media,_links";
+
 async function fetchCollection(resourcePath, page = 1, limit = 3) {
   const params = new URLSearchParams({
     page: String(page),
     per_page: String(limit),
     _embed: "1",
     status: "publish",
+    _fields: LIST_FIELDS,
   });
   return wpFetch(`${resourcePath}?${params.toString()}`);
 }
@@ -202,37 +211,58 @@ async function fetchBySlug(resourcePath, slug) {
     slug,
     _embed: "1",
     status: "publish",
+    _fields: DETAIL_FIELDS,
   });
   const { data } = await wpFetch(`${resourcePath}?${params.toString()}`);
   return Array.isArray(data) ? data[0] || null : null;
 }
 
 async function fetchFeaturedOrLatest(resourcePath, mapFn) {
-  // Pull a small recent page and prefer ACF featured flags.
-  const { data } = await fetchCollection(resourcePath, 1, 10);
+  // Small recent window is enough — featured posts are usually near the top.
+  const { data } = await fetchCollection(resourcePath, 1, 5);
   const mapped = (Array.isArray(data) ? data : []).map(mapFn);
   return mapped.find((item) => item.featured) || mapped[0] || null;
 }
 
-export async function getBlogs(page = 1, limit = 3) {
+/**
+ * @param {number} page
+ * @param {number} limit
+ * @param {{ excludeSlug?: string }} [options] - featured slug to keep out of the grid
+ */
+export async function getBlogs(page = 1, limit = 3, options = {}) {
   if (!isWordpressConfigured()) return getMockBlogs(page, limit);
   try {
-    // Match production API: featured posts appear in the featured slot, not the grid.
-    // Fetch a larger window, drop featured, then paginate client-side.
-    const { data } = await fetchCollection("/posts", 1, 100);
-    const blogs = (Array.isArray(data) ? data : [])
-      .map(mapBlogPost)
-      .filter((blog) => !blog.featured);
     const safePage = Math.max(1, Number(page) || 1);
     const safeLimit = Math.max(1, Number(limit) || 3);
-    const total = blogs.length;
-    const pages = Math.max(1, Math.ceil(total / safeLimit));
-    const start = (safePage - 1) * safeLimit;
+    const excludeSlug = options.excludeSlug || null;
+
+    // Fetch only this page (+1 when excluding featured) instead of the full catalog.
+    const requestLimit = Math.min(100, safeLimit + (excludeSlug ? 1 : 0));
+    const { data, total } = await fetchCollection(
+      "/posts",
+      safePage,
+      requestLimit,
+    );
+
+    const blogs = (Array.isArray(data) ? data : [])
+      .map(mapBlogPost)
+      .filter(
+        (blog) =>
+          !blog.featured && (!excludeSlug || blog.slug !== excludeSlug),
+      )
+      .slice(0, safeLimit);
+
+    // Assume at most one featured post exists in the catalog (matches production).
+    const finalTotal = excludeSlug
+      ? Math.max(0, (Number(total) || 0) - 1)
+      : Number(total) || blogs.length;
+    const pages = Math.max(1, Math.ceil(finalTotal / safeLimit) || 1);
+
     return {
-      blogs: blogs.slice(start, start + safeLimit),
+      blogs,
       page: safePage,
       pages,
-      total,
+      total: finalTotal,
     };
   } catch (error) {
     logWpError("getBlogs", error);

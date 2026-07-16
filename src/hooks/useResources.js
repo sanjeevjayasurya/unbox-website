@@ -14,15 +14,6 @@ import {
   dpaApiEndPoint,
 } from '../helpers/config';
 import fetcher from '../helpers/fetcher';
-import {
-  getBlogBySlug,
-  getBlogs,
-  getCaseStudies,
-  getCaseStudyBySlug,
-  getFeaturedBlog,
-  getFeaturedCaseStudy,
-  getRecentBlogs,
-} from '../lib/wordpress';
 
 // Helper to format dates consistently with the original Redux implementation
 const formatDate = (dateString, createdAt) => {
@@ -35,42 +26,48 @@ const formatDate = (dateString, createdAt) => {
   });
 };
 
-const wordpressFetcher = (key) => {
-  const [resource, ...args] = key;
-  switch (resource) {
-    case "wp-blogs":
-      return getBlogs(args[0], args[1]);
-    case "wp-blog":
-      return getBlogBySlug(args[0]);
-    case "wp-blogs-featured":
-      return getFeaturedBlog();
-    case "wp-blogs-recent":
-      return getRecentBlogs(args[0]);
-    case "wp-case-studies":
-      return getCaseStudies(args[0], args[1]);
-    case "wp-case-study":
-      return getCaseStudyBySlug(args[0]);
-    case "wp-case-studies-featured":
-      return getFeaturedCaseStudy();
-    default:
-      throw new Error(`Unknown WordPress SWR key: ${resource}`);
+/** Browser → Next cached API (not Hostinger directly). */
+const wpApiFetcher = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    const error = new Error(`WP API route failed (${res.status})`);
+    error.status = res.status;
+    throw error;
   }
+  return res.json();
 };
 
 // --- Blogs Hooks ---
 
-export const useBlogs = (limit = 3) => {
+/**
+ * @param {number} limit
+ * @param {{
+ *   initialPage?: { blogs: any[], page?: number, pages?: number, total?: number },
+ *   excludeSlug?: string,
+ * }} [options]
+ */
+export const useBlogs = (limit = 3, options = {}) => {
+  const { initialPage, excludeSlug } = options;
   const getKey = (pageIndex, previousPageData) => {
     if (previousPageData && previousPageData.blogs.length === 0) return null;
-    return ["wp-blogs", pageIndex + 1, limit];
+    const params = new URLSearchParams({
+      page: String(pageIndex + 1),
+      limit: String(limit),
+    });
+    if (excludeSlug) params.set("excludeSlug", excludeSlug);
+    return `/api/wp/blogs?${params.toString()}`;
   };
 
   const { data, error, size, setSize, isValidating } = useSWRInfinite(
     getKey,
-    wordpressFetcher,
+    wpApiFetcher,
     {
       revalidateFirstPage: false,
+      revalidateOnMount: !initialPage,
+      revalidateOnFocus: false,
       persistSize: true,
+      fallbackData: initialPage ? [initialPage] : undefined,
+      dedupingInterval: 60_000,
     },
   );
 
@@ -102,8 +99,12 @@ export const useBlogs = (limit = 3) => {
 
 export const useBlogDetail = (slug) => {
   const { data, error, isLoading } = useSWR(
-    slug ? ["wp-blog", slug] : null,
-    wordpressFetcher,
+    slug ? `/api/wp/blogs/${encodeURIComponent(slug)}` : null,
+    wpApiFetcher,
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 60_000,
+    },
   );
   
   const blog = data?.blog ? {
@@ -120,18 +121,37 @@ export const useBlogDetail = (slug) => {
   return { blog, error: error || notFoundError, isLoading };
 };
 
-export const useFeaturedBlog = () => {
+export const useFeaturedBlog = (initialFeaturedBlog = null) => {
   const { data, error, isLoading } = useSWR(
-    ["wp-blogs-featured"],
-    wordpressFetcher,
+    "/api/wp/blogs/featured",
+    wpApiFetcher,
+    {
+      fallbackData: initialFeaturedBlog
+        ? { blog: initialFeaturedBlog }
+        : undefined,
+      revalidateOnMount: !initialFeaturedBlog,
+      revalidateOnFocus: false,
+      dedupingInterval: 60_000,
+    },
   );
-  return { featuredBlog: data?.blog, error, isLoading };
+  return {
+    featuredBlog: data?.blog ?? initialFeaturedBlog,
+    error,
+    isLoading: isLoading && !initialFeaturedBlog && !data?.blog,
+  };
 };
 
 export const useRecentBlogs = (excludeSlug) => {
+  const params = new URLSearchParams();
+  if (excludeSlug) params.set("excludeSlug", excludeSlug);
+  const qs = params.toString();
   const { data, error, isLoading } = useSWR(
-    ["wp-blogs-recent", excludeSlug || ""],
-    wordpressFetcher,
+    `/api/wp/blogs/recent${qs ? `?${qs}` : ""}`,
+    wpApiFetcher,
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 60_000,
+    },
   );
 
   const recentBlogs = data?.recentBlogs?.map(blog => ({
@@ -149,15 +169,21 @@ export const useRecentBlogs = (excludeSlug) => {
 export const useCaseStudies = (limit = 3) => {
   const getKey = (pageIndex, previousPageData) => {
     if (previousPageData && previousPageData.caseStudies.length === 0) return null;
-    return ["wp-case-studies", pageIndex + 1, limit];
+    const params = new URLSearchParams({
+      page: String(pageIndex + 1),
+      limit: String(limit),
+    });
+    return `/api/wp/case-studies?${params.toString()}`;
   };
 
   const { data, error, size, setSize, isValidating } = useSWRInfinite(
     getKey,
-    wordpressFetcher,
+    wpApiFetcher,
     {
       revalidateFirstPage: false,
       persistSize: true,
+      revalidateOnFocus: false,
+      dedupingInterval: 60_000,
     },
   );
 
@@ -186,8 +212,12 @@ export const useCaseStudies = (limit = 3) => {
 
 export const useCaseStudyDetail = (slug) => {
   const { data, error, isLoading } = useSWR(
-    slug ? ["wp-case-study", slug] : null,
-    wordpressFetcher,
+    slug ? `/api/wp/case-studies/${encodeURIComponent(slug)}` : null,
+    wpApiFetcher,
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 60_000,
+    },
   );
   
   const caseStudy = data?.caseStudy ? {
@@ -204,8 +234,12 @@ export const useCaseStudyDetail = (slug) => {
 
 export const useFeaturedCaseStudy = () => {
   const { data, error, isLoading } = useSWR(
-    ["wp-case-studies-featured"],
-    wordpressFetcher,
+    "/api/wp/case-studies/featured",
+    wpApiFetcher,
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 60_000,
+    },
   );
   return { featuredCaseStudy: data?.caseStudy, error, isLoading };
 };
