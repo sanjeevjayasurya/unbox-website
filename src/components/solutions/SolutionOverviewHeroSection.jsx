@@ -2,16 +2,14 @@
 
 import React from "react";
 import "./index.css";
-import { animation } from "../../helpers/utils";
 import CommonButton from "../common/CommonButton";
 import {
-  solutionHeroImage,
+  unboxOverviewImage,
   unboxProductSolutionImage,
 } from "../../helpers/assets";
 import { useRouter } from "next/navigation";
 import ImageComponent from "../common/ImageComponent";
 
-const unboxOverviewImage = process.env.PUBLIC_URL + "/images/unbox-overview.webp";
 const SolutionOverviewHeroSection = () => {
   const router = useRouter();
   return (
@@ -28,8 +26,7 @@ const SolutionOverviewHeroSection = () => {
         {/* Top-left headline panel */}
         <div className="solution-overview-headline-panel">
           <h1 className="res-font-40-extralight color-black-1">
-            <span
-              style={{ display: "block" }}>
+            <span style={{ display: "block" }}>
               Enabling the Next Generation of
               <br />
               <span className="res-font-40-medium color-black-1">
@@ -60,8 +57,7 @@ const SolutionOverviewHeroSection = () => {
         <div className="mobile-headline-panel">
           <div className="flex flex-col gap-[16px] items-center">
             <h1 className="res-font-48-extralight color-black-1 text-center">
-              <span
-                style={{ display: "block" }}>
+              <span style={{ display: "block" }}>
                 Enabling the Next Generation of
                 <br />
                 <span className="res-font-48-semibold color-black-1">
@@ -69,8 +65,7 @@ const SolutionOverviewHeroSection = () => {
                 </span>
               </span>
             </h1>
-            <p
-              className="res-font-16-light color-grey-1 text-center">
+            <p className="res-font-16-light color-grey-1 text-center">
               As logistics networks become faster, denser, and more
               interconnected, parcel sortation has evolved from a backend
               operation into a strategic capability. UnboxSort enables modern
@@ -80,8 +75,7 @@ const SolutionOverviewHeroSection = () => {
           </div>
         </div>
 
-        <div
-          className="flex-1 relative w-full h-full rounded-[20px] overflow-hidden">
+        <div className="flex-1 relative w-full h-full rounded-[20px] overflow-hidden">
           <ImageComponent
             src={unboxProductSolutionImage}
             alt="Unbox Robotics warehouse automation solutions overview"
@@ -90,8 +84,7 @@ const SolutionOverviewHeroSection = () => {
         </div>
 
         <div className="mobile-bottom-tab">
-          <div
-            className="mobile-solution-productivity-panel">
+          <div className="mobile-solution-productivity-panel">
             <h3 className="res-font-18-regular color-black-1">
               Book a demo with Unbox Robotics
             </h3>
