@@ -30,11 +30,40 @@ Use native WordPress **Posts**.
 | `title` | Post title |
 | `slug` | Post slug |
 | `description` | Excerpt |
-| `content` | Post content (HTML) |
+| `content` | Post meta `content_json` (TipTap JSON string) |
 | `image` | Featured image |
 | `category` / `type` | Primary category name |
 | `date` | Publish date |
 | Quote / featured extras | ACF fields below |
+
+### Body format (TipTap JSON)
+
+The site does **not** render Gutenberg `post_content` for blogs/case studies.
+Canonical body is post meta `content_json`: a TipTap document
+
+`{ "type": "doc", "content": [ ... ] }`
+
+exposed on REST as `meta.content_json`.
+
+List/featured/recent Next.js fetches omit `meta` / `content` so responses stay
+under Next’s ~2MB fetch cache. Detail-by-slug includes `meta`.
+
+#### Re-import from Unbox admin
+
+1. Ensure `wordpress/mu-plugins/unbox-headless.php` is deployed to
+   `wp-content/mu-plugins/` on the WordPress host.
+2. Remove any duplicate `unbox/v1/import-prod` code from the theme `functions.php`.
+3. While logged into wp-admin, `POST /wp-json/unbox/v1/import-prod` with the
+   WP REST nonce (capability: `manage_options`).
+4. Confirm a post’s `meta.content_json` parses as TipTap and contains no
+   `data:image` base64 payloads (inline images should be Media Library URLs).
+
+**Hostinger / large imports:** A full `import-prod` run may time out on
+Hostinger. If responses exceed Next’s fetch cache limit, strip `data:image`
+base64 strings from `content_json` after import to keep payloads lean.
+
+**Cache:** Purge LiteSpeed cache after `content_json` changes so REST responses
+reflect the updated body.
 
 ### ACF field group: Blog extras
 
@@ -55,41 +84,12 @@ Register a `case_study` custom post type with REST enabled, plus a `case_study_t
 
 ### Must-use plugin
 
-Create `wp-content/mu-plugins/unbox-case-study.php`:
-
-```php
-<?php
-/**
- * Plugin Name: Unbox Case Study CPT
- */
-
-add_action('init', function () {
-    register_post_type('case_study', [
-        'labels' => [
-            'name' => 'Case Studies',
-            'singular_name' => 'Case Study',
-        ],
-        'public' => true,
-        'show_in_rest' => true,
-        'rest_base' => 'case-study',
-        'menu_icon' => 'dashicons-portfolio',
-        'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'custom-fields'],
-        'has_archive' => false,
-        'rewrite' => ['slug' => 'case-study'],
-    ]);
-
-    register_taxonomy('case_study_tag', ['case_study'], [
-        'labels' => [
-            'name' => 'Case Study Tags',
-            'singular_name' => 'Case Study Tag',
-        ],
-        'public' => true,
-        'show_in_rest' => true,
-        'rest_base' => 'case-study-tag',
-        'hierarchical' => false,
-    ]);
-});
-```
+Deploy the repo copy of `wordpress/mu-plugins/unbox-headless.php` to
+`wp-content/mu-plugins/` on the WordPress host. That file is the **source of
+truth** — it registers the `case_study` CPT and `case_study_tag` taxonomy,
+exposes `content_json` and other meta on REST, and provides the
+`unbox/v1/import-prod` endpoint. Do not maintain a separate
+`unbox-case-study.php` or duplicate CPT/import code in the theme.
 
 ### ACF field group: Case study extras
 
