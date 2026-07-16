@@ -6,6 +6,7 @@ import {
   getCaseStudyBySlug,
   getFeaturedCaseStudy,
 } from "@/lib/wordpress";
+import { tiptapToPlainText } from "@/lib/wordpressContent";
 
 const SCHEMA_DIR = path.join(process.cwd(), "public", "schema");
 
@@ -400,8 +401,12 @@ export function getRouteConfig(routePath) {
 
 export function mapContentToMeta(item, routeConfig, slug, config, defaultMeta) {
   const title = item?.title || defaultMeta.title;
+  const bodyText =
+    item?.content && typeof item.content === "object"
+      ? tiptapToPlainText(item.content)
+      : stripHtml(item?.content || "");
   const rawDescription =
-    item?.description || item?.excerpt || stripHtml(item?.content || "");
+    item?.description || item?.excerpt || bodyText;
   const description = trimText(rawDescription || defaultMeta.description);
   const canUseImage = routeConfig.imagePredicate
     ? routeConfig.imagePredicate(item)
