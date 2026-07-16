@@ -3,11 +3,6 @@
 import useSWR from 'swr';
 import useSWRInfinite from 'swr/infinite';
 import {
-  fetchBlogsApiEndPoint,
-  fetchFeaturedBlogsApiEndPoint,
-  fetchRecentBlogsApiEndPoint,
-  fetchCasestudyApiEndPoint,
-  fetchFeaturedCasestudyApiEndPoint,
   fetchWhitePaperApiEndPoint,
   fetchFeaturedWhitePaperApiEndPoint,
   fetchPrNewsApiEndPoint,
@@ -17,9 +12,17 @@ import {
   privacyPolicyApiEndPoint,
   termsApiEndPoint,
   dpaApiEndPoint,
-  environment
 } from '../helpers/config';
 import fetcher from '../helpers/fetcher';
+import {
+  getBlogBySlug,
+  getBlogs,
+  getCaseStudies,
+  getCaseStudyBySlug,
+  getFeaturedBlog,
+  getFeaturedCaseStudy,
+  getRecentBlogs,
+} from '../lib/wordpress';
 
 // Helper to format dates consistently with the original Redux implementation
 const formatDate = (dateString, createdAt) => {
@@ -32,18 +35,44 @@ const formatDate = (dateString, createdAt) => {
   });
 };
 
+const wordpressFetcher = (key) => {
+  const [resource, ...args] = key;
+  switch (resource) {
+    case "wp-blogs":
+      return getBlogs(args[0], args[1]);
+    case "wp-blog":
+      return getBlogBySlug(args[0]);
+    case "wp-blogs-featured":
+      return getFeaturedBlog();
+    case "wp-blogs-recent":
+      return getRecentBlogs(args[0]);
+    case "wp-case-studies":
+      return getCaseStudies(args[0], args[1]);
+    case "wp-case-study":
+      return getCaseStudyBySlug(args[0]);
+    case "wp-case-studies-featured":
+      return getFeaturedCaseStudy();
+    default:
+      throw new Error(`Unknown WordPress SWR key: ${resource}`);
+  }
+};
+
 // --- Blogs Hooks ---
 
 export const useBlogs = (limit = 3) => {
   const getKey = (pageIndex, previousPageData) => {
     if (previousPageData && previousPageData.blogs.length === 0) return null;
-    return `${fetchBlogsApiEndPoint}?page=${pageIndex + 1}&limit=${limit}`;
+    return ["wp-blogs", pageIndex + 1, limit];
   };
 
-  const { data, error, size, setSize, isValidating } = useSWRInfinite(getKey, fetcher, {
-    revalidateFirstPage: false,
-    persistSize: true,
-  });
+  const { data, error, size, setSize, isValidating } = useSWRInfinite(
+    getKey,
+    wordpressFetcher,
+    {
+      revalidateFirstPage: false,
+      persistSize: true,
+    },
+  );
 
   const blogs = data 
     ? data.flatMap((page) => page.blogs).map(blog => ({
@@ -72,7 +101,10 @@ export const useBlogs = (limit = 3) => {
 };
 
 export const useBlogDetail = (slug) => {
-  const { data, error, isLoading } = useSWR(slug ? `${fetchBlogsApiEndPoint}/${slug}` : null, fetcher);
+  const { data, error, isLoading } = useSWR(
+    slug ? ["wp-blog", slug] : null,
+    wordpressFetcher,
+  );
   
   const blog = data?.blog ? {
     ...data.blog,
@@ -81,18 +113,25 @@ export const useBlogDetail = (slug) => {
     date: formatDate(data.blog.date, data.blog.createdAt)
   } : null;
 
-  return { blog, error, isLoading };
+  // Adapter returns mock/null without throwing — treat missing slug as not-found for UI.
+  const notFoundError =
+    !isLoading && slug && !blog ? new Error("Blog not found") : null;
+
+  return { blog, error: error || notFoundError, isLoading };
 };
 
 export const useFeaturedBlog = () => {
-  const { data, error, isLoading } = useSWR(fetchFeaturedBlogsApiEndPoint, fetcher);
+  const { data, error, isLoading } = useSWR(
+    ["wp-blogs-featured"],
+    wordpressFetcher,
+  );
   return { featuredBlog: data?.blog, error, isLoading };
 };
 
 export const useRecentBlogs = (excludeSlug) => {
   const { data, error, isLoading } = useSWR(
-    excludeSlug ? `${fetchRecentBlogsApiEndPoint}?excludeSlug=${excludeSlug}` : fetchRecentBlogsApiEndPoint, 
-    fetcher
+    ["wp-blogs-recent", excludeSlug || ""],
+    wordpressFetcher,
   );
 
   const recentBlogs = data?.recentBlogs?.map(blog => ({
@@ -110,13 +149,17 @@ export const useRecentBlogs = (excludeSlug) => {
 export const useCaseStudies = (limit = 3) => {
   const getKey = (pageIndex, previousPageData) => {
     if (previousPageData && previousPageData.caseStudies.length === 0) return null;
-    return `${fetchCasestudyApiEndPoint}?page=${pageIndex + 1}&limit=${limit}`;
+    return ["wp-case-studies", pageIndex + 1, limit];
   };
 
-  const { data, error, size, setSize, isValidating } = useSWRInfinite(getKey, fetcher, {
-    revalidateFirstPage: false,
-    persistSize: true,
-  });
+  const { data, error, size, setSize, isValidating } = useSWRInfinite(
+    getKey,
+    wordpressFetcher,
+    {
+      revalidateFirstPage: false,
+      persistSize: true,
+    },
+  );
 
   const caseStudies = data 
     ? data.flatMap((page) => page.caseStudies).map(cs => ({
@@ -142,7 +185,10 @@ export const useCaseStudies = (limit = 3) => {
 };
 
 export const useCaseStudyDetail = (slug) => {
-  const { data, error, isLoading } = useSWR(slug ? `${fetchCasestudyApiEndPoint}/${slug}` : null, fetcher);
+  const { data, error, isLoading } = useSWR(
+    slug ? ["wp-case-study", slug] : null,
+    wordpressFetcher,
+  );
   
   const caseStudy = data?.caseStudy ? {
     ...data.caseStudy,
@@ -150,11 +196,17 @@ export const useCaseStudyDetail = (slug) => {
     date: formatDate(data.caseStudy.date, data.caseStudy.createdAt)
   } : null;
 
-  return { caseStudy, error, isLoading };
+  const notFoundError =
+    !isLoading && slug && !caseStudy ? new Error("Case study not found") : null;
+
+  return { caseStudy, error: error || notFoundError, isLoading };
 };
 
 export const useFeaturedCaseStudy = () => {
-  const { data, error, isLoading } = useSWR(fetchFeaturedCasestudyApiEndPoint, fetcher);
+  const { data, error, isLoading } = useSWR(
+    ["wp-case-studies-featured"],
+    wordpressFetcher,
+  );
   return { featuredCaseStudy: data?.caseStudy, error, isLoading };
 };
 

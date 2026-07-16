@@ -4,14 +4,14 @@ import React from "react";
 import "./index.css";
 import Link from "next/link";
 import ImageComponent from "./ImageComponent";
-import { backendUrl } from "../../helpers/config";
+import { resolveMediaUrl } from "../../helpers/config";
 
 const BlogCard = ({ item, index, redirect }) => {
   return (
     <Link href={`/blogs/${item?.slug}`}>
       <div className="blogs-data-main-div cursor-pointer">
         <div className="blogs-data-img-div bg-[#F5F5F5]">
-          <ImageComponent src={backendUrl + item?.image} className="common-img" alt={item?.title || "Blog post thumbnail"} />
+          <ImageComponent src={resolveMediaUrl(item?.image)} className="common-img" alt={item?.title || "Blog post thumbnail"} />
           {item?.type !== undefined && (
             <div className="blogs-data-type-div">
               <p className="font-14-regular color-black-1">{item?.type}</p>

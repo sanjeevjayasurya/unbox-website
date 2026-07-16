@@ -8,7 +8,7 @@ import CommonButton from "../../components/common/CommonButton";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
-import { backendUrl, frontendUrl } from "../../helpers/config";
+import { frontendUrl, resolveMediaUrl } from "../../helpers/config";
 import ImageComponent from "../../components/common/ImageComponent";
 import SimpleLoader from "../../components/loader/SimpleLoader";
 import NotFoundComponent from "../../components/common/NotFoundComponent";
@@ -34,7 +34,7 @@ const BlogsDetails = () => {
   }, [slug]);
 
   const blogUrl = `${frontendUrl}/blogs/${slug}`;
-  const blogImageUrl = blog?.image ? `${backendUrl}${blog.image}` : undefined;
+  const blogImageUrl = blog?.image ? resolveMediaUrl(blog.image) : undefined;
 
   if (detailError) {
     return (
@@ -111,7 +111,7 @@ const BlogsDetails = () => {
               <div className="case-study-testimonial__media">
                 <ImageComponent
                   key={blog.quoteOwnerImage}
-                  src={backendUrl + blog.quoteOwnerImage}
+                  src={resolveMediaUrl(blog.quoteOwnerImage)}
                   className="common-img"
                 />
               </div>

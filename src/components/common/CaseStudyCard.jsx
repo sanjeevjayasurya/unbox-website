@@ -4,18 +4,10 @@ import React from "react";
 import "./index.css";
 import Link from "next/link";
 import ImageComponent from "./ImageComponent";
-import { backendUrl } from "../../helpers/config";
+import { resolveMediaUrl } from "../../helpers/config";
 
 const CaseStudyCard = ({ item, redirect }) => {
-
-  const resolveAssetUrl = (assetPath) => {
-    if (!assetPath) return "";
-    return assetPath.startsWith("http")
-      ? assetPath
-      : `${backendUrl}${assetPath}`;
-  };
-
-  const videoThumbnailUrl = resolveAssetUrl(item?.thumbnail_url || item?.media);
+  const videoThumbnailUrl = resolveMediaUrl(item?.thumbnail_url || item?.media);
 
   return (
     <Link href={`/case-study/${item?.slug}`}>

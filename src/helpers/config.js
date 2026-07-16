@@ -87,9 +87,33 @@ export const base_url =
   process.env.NEXT_PUBLIC_BASE_URL || "https://unboxadmin.4tysixapplabs.com/api";
 export const backendUrl =
   process.env.NEXT_PUBLIC_BACKEND_URL || "https://unboxadmin.4tysixapplabs.com";
+/** WordPress site origin (no trailing slash). Blogs/case studies are read from the WP REST API. */
+export const wpApiUrl = (process.env.NEXT_PUBLIC_WP_API_URL || "").replace(
+  /\/$/,
+  "",
+);
 export const normalizeVideoUrl = (url) => {
   if (!url) return url;
   return url.replace("http://68.178.169.107:5007", backendUrl);
+};
+/**
+ * Resolve media for blogs/case studies.
+ * Absolute URLs (WordPress) and local public paths pass through; legacy backend paths are prefixed.
+ */
+export const resolveMediaUrl = (assetPath) => {
+  if (!assetPath) return "";
+  if (/^https?:\/\//i.test(assetPath) || assetPath.startsWith("data:")) {
+    return assetPath;
+  }
+  if (
+    assetPath.startsWith("/images/") ||
+    assetPath.startsWith("/sample-") ||
+    assetPath.startsWith("/logo") ||
+    assetPath.startsWith("/schema/")
+  ) {
+    return assetPath;
+  }
+  return `${backendUrl}${assetPath.startsWith("/") ? assetPath : `/${assetPath}`}`;
 };
 export const privacyPolicyApiEndPoint = "/privacy-policy";
 export const termsApiEndPoint = "/terms-condition";
@@ -99,12 +123,8 @@ export const contactApiEndPoint = "/contact";
 export const eventFormApiEndPoint = "/event";
 export const rsvpApiEndPoint = "/event/rsvp";
 
-export const fetchBlogsApiEndPoint = "/front/blogs";
-export const fetchFeaturedBlogsApiEndPoint = "/front/blogs/featured";
-export const fetchRecentBlogsApiEndPoint = "/front/blogs/recent";
-
-export const fetchCasestudyApiEndPoint = "/front/case-studies";
-export const fetchFeaturedCasestudyApiEndPoint = "/front/case-studies/featured";
+// Blog/case-study list+detail content comes from WordPress (see src/lib/wordpress.js).
+// Lead capture for case-study PDF downloads still uses the legacy backend.
 export const casestudyDownloadApiEndPoint = "/front/case-studies/download";
 
 export const fetchWhitePaperApiEndPoint = "/front/white-papers";

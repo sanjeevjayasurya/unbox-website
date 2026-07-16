@@ -1,3 +1,21 @@
+function getWordpressImagePattern() {
+  const wpApiUrl = process.env.NEXT_PUBLIC_WP_API_URL;
+  if (!wpApiUrl) return null;
+  try {
+    const { protocol, hostname, port } = new URL(wpApiUrl);
+    return {
+      protocol: protocol.replace(":", ""),
+      hostname,
+      ...(port ? { port } : {}),
+      pathname: "/**",
+    };
+  } catch {
+    return null;
+  }
+}
+
+const wordpressImagePattern = getWordpressImagePattern();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // The original CRA app did not render inside React.StrictMode. Strict Mode's
@@ -17,6 +35,7 @@ const nextConfig = {
         port: "5007",
         pathname: "/**",
       },
+      ...(wordpressImagePattern ? [wordpressImagePattern] : []),
     ],
   },
   async redirects() {

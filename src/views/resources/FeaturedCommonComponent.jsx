@@ -6,7 +6,7 @@ import File from "../../assets/icons/FileText.svg";
 import Timer from "../../assets/icons/timer.svg";
 import { animation } from "../../helpers/utils";
 import CommonButton from "../../components/common/CommonButton";
-import { backendUrl } from "../../helpers/config";
+import { resolveMediaUrl } from "../../helpers/config";
 
 const FeaturedCommonComponent = ({
   title,
@@ -16,14 +16,7 @@ const FeaturedCommonComponent = ({
 }) => {
   const isCaseStudy = type === "case-study";
 
-  const resolveAssetUrl = (assetPath) => {
-    if (!assetPath) return "";
-    return assetPath.startsWith("http")
-      ? assetPath
-      : `${backendUrl}${assetPath}`;
-  };
-
-  const videoThumbnailUrl = resolveAssetUrl(
+  const videoThumbnailUrl = resolveMediaUrl(
     data?.thumbnail_url || data?.media || data?.image,
   );
 
@@ -43,7 +36,9 @@ const FeaturedCommonComponent = ({
         <div className="flex bg-[#079D92] rounded-[24px] gap-[20px] max-[768px]:gap-3 p-5 max-[1024px]:flex-col">
           <div className="w-[440px] h-[400px] bg-[#F5F5F5] rounded-[20px] overflow-hidden max-[1024px]:w-full max-[1024px]:h-[458px]  max-[768px]:h-[300px]">
             <img
-              src={isCaseStudy ? videoThumbnailUrl : backendUrl + data?.image}
+              src={
+                isCaseStudy ? videoThumbnailUrl : resolveMediaUrl(data?.image)
+              }
               alt={data?.title || "Featured content thumbnail"}
               className="common-img"
               fetchPriority="high"

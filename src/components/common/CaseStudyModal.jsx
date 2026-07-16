@@ -12,9 +12,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import axios from "axios";
 import {
-  backendUrl,
   base_url,
   casestudyDownloadApiEndPoint,
+  resolveMediaUrl,
   whitePaperDownloadApiEndPoint,
 } from "../../helpers/config";
 import Swal from "sweetalert2";
@@ -88,9 +88,7 @@ const CaseStudyModal = ({
 
   const downloadPdf = () => {
     if (pdfUrl) {
-      const pdf_link = pdfUrl.startsWith("http")
-        ? pdfUrl
-        : `${backendUrl}${pdfUrl}`;
+      const pdf_link = resolveMediaUrl(pdfUrl);
       const link = document.createElement("a");
       link.href = pdf_link;
       link.download = `${title || "case-study"}.pdf`;

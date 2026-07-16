@@ -12,18 +12,13 @@ import CaseStudyModal from "../../components/common/CaseStudyModal";
 import HelmetWrapper from "../../components/common/HelmetWrapper";
 import SchemaMarkup from "../../components/common/SchemaMarkup";
 import { createCaseStudySchema } from "../../helpers/schemas";
-import { backendUrl, frontendUrl } from "../../helpers/config";
+import { frontendUrl, resolveMediaUrl } from "../../helpers/config";
 import SimpleLoader from "../../components/loader/SimpleLoader";
 import NotFoundComponent from "../../components/common/NotFoundComponent";
 import TiptapContent from "../../components/common/TiptapContent";
 import HLSVideoPlayer from "../../components/common/HLSVideoPlayer";
 import { useCaseStudyDetail } from "../../hooks/useResources";
 import ShareSection from "../../components/common/ShareSection";
-
-const resolveAssetUrl = (assetPath) => {
-  if (!assetPath) return "";
-  return assetPath.startsWith("http") ? assetPath : `${backendUrl}${assetPath}`;
-};
 
 const CaseStudyDetails = () => {
   const { slug } = useParams();
@@ -32,12 +27,12 @@ const CaseStudyDetails = () => {
     isLoading: loadingDetail,
     error: detailError,
   } = useCaseStudyDetail(slug);
-  const mediaUrl = resolveAssetUrl(state?.media);
+  const mediaUrl = resolveMediaUrl(state?.media);
 
   const [caseStudyModal, setCaseStudyModal] = useState(false);
   const [isVideoPopupOpen, setIsVideoPopupOpen] = useState(false);
 
-  const videoThumbnailUrl = resolveAssetUrl(
+  const videoThumbnailUrl = resolveMediaUrl(
     state?.thumbnail_url || state?.image,
   );
 

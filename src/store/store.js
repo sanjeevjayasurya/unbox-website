@@ -10,7 +10,7 @@ import rootReducer from "../reducers/index";
 const persistConfig = {
   key: "root",
   storage, // Specify storage (localStorage by default)
-  blacklist: ["blogs", "casestudy", "whitepaper"], // Exclude heavy API data from localStorage
+  blacklist: ["whitepaper"], // Exclude heavy API data from localStorage
 };
 
 // Wrap root reducer with persistReducer

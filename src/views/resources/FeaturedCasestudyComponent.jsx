@@ -6,17 +6,10 @@ import File from "../../assets/icons/FileText.svg";
 import Timer from "../../assets/icons/timer.svg";
 import { animation } from "../../helpers/utils";
 import CommonButton from "../../components/common/CommonButton";
-import { backendUrl } from "../../helpers/config";
+import { resolveMediaUrl } from "../../helpers/config";
 
 const FeaturedCasestudyComponent = ({ title, data, redirectUrl }) => {
-  const resolveAssetUrl = (assetPath) => {
-    if (!assetPath) return "";
-    return assetPath.startsWith("http")
-      ? assetPath
-      : `${backendUrl}${assetPath}`;
-  };
-
-  const videoThumbnailUrl = resolveAssetUrl(
+  const videoThumbnailUrl = resolveMediaUrl(
     data?.thumbnail_url || data?.media || data?.image,
   );
 

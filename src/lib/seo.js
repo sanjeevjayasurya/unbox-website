@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { cache } from "react";
+import {
+  getBlogBySlug,
+  getCaseStudyBySlug,
+  getFeaturedCaseStudy,
+} from "@/lib/wordpress";
 
 const SCHEMA_DIR = path.join(process.cwd(), "public", "schema");
 
@@ -66,8 +71,7 @@ export const staticRouteMap = {
       "Dive into real-world examples of how Unbox Robotics is helping logistics, e-commerce, and retail leaders achieve operational excellence.",
     schemaFile: "case-study.json",
     lcpDynamic: {
-      endpoint: "/front/case-studies/featured",
-      responseKey: "caseStudy",
+      source: "wordpress-featured-case-study",
       imageFields: ["thumbnail_url", "media", "image"],
     },
   },
@@ -260,7 +264,7 @@ export const staticRouteMap = {
 export const dynamicRouteConfigs = [
   {
     pattern: /^\/blogs\/([^/]+)\/?$/,
-    endpoint: "/front/blogs",
+    source: "wordpress-blog",
     responseKey: "blog",
     urlPrefix: "/blogs",
     type: "article",
@@ -268,7 +272,7 @@ export const dynamicRouteConfigs = [
   },
   {
     pattern: /^\/case-study\/([^/]+)\/?$/,
-    endpoint: "/front/case-studies",
+    source: "wordpress-case-study",
     responseKey: "caseStudy",
     urlPrefix: "/case-study",
     type: "article",
@@ -482,11 +486,17 @@ export async function getStaticMeta(routePath, config = normalizeConfig()) {
 
   if (route.lcpDynamic && !meta.lcpImage) {
     try {
-      const data = await fetchJson(
-        `${config.apiBaseUrl}${route.lcpDynamic.endpoint}`,
-        3000,
-      );
-      const item = data?.[route.lcpDynamic.responseKey];
+      let item = null;
+      if (route.lcpDynamic.source === "wordpress-featured-case-study") {
+        const data = await getFeaturedCaseStudy();
+        item = data?.caseStudy;
+      } else if (route.lcpDynamic.endpoint) {
+        const data = await fetchJson(
+          `${config.apiBaseUrl}${route.lcpDynamic.endpoint}`,
+          3000,
+        );
+        item = data?.[route.lcpDynamic.responseKey];
+      }
       const rawUrl = route.lcpDynamic.imageFields.reduce(
         (acc, field) => acc || item?.[field],
         null,
@@ -502,6 +512,22 @@ export async function getStaticMeta(routePath, config = normalizeConfig()) {
   return meta;
 }
 
+async function fetchDynamicRouteItem(routeConfig, slug, config) {
+  if (routeConfig.source === "wordpress-blog") {
+    const data = await getBlogBySlug(slug);
+    return data?.blog ?? null;
+  }
+  if (routeConfig.source === "wordpress-case-study") {
+    const data = await getCaseStudyBySlug(slug);
+    return data?.caseStudy ?? null;
+  }
+  if (!routeConfig.endpoint) return null;
+  const data = await fetchJson(
+    `${config.apiBaseUrl}${routeConfig.endpoint}/${slug}`,
+  );
+  return data?.[routeConfig.responseKey] ?? null;
+}
+
 export async function fetchMetaForPath(routePath, config = normalizeConfig()) {
   const defaultMeta = getDefaultMeta();
   const staticMeta = await getStaticMeta(routePath, config);
@@ -511,10 +537,7 @@ export async function fetchMetaForPath(routePath, config = normalizeConfig()) {
   if (!matchedRoute) return defaultMeta;
 
   const { config: routeConfig, slug } = matchedRoute;
-  const data = await fetchJson(
-    `${config.apiBaseUrl}${routeConfig.endpoint}/${slug}`,
-  );
-  const item = data?.[routeConfig.responseKey];
+  const item = await fetchDynamicRouteItem(routeConfig, slug, config);
   if (!item) return defaultMeta;
 
   return mapContentToMeta(item, routeConfig, slug, config, defaultMeta);
@@ -522,10 +545,7 @@ export async function fetchMetaForPath(routePath, config = normalizeConfig()) {
 
 export const fetchDynamicContent = cache(async (routeConfig, slug) => {
   const config = normalizeConfig();
-  const data = await fetchJson(
-    `${config.apiBaseUrl}${routeConfig.endpoint}/${slug}`,
-  );
-  return data?.[routeConfig.responseKey] ?? null;
+  return fetchDynamicRouteItem(routeConfig, slug, config);
 });
 
 export function metaToNextMetadata(meta) {
