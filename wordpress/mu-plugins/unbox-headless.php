@@ -224,10 +224,22 @@ function unbox_find_existing_attachment($parent_id, $filename, $source_url = '')
     ]);
 
     foreach ($attachments as $attachment_id) {
-        if ($source_hash && get_post_meta($attachment_id, '_unbox_import_source', true) === $source_hash) {
+        $stored_hash = get_post_meta($attachment_id, '_unbox_import_source', true);
+
+        if ($source_hash && $stored_hash === $source_hash) {
             return intval($attachment_id);
         }
+
+        // Stored hash differs from incoming source — do not reuse by filename.
+        if ($stored_hash && $source_hash) {
+            continue;
+        }
+
+        // Legacy attachment without hash metadata — filename match is OK once.
         if ($filename && sanitize_file_name(basename(get_attached_file($attachment_id))) === $filename) {
+            if ($source_hash) {
+                update_post_meta($attachment_id, '_unbox_import_source', $source_hash);
+            }
             return intval($attachment_id);
         }
     }
