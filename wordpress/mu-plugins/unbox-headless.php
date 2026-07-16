@@ -183,6 +183,9 @@ function unbox_fetch_all_pages($path, $items_key, $limit = 50) {
     $page = 1;
 
     while (true) {
+        if ($page > 100) {
+            break;
+        }
         $response = unbox_fetch_json(UNBOX_ADMIN_API . $path . '?page=' . $page . '&limit=' . $limit);
         $page_items = $response[$items_key] ?? [];
 
@@ -247,6 +250,48 @@ function unbox_find_existing_attachment($parent_id, $filename, $source_url = '')
     return 0;
 }
 
+function unbox_media_extension_from_mime($mime) {
+    return [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/gif' => 'gif',
+        'image/webp' => 'webp',
+        'image/avif' => 'avif',
+        'image/svg+xml' => 'svg',
+        'application/pdf' => 'pdf',
+    ][strtolower($mime)] ?? '';
+}
+
+function unbox_media_extension_from_url($url) {
+    $path = parse_url($url, PHP_URL_PATH) ?: '';
+    $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+    return in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif', 'svg', 'pdf'], true) ? $ext : '';
+}
+
+function unbox_media_extension_from_file($path) {
+    $mime = wp_get_image_mime($path);
+    if (!$mime && function_exists('mime_content_type')) {
+        $mime = mime_content_type($path);
+    }
+    if (!$mime && function_exists('finfo_open')) {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        if ($finfo) {
+            $mime = finfo_file($finfo, $path);
+            finfo_close($finfo);
+        }
+    }
+    return unbox_media_extension_from_mime($mime);
+}
+
+function unbox_media_filename($filename, $ext) {
+    $filename = sanitize_file_name($filename);
+    $basename = pathinfo($filename, PATHINFO_FILENAME);
+    if (!$basename) {
+        $basename = 'media-' . wp_generate_password(8, false);
+    }
+    return $basename . '.' . $ext;
+}
+
 function unbox_sideload_media($url, $parent_id = 0, $filename = '') {
     if (!$url || strpos($url, '.m3u8') !== false) {
         return 0;
@@ -264,14 +309,8 @@ function unbox_sideload_media($url, $parent_id = 0, $filename = '') {
         if ($binary === false) {
             return 0;
         }
-        $ext = [
-            'image/jpeg' => 'jpg',
-            'image/png' => 'png',
-            'image/gif' => 'gif',
-            'image/webp' => 'webp',
-            'image/svg+xml' => 'svg',
-        ][$mime] ?? 'bin';
-        $name = $filename ?: ('inline-' . wp_generate_password(8, false) . '.' . $ext);
+        $ext = unbox_media_extension_from_mime($mime) ?: 'bin';
+        $name = unbox_media_filename($filename, $ext);
         $existing_id = unbox_find_existing_attachment($parent_id, $name, $url);
         if ($existing_id) {
             return $existing_id;
@@ -291,14 +330,22 @@ function unbox_sideload_media($url, $parent_id = 0, $filename = '') {
         return intval($id);
     }
 
-    $name = $filename ?: basename(parse_url($url, PHP_URL_PATH) ?: 'file.bin');
-    $existing_id = unbox_find_existing_attachment($parent_id, $name, $url);
-    if ($existing_id) {
-        return $existing_id;
-    }
     $tmp = download_url($url, 90);
     if (is_wp_error($tmp)) {
         return 0;
+    }
+    $ext = unbox_media_extension_from_url($url);
+    if (!$ext) {
+        $ext = unbox_media_extension_from_file($tmp);
+    }
+    if (!$ext) {
+        $ext = strtolower(pathinfo(sanitize_file_name($filename), PATHINFO_EXTENSION));
+    }
+    $name = unbox_media_filename($filename, $ext ?: 'bin');
+    $existing_id = unbox_find_existing_attachment($parent_id, $name, $url);
+    if ($existing_id) {
+        @unlink($tmp);
+        return $existing_id;
     }
     $file_array = ['name' => $name, 'tmp_name' => $tmp];
     $id = media_handle_sideload($file_array, $parent_id);
@@ -335,7 +382,7 @@ function unbox_rewrite_tiptap_images($node, $parent_id, $slug, &$index = 0) {
         }
         $src = unbox_asset_url($src);
         $index++;
-        $media_id = unbox_sideload_media($src, $parent_id, $slug . '-inline-' . $index . '.webp');
+        $media_id = unbox_sideload_media($src, $parent_id, $slug . '-inline-' . $index);
         if ($media_id) {
             $node['attrs']['src'] = wp_get_attachment_url($media_id);
         } elseif (strpos($src, 'data:') === 0) {
@@ -432,7 +479,7 @@ function unbox_import_prod_content() {
 
             $image_url = unbox_asset_url($blog['image'] ?? '');
             if ($image_url && strpos($image_url, 'data:') !== 0) {
-                $media_id = unbox_sideload_media($image_url, $post_id, $slug . '-cover.jpg');
+                $media_id = unbox_sideload_media($image_url, $post_id, $slug . '-cover');
                 if ($media_id) {
                     set_post_thumbnail($post_id, $media_id);
                 }
@@ -440,7 +487,7 @@ function unbox_import_prod_content() {
 
             $quote_img = unbox_asset_url($blog['quoteOwnerImage'] ?? '');
             if ($quote_img && strpos($quote_img, 'data:') !== 0) {
-                $qid = unbox_sideload_media($quote_img, $post_id, $slug . '-quote.jpg');
+                $qid = unbox_sideload_media($quote_img, $post_id, $slug . '-quote');
                 if ($qid) {
                     $quote_img = wp_get_attachment_url($qid);
                 }
@@ -498,7 +545,7 @@ function unbox_import_prod_content() {
             $thumb_url = unbox_asset_url($cs['thumbnail_url'] ?? ($cs['image'] ?? ''));
             $thumb_id = 0;
             if ($thumb_url && strpos($thumb_url, 'data:') !== 0) {
-                $thumb_id = unbox_sideload_media($thumb_url, $post_id, $slug . '-thumb.jpg');
+                $thumb_id = unbox_sideload_media($thumb_url, $post_id, $slug . '-thumb');
                 if ($thumb_id) {
                     set_post_thumbnail($post_id, $thumb_id);
                 }
@@ -506,7 +553,7 @@ function unbox_import_prod_content() {
 
             $pdf_url = unbox_asset_url($cs['pdf'] ?? '');
             if ($pdf_url && strpos($pdf_url, 'data:') !== 0) {
-                $pdf_id = unbox_sideload_media($pdf_url, $post_id, $slug . '.pdf');
+                $pdf_id = unbox_sideload_media($pdf_url, $post_id, $slug);
                 if ($pdf_id) {
                     $pdf_url = wp_get_attachment_url($pdf_id);
                 }
@@ -514,7 +561,7 @@ function unbox_import_prod_content() {
 
             $client_image = unbox_asset_url($cs['clientImage'] ?? '');
             if ($client_image && strpos($client_image, 'data:') !== 0) {
-                $cid = unbox_sideload_media($client_image, $post_id, $slug . '-client.png');
+                $cid = unbox_sideload_media($client_image, $post_id, $slug . '-client');
                 if ($cid) {
                     $client_image = wp_get_attachment_url($cid);
                 }
