@@ -1369,7 +1369,7 @@
 
 .time-display {
   color: white;
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-size: 14px;
   opacity: 0.9;
 }

@@ -22,11 +22,7 @@ const nextConfig = {
   // double-invoked effects spin up duplicate Lenis smooth-scroll instances /
   // RAF loops in dev, which makes scrolling laggy. Keep parity with the source app.
   reactStrictMode: false,
-  experimental: {
-    optimizePackageImports: ["swiper", "react-bootstrap"],
-  },
   images: {
-    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -46,42 +42,18 @@ const nextConfig = {
     return [
       { source: "/about", destination: "/about-us", permanent: true },
       { source: "/about/", destination: "/about-us", permanent: true },
-      {
-        source: "/solutions",
-        destination: "/solutions-overview",
-        permanent: true,
-      },
-      {
-        source: "/solutions/",
-        destination: "/solutions-overview",
-        permanent: true,
-      },
+      { source: "/solutions", destination: "/solutions-overview", permanent: true },
+      { source: "/solutions/", destination: "/solutions-overview", permanent: true },
       { source: "/case-studies", destination: "/case-study", permanent: true },
       { source: "/case-studies/", destination: "/case-study", permanent: true },
-      {
-        source: "/terms-of-uses",
-        destination: "/terms-of-services",
-        permanent: true,
-      },
-      {
-        source: "/terms-of-uses/",
-        destination: "/terms-of-services",
-        permanent: true,
-      },
+      { source: "/terms-of-uses", destination: "/terms-of-services", permanent: true },
+      { source: "/terms-of-uses/", destination: "/terms-of-services", permanent: true },
       { source: "/contact", destination: "/get-in-touch", permanent: true },
       { source: "/contact/", destination: "/get-in-touch", permanent: true },
       { source: "/blog", destination: "/blogs", permanent: true },
       { source: "/blog/", destination: "/blogs", permanent: true },
-      {
-        source: "/open-postion-details",
-        destination: "/careers",
-        permanent: true,
-      },
-      {
-        source: "/open-postion-form",
-        destination: "/careers",
-        permanent: true,
-      },
+      { source: "/open-postion-details", destination: "/careers", permanent: true },
+      { source: "/open-postion-form", destination: "/careers", permanent: true },
     ];
   },
   async headers() {

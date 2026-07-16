@@ -581,10 +581,9 @@ const SeriesBFundedPage = () => {
 
       {/* ── Slide-in form drawer (portal so it escapes stacking context) ── */}
       {/*
-      {typeof document !== "undefined" &&
-        formOpen &&
-        ReactDOM.createPortal(
-          <>
+      {ReactDOM.createPortal(
+          formOpen && (
+            <>
               <div
                 className="sb-drawer-backdrop"
                 onClick={() => setFormOpen(false)}
@@ -606,42 +605,42 @@ const SeriesBFundedPage = () => {
               </div>
             </>
           ),
-          document.body,
-        )}
+        document.body
+      )}
       */}
 
       {/* ── Centered form modal ── */}
-      {typeof document !== "undefined" &&
-        formOpen &&
-        ReactDOM.createPortal(
-          <div
-            className="sb-modal-backdrop"
-            onClick={() => setFormOpen(false)}>
+      {ReactDOM.createPortal(
+          formOpen && (
             <div
-              className="sb-modal"
-              data-lenis-prevent
-              onClick={(e) => e.stopPropagation()}>
-              <button
-                className="sb-modal-close"
-                onClick={() => setFormOpen(false)}
-                type="button"
-                aria-label="Close">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8">
-                  <line x1="4" y1="4" x2="16" y2="16" />
-                  <line x1="16" y1="4" x2="4" y2="16" />
-                </svg>
-              </button>
-              <FormContent />
+              className="sb-modal-backdrop"
+              onClick={() => setFormOpen(false)}>
+              <div
+                className="sb-modal"
+                data-lenis-prevent
+                onClick={(e) => e.stopPropagation()}>
+                <button
+                  className="sb-modal-close"
+                  onClick={() => setFormOpen(false)}
+                  type="button"
+                  aria-label="Close">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8">
+                    <line x1="4" y1="4" x2="16" y2="16" />
+                    <line x1="16" y1="4" x2="4" y2="16" />
+                  </svg>
+                </button>
+                <FormPanel />
+              </div>
             </div>
-          </div>,
-          document.body,
-        )}
+          ),
+        document.body
+      )}
 
       {/* ── Hero ── */}
       <div className="sb-hero-wrap">

@@ -200,7 +200,7 @@
 }
 
 .de-session-label {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(11px, 1.1vw, 13px);
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -231,7 +231,7 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 400;
   white-space: nowrap;
@@ -255,7 +255,7 @@
   color: #fff;
   border: 1.5px solid #fff;
   cursor: pointer;
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(12px, 1.2vw, 14px);
   font-weight: 400;
   white-space: nowrap;
@@ -447,7 +447,7 @@
 }
 
 .de-stat-card-value {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(16px, 1.6vw, 18px);
   font-weight: 600;
   color: #00a99d;
@@ -479,7 +479,7 @@
 }
 
 .de-brand-category {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(10px, 1vw, 12px);
   font-weight: 600;
   color: #00a99d;

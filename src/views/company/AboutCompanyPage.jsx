@@ -23,7 +23,7 @@ const aboutCompanyImage = process.env.PUBLIC_URL + "/images/about-company.webp";
 
 const AboutCompanyPage = () => {
   const router = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,7 +31,6 @@ const AboutCompanyPage = () => {
       setIsMobile(window.innerWidth <= 1024);
     };
 
-    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);

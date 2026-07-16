@@ -24,8 +24,7 @@ const SolutionBindingSlider = () => {
 
   // Set initial slide from URL
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const hash = window.location.hash?.replace("#", "");
+    const hash = location.hash?.replace("#", "");
     if (!hash) return;
 
     const index = unboxSuperPowerDataCards.findIndex(
@@ -36,7 +35,7 @@ const SolutionBindingSlider = () => {
 
     setInitialSlide(index);
     setActiveIndex(index);
-  }, [pathname]);
+  }, [location.hash]);
 
   // When swiper becomes ready, jump correctly (for safety with loop)
   useEffect(() => {

@@ -29,7 +29,7 @@
   padding: 10px 12px;
   min-width: 300px;
   text-align: center;
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -59,7 +59,7 @@
 }
 
 .font-40-regular {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 400;
   font-size: var(--font-40);
   line-height: 120%;
@@ -67,7 +67,7 @@
 }
 
 .font-40-light {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 300;
   font-size: var(--font-40);
   line-height: 120%;
@@ -75,7 +75,7 @@
 }
 
 .font-36-light {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 300;
   font-size: var(--font-36);
   line-height: 120%;
@@ -83,14 +83,14 @@
 }
 
 .font-40-medium {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 500;
   font-size: var(--font-40);
   line-height: 120%;
   letter-spacing: 0%;
 }
 .font-40-semibold {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 600;
   font-size: var(--font-40);
   line-height: 120%;
@@ -223,7 +223,7 @@
 }
 
 .product-slider-description {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 400;
   font-size: var(--font-14);
   line-height: 120%;
@@ -231,7 +231,7 @@
 }
 
 .product-slider-title {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 500;
   font-size: var(--font-16);
   line-height: 120%;
@@ -252,7 +252,7 @@
 .footer-privacy-info {
   padding: 10px 12px;
   text-align: center;
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;

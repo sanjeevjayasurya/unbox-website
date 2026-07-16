@@ -26,7 +26,7 @@ const SolutionOverviewPage = () => {
 
   // Center scroll when user lands with hash
   useEffect(() => {
-    if (typeof window === "undefined" || !window.location.hash) return;
+    if (!location.hash) return;
 
     // wait for slider + animations to mount
     const timer = setTimeout(() => {
@@ -38,7 +38,7 @@ const SolutionOverviewPage = () => {
       }
     }, 600);
     return () => clearTimeout(timer);
-  }, [pathname]);
+  }, [location.hash]);
 
   return (
     <>

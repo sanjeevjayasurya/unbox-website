@@ -3,7 +3,8 @@ import Providers from "./providers";
 import "../index.css";
 import "../App.css";
 import "../assets/css/typography.css";
-// Bootstrap CSS is loaded only when CaseStudy/WhitePaper modals open.
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../public/fonts/fonts.css";
 
 const beVietnamPro = localFont({
   src: [

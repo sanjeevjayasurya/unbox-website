@@ -158,21 +158,21 @@
   padding: 17px 32px;
 }
 .font-32-medium-super-power {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 500;
   font-size: 32px;
   line-height: 120%;
   letter-spacing: 0%;
 }
 .font-24-light-super-power {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 300;
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0%;
 }
 .font-16-regular-super-power {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 16px;
 
@@ -181,7 +181,7 @@
   transition: all 0.5s ease;
 }
 .font-20-light-super-power {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 300;
   font-size: 20px;
 
@@ -190,7 +190,7 @@
   transition: all 0.5s ease;
 }
 .font-16-medium-machine-tab {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 500;
   font-size: 16px;
   line-height: 120%;
@@ -198,7 +198,7 @@
   transition: all 0.5s ease;
 }
 .font-20-light-machine-tab {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 300;
   font-size: 20px;
   line-height: 120%;

@@ -13,41 +13,27 @@ const CookieBanner = () => {
 
   useEffect(() => {
     const storedRegion = localStorage.getItem("userRegion");
-    let idleId;
-    let timeoutId;
 
     if (storedRegion) {
       setRegion(storedRegion);
-    } else if (!ipInfoToken) {
-      // Avoid /json?token=undefined third-party request flagged by PSI.
-      setRegion("OTHER");
     } else {
-      setRegion("OTHER");
-      const run = () => {
-        dispatch(fetchLocationInfo(ipInfoToken))
-          .then((data) => {
-            let userRegion = "OTHER";
+      dispatch(fetchLocationInfo(ipInfoToken))
+        .then((data) => {
+          let userRegion = "OTHER";
 
-            if (data.country_code === "US" && data.region_code === "CA") {
-              userRegion = "US-CA";
-            } else if (isEUCountry(data.country_code)) {
-              userRegion = "EU";
-            }
+          if (data.country_code === "US" && data.region_code === "CA") {
+            userRegion = "US-CA";
+          } else if (isEUCountry(data.country_code)) {
+            userRegion = "EU";
+          }
 
-            setRegion(userRegion);
-            localStorage.setItem("userRegion", userRegion);
-          })
-          .catch((error) => {
-            console.error("Failed to fetch region", error);
-            setRegion("OTHER");
-          });
-      };
-
-      if (typeof window.requestIdleCallback === "function") {
-        idleId = window.requestIdleCallback(run, { timeout: 3000 });
-      } else {
-        timeoutId = window.setTimeout(run, 1);
-      }
+          setRegion(userRegion);
+          localStorage.setItem("userRegion", userRegion);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch region", error);
+          setRegion("OTHER");
+        });
     }
 
     const consent = localStorage.getItem("cookieConsent");
@@ -60,13 +46,6 @@ const CookieBanner = () => {
       if (consent === "rejected") localStorage.removeItem("cookieConsent");
       setVisible(true);
     }
-
-    return () => {
-      if (idleId != null && typeof window.cancelIdleCallback === "function") {
-        window.cancelIdleCallback(idleId);
-      }
-      if (timeoutId != null) window.clearTimeout(timeoutId);
-    };
   }, [dispatch]);
 
   // --- User actions ---

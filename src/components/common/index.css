@@ -11,7 +11,7 @@
   align-items: center;
   cursor: pointer;
   border: none;
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 400;
   font-size: var(--font-14);
   line-height: 120%;
@@ -116,7 +116,7 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -303,7 +303,7 @@
 }
 
 .blogs-data-date-txt {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -312,7 +312,7 @@
   color: var(--green-1);
 }
 .blogs-data-title-txt {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -336,7 +336,7 @@
   right: 16px;
 }
 .blogs-data-type-txt {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -405,7 +405,7 @@
   flex: 1;
 }
 .modal-header-title {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 500;
   font-size: 20px;
   line-height: 100%;
@@ -431,7 +431,7 @@
   flex: 1;
 }
 .modal-form-title {
-  font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro";
+  font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
