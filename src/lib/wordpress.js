@@ -7,6 +7,7 @@ import {
   getMockFeaturedCaseStudy,
   getMockRecentBlogs,
 } from "@/data/resourceMocks";
+import { parseContentJson } from "@/lib/wordpressContent";
 
 const PLACEHOLDER_IMAGE = "/images/resource-placeholder.svg";
 
@@ -84,6 +85,13 @@ function isFeaturedFlag(acf) {
   return value === true || value === 1 || value === "1" || value === "true";
 }
 
+function resolvePostContent(post) {
+  const tiptapContent = parseContentJson(
+    post?.meta?.content_json ?? post?.acf?.content_json,
+  );
+  return tiptapContent || post?.content?.rendered || "";
+}
+
 function mapBlogPost(post) {
   const acf = getAcf(post);
   const category = getPrimaryCategory(post) || acf.type || "Blog";
@@ -97,7 +105,7 @@ function mapBlogPost(post) {
     slug: post.slug,
     title: stripHtml(post?.title?.rendered || ""),
     description,
-    content: post?.content?.rendered || "",
+    content: resolvePostContent(post),
     image,
     category,
     type: category,
@@ -193,7 +201,7 @@ async function wpFetch(path) {
 const LIST_FIELDS =
   "id,date,modified,slug,title,excerpt,acf,featured_media,_links";
 const DETAIL_FIELDS =
-  "id,date,modified,slug,title,excerpt,content,acf,featured_media,_links";
+  "id,date,modified,slug,title,excerpt,content,acf,meta,featured_media,_links";
 
 async function fetchCollection(resourcePath, page = 1, limit = 3) {
   const params = new URLSearchParams({
