@@ -1,18 +1,90 @@
 const PLACEHOLDER_IMAGE = "/images/resource-placeholder.svg";
 const SAMPLE_PDF = "/sample-case-study.pdf";
 
-const LOREM_HTML = `
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<h2>Key takeaways</h2>
-<p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.</p>
-<ul>
-  <li>Integer in mauris eu nibh euismod gravida.</li>
-  <li>Duis ac tellus et risus vulputate vehicula.</li>
-  <li>Donec vitae dolor nulla malesuada.</li>
-</ul>
-<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-`.trim();
+const LOREM_DOC = {
+  type: "doc",
+  content: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+      ],
+    },
+    {
+      type: "heading",
+      attrs: { level: 2 },
+      content: [{ type: "text", text: "Key takeaways" }],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.",
+        },
+      ],
+    },
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "Integer in mauris eu nibh euismod gravida.",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "Duis ac tellus et risus vulputate vehicula.",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "Donec vitae dolor nulla malesuada.",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
 
 const LOREM_DESCRIPTION =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
@@ -23,7 +95,7 @@ export const MOCK_BLOGS = [
     slug: "lorem-ipsum-robotic-sortation",
     title: "Lorem Ipsum: Scaling Robotic Sortation",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     image: PLACEHOLDER_IMAGE,
     category: "Technology",
     type: "Technology",
@@ -43,7 +115,7 @@ export const MOCK_BLOGS = [
     slug: "dolor-sit-warehouse-efficiency",
     title: "Dolor Sit Amet: Warehouse Efficiency Playbook",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     image: PLACEHOLDER_IMAGE,
     category: "Operations",
     type: "Operations",
@@ -62,7 +134,7 @@ export const MOCK_BLOGS = [
     slug: "consectetur-last-mile-insights",
     title: "Consectetur: Last-Mile Sortation Insights",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     image: PLACEHOLDER_IMAGE,
     category: "Logistics",
     type: "Logistics",
@@ -81,7 +153,7 @@ export const MOCK_BLOGS = [
     slug: "adipiscing-fulfillment-trends",
     title: "Adipiscing Elit: Fulfillment Trends for 2026",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     image: PLACEHOLDER_IMAGE,
     category: "Insights",
     type: "Insights",
@@ -101,7 +173,7 @@ export const MOCK_BLOGS = [
     slug: "tempor-incididunt-automation",
     title: "Tempor Incididunt: Automation Without Disruption",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     image: PLACEHOLDER_IMAGE,
     category: "Product",
     type: "Product",
@@ -123,7 +195,7 @@ export const MOCK_CASE_STUDIES = [
     slug: "lorem-ipsum-3pl-transformation",
     title: "Lorem Ipsum: 3PL Throughput Transformation",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     media: PLACEHOLDER_IMAGE,
     mediaType: "image",
     thumbnail_url: PLACEHOLDER_IMAGE,
@@ -147,7 +219,7 @@ export const MOCK_CASE_STUDIES = [
     slug: "dolor-sit-ecommerce-fulfillment",
     title: "Dolor Sit: E-commerce Fulfillment at Peak",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     media: PLACEHOLDER_IMAGE,
     mediaType: "image",
     thumbnail_url: PLACEHOLDER_IMAGE,
@@ -171,7 +243,7 @@ export const MOCK_CASE_STUDIES = [
     slug: "consectetur-returns-sortation",
     title: "Consectetur: Returns Sortation Case Study",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     media: PLACEHOLDER_IMAGE,
     mediaType: "image",
     thumbnail_url: PLACEHOLDER_IMAGE,
@@ -194,7 +266,7 @@ export const MOCK_CASE_STUDIES = [
     slug: "adipiscing-delivery-hub",
     title: "Adipiscing: Delivery Hub Last-Mile Wins",
     description: LOREM_DESCRIPTION,
-    content: LOREM_HTML,
+    content: LOREM_DOC,
     media: PLACEHOLDER_IMAGE,
     mediaType: "image",
     thumbnail_url: PLACEHOLDER_IMAGE,
