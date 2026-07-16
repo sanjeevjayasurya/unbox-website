@@ -7,6 +7,7 @@ import {
   getMockFeaturedCaseStudy,
   getMockRecentBlogs,
 } from "@/data/resourceMocks";
+import { parseContentJson, tiptapToPlainText } from "@/lib/wordpressContent";
 
 const PLACEHOLDER_IMAGE = "/images/resource-placeholder.svg";
 
@@ -84,20 +85,38 @@ function isFeaturedFlag(acf) {
   return value === true || value === 1 || value === "1" || value === "true";
 }
 
+function resolvePostContent(post) {
+  const fromMeta = parseContentJson(
+    post?.meta?.content_json ?? post?.acf?.content_json,
+  );
+  if (fromMeta) return fromMeta;
+
+  const html = post?.content?.rendered || "";
+  return html;
+}
+
+function resolveDescription(post, content) {
+  const excerpt = stripHtml(post?.excerpt?.rendered || "");
+  if (excerpt) return excerpt;
+  if (content && typeof content === "object") {
+    return tiptapToPlainText(content).slice(0, 180);
+  }
+  return stripHtml(typeof content === "string" ? content : "").slice(0, 180);
+}
+
 function mapBlogPost(post) {
   const acf = getAcf(post);
   const category = getPrimaryCategory(post) || acf.type || "Blog";
   const image = getFeaturedImage(post) || PLACEHOLDER_IMAGE;
-  const description =
-    stripHtml(post?.excerpt?.rendered || "") ||
-    stripHtml(post?.content?.rendered || "").slice(0, 180);
+  const content = resolvePostContent(post);
+  const description = resolveDescription(post, content);
 
   return {
     id: post.id,
     slug: post.slug,
     title: stripHtml(post?.title?.rendered || ""),
     description,
-    content: post?.content?.rendered || "",
+    content,
     image,
     category,
     type: category,
@@ -119,9 +138,8 @@ function mapCaseStudyPost(post) {
   const media = acfFileUrl(acf.media) || featuredImage || PLACEHOLDER_IMAGE;
   const thumbnail =
     acfImageUrl(acf.thumbnail) || featuredImage || PLACEHOLDER_IMAGE;
-  const description =
-    stripHtml(post?.excerpt?.rendered || "") ||
-    stripHtml(post?.content?.rendered || "").slice(0, 180);
+  const content = resolvePostContent(post);
+  const description = resolveDescription(post, content);
   const mediaType = acf.media_type || "image";
   const tags = getCaseStudyTags(post) || acf.type || "";
 
@@ -130,7 +148,7 @@ function mapCaseStudyPost(post) {
     slug: post.slug,
     title: stripHtml(post?.title?.rendered || ""),
     description,
-    content: post?.content?.rendered || "",
+    content,
     media,
     mediaType,
     thumbnail_url: thumbnail,
@@ -188,12 +206,12 @@ async function wpFetch(path) {
   };
 }
 
-// List/featured/recent only need cards — omit `content` so Next can cache
- // responses (full posts with inlined media often exceed the 2MB fetch cache).
+// List/featured/recent only need cards — omit body fields so Next can cache
+// responses (full TipTap JSON with media can still be large on detail).
 const LIST_FIELDS =
   "id,date,modified,slug,title,excerpt,acf,featured_media,_links";
 const DETAIL_FIELDS =
-  "id,date,modified,slug,title,excerpt,content,acf,featured_media,_links";
+  "id,date,modified,slug,title,excerpt,content,acf,meta,featured_media,_links";
 
 async function fetchCollection(resourcePath, page = 1, limit = 3) {
   const params = new URLSearchParams({
