@@ -428,7 +428,7 @@ function unbox_import_prod_content() {
             }
             $index = 0;
             $doc = unbox_rewrite_tiptap_images($doc, $post_id, $slug, $index);
-            update_post_meta($post_id, 'content_json', wp_json_encode($doc));
+            update_post_meta($post_id, 'content_json', wp_slash(wp_json_encode($doc)));
 
             $image_url = unbox_asset_url($blog['image'] ?? '');
             if ($image_url && strpos($image_url, 'data:') !== 0) {
@@ -493,7 +493,7 @@ function unbox_import_prod_content() {
             }
             $index = 0;
             $doc = unbox_rewrite_tiptap_images($doc, $post_id, $slug, $index);
-            update_post_meta($post_id, 'content_json', wp_json_encode($doc));
+            update_post_meta($post_id, 'content_json', wp_slash(wp_json_encode($doc)));
 
             $thumb_url = unbox_asset_url($cs['thumbnail_url'] ?? ($cs['image'] ?? ''));
             $thumb_id = 0;
