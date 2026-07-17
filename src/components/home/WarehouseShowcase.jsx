@@ -5,7 +5,8 @@ import "./index.css";
 import { swarmIcon } from "../../helpers/assets";
 import CommonButton from "../common/CommonButton";
 import { useRouter } from "next/navigation";
-import { heroVideo, heroVideoPoster } from "../../views/Events/assets";
+import { heroVideo } from "../../views/Events/assets";
+import HeroMedia from "./HeroMedia";
 
 export default function WarehouseShowcase() {
   const router = useRouter();
@@ -13,17 +14,9 @@ export default function WarehouseShowcase() {
   return (
     <>
       <div className="showcase-container">
-        <video
-          src={heroVideo}
-          poster={heroVideoPoster}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          fetchPriority="high"
-          draggable={false}
-          className="common-img"
+        <HeroMedia
+          videoSrc={heroVideo}
+          mediaQuery="(min-width: 769px)"
         />
 
         <div className="headline-panel">
@@ -105,17 +98,9 @@ export default function WarehouseShowcase() {
         </div>
 
         <div className="flex-1 relative w-full h-full rounded-[20px] overflow-hidden bg-red">
-          <video
-            src={heroVideo}
-            poster={heroVideoPoster}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            fetchPriority="high"
-            draggable={false}
-            className="common-img"
+          <HeroMedia
+            videoSrc={heroVideo}
+            mediaQuery="(max-width: 768px)"
           />
         </div>
 

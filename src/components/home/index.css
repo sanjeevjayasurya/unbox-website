@@ -14,11 +14,45 @@
   border-radius: 32px 32px 0px 32px;
 }
 
+.hero-media {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.hero-media__poster,
+.hero-media__video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-media__poster {
+  z-index: 0;
+}
+
+.hero-media__video {
+  z-index: 1;
+}
+
 .hero-bottom-right-row {
   position: absolute;
   bottom: 22px;
   right: 20px;
   width: 367px;
+}
+
+.showcase-container > .headline-panel,
+.showcase-container > .hero-bottom-right-row {
+  z-index: 1;
 }
 
 /* HEADLINE PANEL */
