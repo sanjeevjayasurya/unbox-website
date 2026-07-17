@@ -224,7 +224,6 @@ const RSVPModal = ({ visible, onClose }) => {
     <div className="de-rsvp-overlay" onClick={onClose}>
       <div
         className="de-rsvp-modal"
-        data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

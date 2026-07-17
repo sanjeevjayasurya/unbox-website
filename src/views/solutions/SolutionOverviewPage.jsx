@@ -32,7 +32,6 @@ const SolutionOverviewPage = () => {
     const timer = setTimeout(() => {
       if (sliderRef.current) {
         sliderRef.current.scrollIntoView({
-          behavior: "smooth",
           block: "center",
         });
       }

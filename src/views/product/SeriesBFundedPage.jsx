@@ -549,17 +549,6 @@ const SeriesBFundedPage = () => {
   const [activeSpec, setActiveSpec] = useState(0);
 
   useEffect(() => {
-    if (formOpen) {
-      window.dispatchEvent(new Event("lenis:stop"));
-    } else {
-      window.dispatchEvent(new Event("lenis:start"));
-    }
-    return () => {
-      window.dispatchEvent(new Event("lenis:start"));
-    };
-  }, [formOpen]);
-
-  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
@@ -589,8 +578,7 @@ const SeriesBFundedPage = () => {
                 onClick={() => setFormOpen(false)}
               />
               <div
-                className="sb-drawer"
-                data-lenis-prevent>
+                className="sb-drawer">
                 <button
                   className="sb-drawer-close"
                   onClick={() => setFormOpen(false)}
@@ -617,7 +605,6 @@ const SeriesBFundedPage = () => {
               onClick={() => setFormOpen(false)}>
               <div
                 className="sb-modal"
-                data-lenis-prevent
                 onClick={(e) => e.stopPropagation()}>
                 <button
                   className="sb-modal-close"

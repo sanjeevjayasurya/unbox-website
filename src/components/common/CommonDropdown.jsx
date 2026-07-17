@@ -81,7 +81,6 @@ const CommonDropdown = ({
         <ul
           className="common-dropdown-menu"
           role="listbox"
-          data-lenis-prevent
         >
           {items.length > 0 ? (
             items.map((opt) => (

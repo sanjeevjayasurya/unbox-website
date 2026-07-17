@@ -1356,11 +1356,6 @@
   resolved "https://registry.npmjs.org/@standard-schema/utils/-/utils-0.3.0.tgz"
   integrity sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==
 
-"@studio-freight/lenis@^1.0.42":
-  version "1.0.42"
-  resolved "https://registry.npmjs.org/@studio-freight/lenis/-/lenis-1.0.42.tgz"
-  integrity sha512-HJAGf2DeM+BTvKzHv752z6Z7zy6bA643nZM7W88Ft9tnw2GsJSp6iJ+3cekjyMIWH+cloL2U9X82dKXgdU8kPg==
-
 "@svgr/babel-plugin-add-jsx-attribute@8.0.0":
   version "8.0.0"
   resolved "https://registry.npmjs.org/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-8.0.0.tgz"
@@ -4448,7 +4443,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -4516,7 +4511,7 @@ react-country-flag@^3.1.0:
   resolved "https://registry.npmjs.org/react-country-flag/-/react-country-flag-3.1.0.tgz"
   integrity sha512-JWQFw1efdv9sTC+TGQvTKXQg1NKbDU2mBiAiRWcKM9F1sK+/zjhP2yGmm8YDddWyZdXVkR8Md47rPMJmo4YO5g==
 
-"react-dom@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1", "react-dom@^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react-dom@^19.2.0, react-dom@>=16.14.0, react-dom@>=16.6.0:
+"react-dom@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1", "react-dom@^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react-dom@^19.2.0, react-dom@>=16.14.0, react-dom@>=16.6.0:
   version "19.2.7"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-19.2.7.tgz"
   integrity sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==
@@ -4593,14 +4588,6 @@ react-redux@^9.2.0:
     "@types/use-sync-external-store" "^0.0.6"
     use-sync-external-store "^1.4.0"
 
-react-scroll@^1.9.3:
-  version "1.9.3"
-  resolved "https://registry.npmjs.org/react-scroll/-/react-scroll-1.9.3.tgz"
-  integrity sha512-xv7FXqF3k63aSLNu4/NjFvRNI0ge7DmmmsbeGarP7LZVAlJMSjUuW3dTtLxp1Afijyv0lS2qwC0GiFHvx1KBHQ==
-  dependencies:
-    lodash.throttle "^4.1.1"
-    prop-types "^15.7.2"
-
 react-stately@3.48.0:
   version "3.48.0"
   resolved "https://registry.npmjs.org/react-stately/-/react-stately-3.48.0.tgz"
@@ -4623,7 +4610,7 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-"react@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^15.x.x || ^16.x.x || ^17.x.x || ^18.x.x || ^19.x.x", "react@^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17 || ^18 || ^19", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1", "react@^17.0.0 || ^18.0.0 || ^19.0.0", "react@^18.0 || ^19", "react@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react@^19.2.0, react@^19.2.7, "react@>= 16 || ^19.0.0-rc", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0", react@>=0.14.0, react@>=15.0.0, "react@>=15.3.2 <20", react@>=16, react@>=16.14.0, react@>=16.6.0, react@>=16.8.0, react@>=18:
+"react@^15.x.x || ^16.x.x || ^17.x.x || ^18.x.x || ^19.x.x", "react@^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17 || ^18 || ^19", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1", "react@^17.0.0 || ^18.0.0 || ^19.0.0", "react@^18.0 || ^19", "react@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react@^19.2.0, react@^19.2.7, "react@>= 16 || ^19.0.0-rc", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0", react@>=0.14.0, react@>=15.0.0, "react@>=15.3.2 <20", react@>=16, react@>=16.14.0, react@>=16.6.0, react@>=16.8.0, react@>=18:
   version "19.2.7"
   resolved "https://registry.npmjs.org/react/-/react-19.2.7.tgz"
   integrity sha512-HNe9WslTbXmFK8o8cmwgAeJFSBvt1bPdHCVKtaaV+WlAN36mpT4hcRpwbf3fY56ar2oIXzsBpOAiIRHAdY0OlQ==

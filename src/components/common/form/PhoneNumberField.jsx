@@ -78,7 +78,6 @@ const PhoneNumberField = ({
     if (listRef.current && listRef.current.children[index]) {
       listRef.current.children[index].scrollIntoView({
         block: "nearest",
-        behavior: "smooth",
       });
     }
   };
@@ -215,7 +214,6 @@ const PhoneNumberField = ({
                 id="phone-country-list"
                 ref={listRef}
                 className="max-h-60 overflow-auto outline-none"
-                data-lenis-prevent
                 tabIndex={0}
                 onKeyDown={handleKeyDown}
                 role="listbox"

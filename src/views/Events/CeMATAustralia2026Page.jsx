@@ -243,7 +243,7 @@ const CeMATAustralia2026Page = () => {
     e.preventDefault();
     document
       .getElementById("book-meeting")
-      ?.scrollIntoView({ behavior: "smooth" });
+      ?.scrollIntoView();
   };
 
   const onSubmit = async (data) => {

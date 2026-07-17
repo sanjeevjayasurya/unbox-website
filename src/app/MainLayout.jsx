@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import NavbarComponent from "@/components/navabar/NavbarComponent";
 import Footer from "@/components/footer/Footer";
-import SmoothScroll from "@/components/common/SmoothScroll";
 import CookieBanner from "@/components/CookieBanner";
 // import EventPopup from "@/components/common/EventPopup";
 
@@ -19,7 +18,6 @@ export default function MainLayout({ children }) {
     <>
       <div className="main-container">
         <NavbarComponent />
-        <SmoothScroll />
         <main id="main-content">
           <div className="main-content">{children}</div>
         </main>

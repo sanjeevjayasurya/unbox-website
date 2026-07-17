@@ -62,7 +62,6 @@ const DropdownField = ({
     if (listRef.current && listRef.current.children[index]) {
       listRef.current.children[index].scrollIntoView({
         block: "nearest",
-        behavior: "smooth",
       });
     }
   };
@@ -185,7 +184,6 @@ const DropdownField = ({
             id={`dropdown-list-${name}`}
             ref={listRef}
             className="max-h-60 overflow-auto outline-none custom-scrollbar-thin"
-            data-lenis-prevent
             tabIndex={-1}
             onKeyDown={handleListKeyDown}
             role="listbox"

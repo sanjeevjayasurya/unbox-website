@@ -164,12 +164,7 @@ const OpenPositionForm = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`field-${firstKey}`);
       if (!el) return;
-      // Lenis (smooth scroll) overrides native scrollIntoView — use it directly.
-      if (window.lenis?.scrollTo) {
-        window.lenis.scrollTo(el, { offset: -160, duration: 0.6 });
-      } else {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+      el.scrollIntoView({ block: "center" });
       const focusable = el.querySelector(
         "input:not([type=hidden]), textarea, select, button",
       );

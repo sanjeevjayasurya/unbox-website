@@ -165,7 +165,6 @@ const DateField = ({ label, required = false, value, onChange, name }) => {
           <div
             ref={popupRef}
             className="datepicker-pop"
-            data-lenis-prevent
             style={{
               position: "fixed",
               left: coords.left,

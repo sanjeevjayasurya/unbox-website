@@ -36,7 +36,7 @@ const CareersCompanyPage = () => {
   const openPositionsRef = useRef(null);
 
   const scrollToOpenPositions = () => {
-    openPositionsRef.current?.scrollIntoView({ behavior: "smooth" });
+    openPositionsRef.current?.scrollIntoView();
   };
 
   // Distinct locations across all live jobs, for the right-hand chip group.

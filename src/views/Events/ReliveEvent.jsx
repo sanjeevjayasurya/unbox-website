@@ -96,7 +96,7 @@ const ReliveEvent = () => {
               // otherwise fall back to the configured link.
               const featured = document.getElementById("featured-event");
               if (featured) {
-                featured.scrollIntoView({ behavior: "smooth", block: "start" });
+                featured.scrollIntoView({ block: "start" });
               } else {
                 router.push(e.nextEventLink);
               }

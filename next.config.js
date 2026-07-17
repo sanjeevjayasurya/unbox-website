@@ -18,10 +18,6 @@ const wordpressImagePattern = getWordpressImagePattern();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // The original CRA app did not render inside React.StrictMode. Strict Mode's
-  // double-invoked effects spin up duplicate Lenis smooth-scroll instances /
-  // RAF loops in dev, which makes scrolling laggy. Keep parity with the source app.
-  reactStrictMode: false,
   images: {
     remotePatterns: [
       {

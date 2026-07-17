@@ -92,7 +92,6 @@ The frontend communicates with a separate backend API hosted at `unboxadmin.4tys
 | React LazyLoad        | 1.6.3    | Lazy image loading                   |
 | libphonenumber-js     | 1.12.10  | Phone number formatting & validation |
 | SweetAlert2           | 11.26.17 | Modals & alerts                      |
-| @studio-freight/lenis | 1.0.42   | Smooth scrolling                     |
 
 ### Server
 

@@ -59,7 +59,7 @@ const EventPage = () => {
     e.preventDefault();
     const element = document.getElementById("book-meeting");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView();
     }
   };
 

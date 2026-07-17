@@ -172,17 +172,6 @@ const NavbarComponent = ({ shouldAnimate }) => {
     }
   }, [pathname]);
 
-  useEffect(() => {
-    if (isOpen) {
-      window.dispatchEvent(new Event("lenis:stop"));
-    } else {
-      window.dispatchEvent(new Event("lenis:start"));
-    }
-    return () => {
-      window.dispatchEvent(new Event("lenis:start"));
-    };
-  }, [isOpen]);
-
   return (
     <>
       <header
@@ -647,7 +636,7 @@ const NavbarComponent = ({ shouldAnimate }) => {
                 <div
                   key="responsive-menu"
                   className="responsive-menu"
-                  data-lenis-prevent>
+                  >
                   <div>
                     <Link
                       href={"/"}

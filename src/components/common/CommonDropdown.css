@@ -73,7 +73,6 @@
   box-shadow: 0 12px 32px rgba(20, 19, 19, 0.12);
   max-height: 260px;
   overflow-y: auto;
-  /* Keep scrolling inside the menu — don't chain to the page (and Lenis). */
   overscroll-behavior: contain;
   animation: common-dropdown-in 0.16s ease;
 }
